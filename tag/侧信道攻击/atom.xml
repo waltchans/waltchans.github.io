@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://waltcsz.github.io</id>
+    <title>Walt&#39;s Blog • Posts by &#34;侧信道攻击&#34; tag</title>
+    <link href="http://waltcsz.github.io" />
+    <updated>2023-10-23T06:07:01.000Z</updated>
+    <category term="heap" />
+    <category term="汇编" />
+    <category term="寄存器" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
+    <category term="random" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="double free" />
+    <category term="fastbin attack" />
+    <category term="chunk_extend_and_overlapping" />
+    <category term="one_gadget" />
+    <category term="tcache" />
+    <category term="malloc_hook" />
+    <category term="free_hook" />
+    <entry>
+        <id>http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/</id>
+        <title>newstarctf2023 week5</title>
+        <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/"/>
+        <content type="html">&lt;h1 id=&#34;week5-未完成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#week5-未完成&#34;&gt;#&lt;/a&gt; week5 未完成&lt;/h1&gt;
+&lt;h1 id=&#34;login&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#login&#34;&gt;#&lt;/a&gt; login&lt;/h1&gt;
+&lt;h3 id=&#34;login-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#login-2&#34;&gt;#&lt;/a&gt; login&lt;/h3&gt;
+&lt;p&gt;存在栈溢出，但是有 canary。输入第 9 个字符碰到 canary&lt;/p&gt;
+&lt;h3 id=&#34;forget&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#forget&#34;&gt;#&lt;/a&gt; forget&lt;/h3&gt;
+&lt;p&gt;也存在栈溢出，且第 7 个字符就到 canary 了。也可能包含回车。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172319336.png&#34; alt=&#34;image-20231023172319336&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172424514.png&#34; alt=&#34;image-20231023172424514&#34;&gt;&lt;/p&gt;
+&lt;p&gt;0x1894 后不再报错 canary 匹配错误，说明覆盖了 tls&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172933304.png&#34; alt=&#34;image-20231023172933304&#34;&gt; 经测试，证明了这一观点。同时确定程序为 32 位。&lt;/p&gt;
+&lt;p&gt;32 位程序基址没开 pie 时为 0x8048000&lt;/p&gt;
+&lt;h3 id=&#34;记录&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#记录&#34;&gt;#&lt;/a&gt; 记录&lt;/h3&gt;
+&lt;h3 id=&#34;manu函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#manu函数&#34;&gt;#&lt;/a&gt; manu 函数&lt;/h3&gt;
+</content>
+        <category term="random" />
+        <category term="cdll" />
+        <category term="侧信道攻击" />
+        <category term="时间差" />
+        <category term="full RELRO" />
+        <updated>2023-10-23T06:07:01.000Z</updated>
+    </entry>
+</feed>

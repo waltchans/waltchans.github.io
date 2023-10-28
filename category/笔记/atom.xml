@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://waltcsz.github.io</id>
+    <title>Walt&#39;s Blog • Posts by &#34;笔记&#34; category</title>
+    <link href="http://waltcsz.github.io" />
+    <updated>2023-08-20T09:58:02.000Z</updated>
+    <category term="heap" />
+    <category term="汇编" />
+    <category term="寄存器" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
+    <category term="random" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="double free" />
+    <category term="fastbin attack" />
+    <category term="chunk_extend_and_overlapping" />
+    <category term="one_gadget" />
+    <category term="tcache" />
+    <category term="malloc_hook" />
+    <category term="free_hook" />
+    <entry>
+        <id>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</id>
+        <title>汇编基础知识</title>
+        <link rel="alternate" href="http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/"/>
+        <content type="html">&lt;h1 id=&#34;汇编&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编&#34;&gt;#&lt;/a&gt; 汇编&lt;/h1&gt;
+&lt;h2 id=&#34;汇编指令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编指令&#34;&gt;#&lt;/a&gt; 汇编指令&lt;/h2&gt;
+&lt;p&gt;在 Linux 上，大部分双操作数的指令均已前者为目的操作数，后者为源操作数。&lt;/p&gt;
+&lt;h3 id=&#34;间接寻址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#间接寻址&#34;&gt;#&lt;/a&gt; 间接寻址&lt;/h3&gt;
+&lt;p&gt;**[] ** 表示间接寻址，类似 c 语言的 ***** .&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;mov eax, [ebx+8]	;若ebx储存值为0x4008，则该指令将0x4010处的值赋给eax
+mov eax, [0x4001]	;将地址0x4001处的值赋给eax(该代码为推测，不一定合法)
+lea eax, [ebx]	;直接将ebx的值赋值给eax
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
+&lt;p&gt;push 将数据入栈，pop 将栈顶数据弹出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;push eip	；将eip储存的值入栈
+pop eip		;将栈顶数据弹出并存入eip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mov 传送字节，相当于赋值语句。&lt;/p&gt;
+&lt;p&gt;lea 装入有效地址，相当于取地址。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;mov eax, ebx	;将ebx的值赋给eax
+mov ecx, 0Ah	;将ecx赋值为0x0A
+
+lea eax, [ebp+buf]	;将局部变量buf的地址存入eax
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;call 调用函数。jmp 跳转指令。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;call __printf	;跳转printf函数
+				;call相当于入栈当前eip后执行jmp
+push eip
+jmp __printf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;inc 将目标操作数自增 1&lt;/p&gt;
+&lt;p&gt;dec 将目标操作数自减 1&lt;/p&gt;
+&lt;h2 id=&#34;寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#寄存器&#34;&gt;#&lt;/a&gt; 寄存器&lt;/h2&gt;
+&lt;h3 id=&#34;通用寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#通用寄存器&#34;&gt;#&lt;/a&gt; 通用寄存器&lt;/h3&gt;
+&lt;h4 id=&#34;指针寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指针寄存器&#34;&gt;#&lt;/a&gt; 指针寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EBP&lt;/td&gt;
+&lt;td&gt;RBP&lt;/td&gt;
+&lt;td&gt;基址指针寄存器 (extended base pointer)&lt;/td&gt;
+&lt;td&gt;指向栈帧的底部&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ESP&lt;/td&gt;
+&lt;td&gt;RSP&lt;/td&gt;
+&lt;td&gt;栈指针寄存器 (extended stack pointer)&lt;/td&gt;
+&lt;td&gt;指向栈帧的顶部&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ESI&lt;/td&gt;
+&lt;td&gt;RSI&lt;/td&gt;
+&lt;td&gt;源变址寄存器 (Source Index)&lt;/td&gt;
+&lt;td&gt;字符串操作源指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDI&lt;/td&gt;
+&lt;td&gt;RDI&lt;/td&gt;
+&lt;td&gt;目的指针寄存器 (Destination Index)&lt;/td&gt;
+&lt;td&gt;字符串操作目标指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;数据寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据寄存器&#34;&gt;#&lt;/a&gt; 数据寄存器&lt;/h4&gt;
+&lt;p&gt;数据寄存器主要用来保存操作数和运算结果等信息。&lt;/p&gt;
+&lt;p&gt;在 64 位系统下，32 位寄存器代表对应 64 位寄存器的低 32 位。例如 eax 为 rax 的低 32 位。修改 eax 不影响 rax 高位部分。16 位寄存器同理。&lt;/p&gt;
+&lt;p&gt;此外，16 位寄存器可分为 2 个 8 位寄存器。(AX: ah~al; BX: bh~bl; CX: ch~cl; DX: dh~dl) 分别表示高 8 位和低 8 位。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;16 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EAX&lt;/td&gt;
+&lt;td&gt;RAX&lt;/td&gt;
+&lt;td&gt;AX&lt;/td&gt;
+&lt;td&gt;累加寄存器 (Accumulator)&lt;/td&gt;
+&lt;td&gt;在乘法和除法指令中被自动使用；在 Win32 中，一般用在函数的返回值中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EBX&lt;/td&gt;
+&lt;td&gt;RBX&lt;/td&gt;
+&lt;td&gt;BX&lt;/td&gt;
+&lt;td&gt;基址寄存器 (Base)&lt;/td&gt;
+&lt;td&gt;DS 段中的数据指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ECX&lt;/td&gt;
+&lt;td&gt;RCX&lt;/td&gt;
+&lt;td&gt;CX&lt;/td&gt;
+&lt;td&gt;计数寄存器 (Count)&lt;/td&gt;
+&lt;td&gt;CPU 自动使用 ECX 作为循环计数器，在字符串和循环操作中常用，在循环指令（LOOP）或串操作中，ECX 用来进行循环计数，每执行一次循环，ECX 都会被 CPU 自动减一&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDX&lt;/td&gt;
+&lt;td&gt;RDX&lt;/td&gt;
+&lt;td&gt;DX&lt;/td&gt;
+&lt;td&gt;数据寄存器 (Data)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;img data-src=&#34;./Center.png&#34; alt=&#34;寄存器&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;h3 id=&#34;指令寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指令寄存器&#34;&gt;#&lt;/a&gt; 指令寄存器&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EIP&lt;/td&gt;
+&lt;td&gt;RIP&lt;/td&gt;
+&lt;td&gt;指令指针寄存器 (Instruction Pointer)&lt;/td&gt;
+&lt;td&gt;保存着下一条要执行的指令的地址。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;段寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#段寄存器&#34;&gt;#&lt;/a&gt; 段寄存器&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CS&lt;/td&gt;
+&lt;td&gt;代码段 (Code Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DS&lt;/td&gt;
+&lt;td&gt;数据段 (Data Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SS&lt;/td&gt;
+&lt;td&gt;堆栈段 (Stack Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ES&lt;/td&gt;
+&lt;td&gt;附加数据段 (Extra Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FS&lt;/td&gt;
+&lt;td&gt;附加数据段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GS&lt;/td&gt;
+&lt;td&gt;附加数据段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;标志寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标志寄存器&#34;&gt;#&lt;/a&gt; 标志寄存器&lt;/h3&gt;
+&lt;h4 id=&#34;条件标志寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#条件标志寄存器&#34;&gt;#&lt;/a&gt; 条件标志寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;OF&lt;/td&gt;
+&lt;td&gt;溢出标志位 (OverFlow Flag)&lt;/td&gt;
+&lt;td&gt;用来反应有符号数加减法运算所得结果是否溢出。运算超出当前运算位数所能表示的范围，则称为溢出，标志位被置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SF&lt;/td&gt;
+&lt;td&gt;符号标志位 (Sign Flag)&lt;/td&gt;
+&lt;td&gt;用来反应运算结果是否为 0。运算结果为负时置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ZF&lt;/td&gt;
+&lt;td&gt;零标志位 (Zero Flag)&lt;/td&gt;
+&lt;td&gt;用来反应运算结果是否为 0。为零时置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AF&lt;/td&gt;
+&lt;td&gt;辅助进位标志位 (Auxilliary carry Flag)&lt;/td&gt;
+&lt;td&gt;在字操作址，发生低字节向高字节进位或借位时该标志位被置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PF&lt;/td&gt;
+&lt;td&gt;奇偶标志位 (Parity Flag)&lt;/td&gt;
+&lt;td&gt;用于反应结果中 “1” 的个数的奇偶性。如果 “1” 为偶数置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CF&lt;/td&gt;
+&lt;td&gt;进位标志位 (Carry Flag)&lt;/td&gt;
+&lt;td&gt;运算结果的最高位产生了一个进位或错位，则该标志位置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;控制控制寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#控制控制寄存器&#34;&gt;#&lt;/a&gt; 控制控制寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;DF&lt;/td&gt;
+&lt;td&gt;方向标志位 (Direction Flag)&lt;/td&gt;
+&lt;td&gt;用于串操作指令中，控制地址的变化方向。当 DF 为 0 时，存储器地址自动增加；当 DF 为 1 时，存储器地址自动减少。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IF&lt;/td&gt;
+&lt;td&gt;中断标志位 (Interrupt Flag)&lt;/td&gt;
+&lt;td&gt;用于控制外部可屏蔽中断是否可以被处理器响应。[^1]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TF&lt;/td&gt;
+&lt;td&gt;陷阱标志位 (Trap Flag)&lt;/td&gt;
+&lt;td&gt;用于控制处理器是否进入单步操作方式。当 TF 为 0 时，处理器在正常模式下运行；当为 1 时，处理器单步执行指令，调试器可以逐步指令进行执行就是使用了该标志位。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;特殊64位调用函数传参&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#特殊64位调用函数传参&#34;&gt;#&lt;/a&gt; 特殊：64 位调用函数传参&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rdi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rsi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;rdx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;rcx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;r8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;r9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7+&lt;/td&gt;
+&lt;td&gt;从右向左压入栈中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+        <category term="汇编" />
+        <category term="寄存器" />
+        <updated>2023-08-20T09:58:02.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E5%A0%86%E6%94%BB%E5%87%BB-89b5b4ffc084/</id>
+        <title>堆攻击</title>
+        <link rel="alternate" href="http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E5%A0%86%E6%94%BB%E5%87%BB-89b5b4ffc084/"/>
+        <content type="html">&lt;h1 id=&#34;堆&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆&#34;&gt;#&lt;/a&gt; 堆&lt;/h1&gt;
+&lt;h2 id=&#34;tcache&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tcache&#34;&gt;#&lt;/a&gt; tcache&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jdGYtd2lraS5vcmcvcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi9pbXBsZW1lbnRhdGlvbi90Y2FjaGUvI18y&#34;&gt;基本工作原理&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;小知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#小知识&#34;&gt;#&lt;/a&gt; 小知识&lt;/h2&gt;
+&lt;p&gt;calloc 会清空内存，而 malloc 不会&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;calloc(0x20);
+//等同于
+ptr=malloc(0x20);
+memset(ptr,0,0x20);
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="heap" />
+        <updated>2023-08-12T10:03:25.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-538fa88b5663/</id>
+        <title>pwn常用工具及环境配置</title>
+        <link rel="alternate" href="http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-538fa88b5663/"/>
+        <content type="html">&lt;h1 id=&#34;环境&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境&#34;&gt;#&lt;/a&gt; 环境&lt;/h1&gt;
+&lt;h2 id=&#34;python&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#python&#34;&gt;#&lt;/a&gt; python&lt;/h2&gt;
+&lt;h3 id=&#34;str和bytes转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#str和bytes转换&#34;&gt;#&lt;/a&gt; str 和 bytes 转换&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;B &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; S&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;encode&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;utf-8&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;#可忽略参数&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;S &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; B&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;decode&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;utf-8&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;B &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;bytes&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;S&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;utf-8&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;#不可忽略参数&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;字符串替换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串替换&#34;&gt;#&lt;/a&gt; 字符串替换&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dynstr &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; dynstr&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;replace&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;read&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;system&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;checksec&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#checksec&#34;&gt;#&lt;/a&gt; checksec&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;RELRO got 表写权限 Partial RELRO 代表具有写权限&lt;/li&gt;
+&lt;li&gt;stack canary 栈溢出保护&lt;/li&gt;
+&lt;li&gt;NX：No-eXecute 不可执行保护&lt;/li&gt;
+&lt;li&gt;PIE（ASLR）内存地址随机化 代码地址前几位随机 后几位固定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;pwntools&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwntools&#34;&gt;#&lt;/a&gt; PWNtools&lt;/h2&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;context&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;log_level&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;debug&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;		&lt;span class=&#34;token comment&#34;&gt;#python 调试&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gdb&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;attach&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;p&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;b *0x080323&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;#gdb 动态调试&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;elf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#elf&#34;&gt;#&lt;/a&gt; elf&lt;/h3&gt;
+&lt;p&gt;当拥有 libc 文件时，利用 ret2libc 寻找 /bin/sh 字符串&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;ELF&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;so&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;binsh &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libcbase &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;search&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;/bin/sh&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;获取.dynstr 段的数据&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dynstr &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; elf&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;get_section_by_name&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;.dynstr&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;data&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;libcsearcher&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#libcsearcher&#34;&gt;#&lt;/a&gt; LibcSearcher&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; LibcSearcher &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; LibcSearcher&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#获取__libc_start_main 的真实地址储存至 lsm_a&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; LibcSearcher&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;__libc_start_main&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lsm_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;#参数 1 为字符串，函数名，参数 2 为地址&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libcbase &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; lsm_a &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;dump&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;__libc_start_main&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sys_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libcbase &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;dump&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;system&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;bs_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libcbase &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;dump&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;str_bin_sh&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;rop&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rop&#34;&gt;#&lt;/a&gt; ROP&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU0MjE4ODMzL2FydGljbGUvZGV0YWlscy8xMzA0MjY0MDQ=&#34;&gt;详细的资料&lt;/span&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;ROP&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;./pwn&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;base&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x400000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;badchars&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;#一般只需第一个参数&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;chain&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;base&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;						&lt;span class=&#34;token comment&#34;&gt;#返回 bytes 数据&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;call&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;resolvable&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; arguments&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;		&lt;span class=&#34;token comment&#34;&gt;#加入某函数调用&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;raw&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;value&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;									&lt;span class=&#34;token comment&#34;&gt;#直接填充一个值&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;dump&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;base&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;						&lt;span class=&#34;token comment&#34;&gt;#用好看的方式打印构造后&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;migrate&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;next_base&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;resolve&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;resolvable&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ret2csu&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;self&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; edi&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘edi’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; rsi&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘rsi’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; rdx&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘rdx’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; rbx&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘rbx’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; rbp&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘rbp’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; r12&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘r12’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; r13&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘r13’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; r14&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘r14’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; r15&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;Padding&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;‘r15’&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; call&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; ROP&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;./main_no_relro_64&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;call&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;read&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; bss_base&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;raw&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;csu&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;elf&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;got&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;read&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x600988&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;raw&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0x0000000000400771&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;chain&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;raw&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;a&#39;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;stack_size&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;chain&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;io&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;send&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;rop&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;chain&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;gdb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#gdb&#34;&gt;#&lt;/a&gt; GDB&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;l&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;b *0x999&lt;/p&gt;
+&lt;p&gt;b func&lt;/p&gt;
+&lt;p&gt;断点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;p func&lt;/p&gt;
+&lt;p&gt;print 打印变量内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x /80wg 0x9323454&lt;/p&gt;
+&lt;p&gt;读取内存内容 单位数 字节 单位字节数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vmmap&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;objdump&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#objdump&#34;&gt;#&lt;/a&gt; objdump&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;objdump &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-j&lt;/span&gt; .plt pwn	&lt;span class=&#34;token comment&#34;&gt;#查看.plt 表&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="工具" />
+        <updated>2023-07-19T14:59:36.000Z</updated>
+    </entry>
+</feed>

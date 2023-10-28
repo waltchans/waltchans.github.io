@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Walt&#39;s Blog • Posts by &#34;侧信道攻击&#34; tag</title>
+        <link>http://waltcsz.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 23 Oct 2023 14:07:01 +0800</pubDate>
+        <lastBuildDate>Mon, 23 Oct 2023 14:07:01 +0800</lastBuildDate>
+        <category>heap</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
+        <category>random</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>double free</category>
+        <category>fastbin attack</category>
+        <category>chunk_extend_and_overlapping</category>
+        <category>one_gadget</category>
+        <category>tcache</category>
+        <category>malloc_hook</category>
+        <category>free_hook</category>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/</guid>
+            <title>newstarctf2023 week5</title>
+            <link>http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/</link>
+            <category>random</category>
+            <category>cdll</category>
+            <category>侧信道攻击</category>
+            <category>时间差</category>
+            <category>full RELRO</category>
+            <pubDate>Mon, 23 Oct 2023 14:07:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;week5-未完成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#week5-未完成&#34;&gt;#&lt;/a&gt; week5 未完成&lt;/h1&gt;
+&lt;h1 id=&#34;login&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#login&#34;&gt;#&lt;/a&gt; login&lt;/h1&gt;
+&lt;h3 id=&#34;login-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#login-2&#34;&gt;#&lt;/a&gt; login&lt;/h3&gt;
+&lt;p&gt;存在栈溢出，但是有 canary。输入第 9 个字符碰到 canary&lt;/p&gt;
+&lt;h3 id=&#34;forget&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#forget&#34;&gt;#&lt;/a&gt; forget&lt;/h3&gt;
+&lt;p&gt;也存在栈溢出，且第 7 个字符就到 canary 了。也可能包含回车。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172319336.png&#34; alt=&#34;image-20231023172319336&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172424514.png&#34; alt=&#34;image-20231023172424514&#34;&gt;&lt;/p&gt;
+&lt;p&gt;0x1894 后不再报错 canary 匹配错误，说明覆盖了 tls&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;./image-20231023172933304.png&#34; alt=&#34;image-20231023172933304&#34;&gt; 经测试，证明了这一观点。同时确定程序为 32 位。&lt;/p&gt;
+&lt;p&gt;32 位程序基址没开 pie 时为 0x8048000&lt;/p&gt;
+&lt;h3 id=&#34;记录&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#记录&#34;&gt;#&lt;/a&gt; 记录&lt;/h3&gt;
+&lt;h3 id=&#34;manu函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#manu函数&#34;&gt;#&lt;/a&gt; manu 函数&lt;/h3&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

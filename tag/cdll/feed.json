@@ -1,0 +1,22 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Walt's Blog • All posts by \"cdll\" tag",
+    "description": "",
+    "home_page_url": "http://waltcsz.github.io",
+    "items": [
+        {
+            "id": "http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/",
+            "url": "http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/",
+            "title": "newstarctf2023 week5",
+            "date_published": "2023-10-23T06:07:01.000Z",
+            "content_html": "<h1 id=\"week5-未完成\"><a class=\"markdownIt-Anchor\" href=\"#week5-未完成\">#</a> week5 未完成</h1>\n<h1 id=\"login\"><a class=\"markdownIt-Anchor\" href=\"#login\">#</a> login</h1>\n<h3 id=\"login-2\"><a class=\"markdownIt-Anchor\" href=\"#login-2\">#</a> login</h3>\n<p>存在栈溢出，但是有 canary。输入第 9 个字符碰到 canary</p>\n<h3 id=\"forget\"><a class=\"markdownIt-Anchor\" href=\"#forget\">#</a> forget</h3>\n<p>也存在栈溢出，且第 7 个字符就到 canary 了。也可能包含回车。</p>\n<p><img data-src=\"./image-20231023172319336.png\" alt=\"image-20231023172319336\"></p>\n<p><img data-src=\"./image-20231023172424514.png\" alt=\"image-20231023172424514\"></p>\n<p>0x1894 后不再报错 canary 匹配错误，说明覆盖了 tls</p>\n<p><img data-src=\"./image-20231023172933304.png\" alt=\"image-20231023172933304\"> 经测试，证明了这一观点。同时确定程序为 32 位。</p>\n<p>32 位程序基址没开 pie 时为 0x8048000</p>\n<h3 id=\"记录\"><a class=\"markdownIt-Anchor\" href=\"#记录\">#</a> 记录</h3>\n<h3 id=\"manu函数\"><a class=\"markdownIt-Anchor\" href=\"#manu函数\">#</a> manu 函数</h3>\n",
+            "tags": [
+                "random",
+                "cdll",
+                "侧信道攻击",
+                "时间差",
+                "full RELRO"
+            ]
+        }
+    ]
+}
