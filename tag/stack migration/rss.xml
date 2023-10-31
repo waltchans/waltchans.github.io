@@ -7,8 +7,19 @@
         <language>zh-CN</language>
         <pubDate>Mon, 11 Sep 2023 17:12:49 +0800</pubDate>
         <lastBuildDate>Mon, 11 Sep 2023 17:12:49 +0800</lastBuildDate>
-        <category>stack migration</category>
         <category>heap</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>random</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>brop</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
         <category>double free</category>
         <category>fastbin attack</category>
         <category>chunk_extend_and_overlapping</category>
@@ -16,22 +27,12 @@
         <category>tcache</category>
         <category>malloc_hook</category>
         <category>free_hook</category>
-        <category>新生题</category>
-        <category>short shellcode</category>
-        <category>random</category>
-        <category>cdll</category>
-        <category>侧信道攻击</category>
-        <category>时间差</category>
-        <category>full RELRO</category>
-        <category>工具</category>
-        <category>汇编</category>
-        <category>寄存器</category>
         <item>
             <guid isPermalink="true">http://waltcsz.github.io/PWN/Write-Up/buu-0910-99351e39558a/</guid>
             <title>buu 0910</title>
             <link>http://waltcsz.github.io/PWN/Write-Up/buu-0910-99351e39558a/</link>
-            <category>stack migration</category>
             <category>heap</category>
+            <category>stack migration</category>
             <pubDate>Mon, 11 Sep 2023 17:12:49 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;bjdctf_2020_router&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bjdctf_2020_router&#34;&gt;#&lt;/a&gt; bjdctf_2020_router&lt;/h2&gt;
 &lt;p&gt;&lt;img data-src=&#34;./image-20230911171316327.png&#34; alt=&#34;image-20230911171316327&#34;&gt;&lt;/p&gt;

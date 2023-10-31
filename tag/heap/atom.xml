@@ -4,8 +4,19 @@
     <title>Walt&#39;s Blog • Posts by &#34;heap&#34; tag</title>
     <link href="http://waltcsz.github.io" />
     <updated>2023-10-19T17:20:21.000Z</updated>
-    <category term="stack migration" />
     <category term="heap" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="汇编" />
+    <category term="寄存器" />
+    <category term="random" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="brop" />
+    <category term="新生题" />
+    <category term="short shellcode" />
     <category term="double free" />
     <category term="fastbin attack" />
     <category term="chunk_extend_and_overlapping" />
@@ -13,16 +24,6 @@
     <category term="tcache" />
     <category term="malloc_hook" />
     <category term="free_hook" />
-    <category term="新生题" />
-    <category term="short shellcode" />
-    <category term="random" />
-    <category term="cdll" />
-    <category term="侧信道攻击" />
-    <category term="时间差" />
-    <category term="full RELRO" />
-    <category term="工具" />
-    <category term="汇编" />
-    <category term="寄存器" />
     <entry>
         <id>http://waltcsz.github.io/PWN/Write-Up/newstarctf2023-week4-9e6c658aa51b/</id>
         <title>newstarctf2023 week4</title>
@@ -304,8 +305,8 @@ int 0x80;
 &lt;p&gt;这个程序迁移回 32 位就简单多了。&lt;/p&gt;
 &lt;h2 id=&#34;hitcontraining_magicheap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hitcontraining_magicheap&#34;&gt;#&lt;/a&gt; hitcontraining_magicheap&lt;/h2&gt;
 </content>
-        <category term="stack migration" />
         <category term="heap" />
+        <category term="stack migration" />
         <updated>2023-09-11T09:12:49.000Z</updated>
     </entry>
     <entry>
