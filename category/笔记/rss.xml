@@ -5,32 +5,554 @@
         <link>http://waltcsz.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 20 Aug 2023 17:58:02 +0800</pubDate>
-        <lastBuildDate>Sun, 20 Aug 2023 17:58:02 +0800</lastBuildDate>
-        <category>heap</category>
-        <category>工具</category>
-        <category>stack migration</category>
+        <pubDate>Sat, 18 Nov 2023 19:57:00 +0800</pubDate>
+        <lastBuildDate>Sat, 18 Nov 2023 19:57:00 +0800</lastBuildDate>
+        <category>docker</category>
         <category>汇编</category>
         <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
         <category>random</category>
+        <category>interger overflow</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
         <category>cdll</category>
         <category>侧信道攻击</category>
         <category>时间差</category>
         <category>full RELRO</category>
         <category>brop</category>
-        <category>新生题</category>
-        <category>short shellcode</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
         <category>double free</category>
         <category>fastbin attack</category>
         <category>chunk_extend_and_overlapping</category>
         <category>one_gadget</category>
-        <category>tcache</category>
         <category>malloc_hook</category>
         <category>free_hook</category>
         <item>
-            <guid isPermalink="true">http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</guid>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/linuxcommand/</guid>
+            <title>linuxCommand</title>
+            <link>http://waltcsz.github.io/2023/11/linuxcommand/</link>
+            <pubDate>Sat, 18 Nov 2023 19:57:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;用户&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用户&#34;&gt;#&lt;/a&gt; 用户&lt;/h1&gt;
+&lt;h2 id=&#34;用户组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用户组&#34;&gt;#&lt;/a&gt; 用户组&lt;/h2&gt;
+&lt;p&gt;管理员组&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;系统&lt;/th&gt;
+&lt;th&gt;管理员组&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CentOS&lt;/td&gt;
+&lt;td&gt;wheel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ubuntu&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rhel&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#操作&#34;&gt;#&lt;/a&gt; 操作&lt;/h2&gt;
+&lt;h3 id=&#34;获取用户列表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取用户列表&#34;&gt;#&lt;/a&gt; 获取用户列表&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;cat /etc/passwd&lt;/code&gt;  以以下格式显示用户数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;添加用户&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#添加用户&#34;&gt;#&lt;/a&gt; 添加用户&lt;/h4&gt;
+&lt;p&gt;useradd&lt;/p&gt;
+&lt;p&gt;参数&lt;/p&gt;
+&lt;p&gt;adduser&lt;/p&gt;
+&lt;p&gt;参数&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;实例&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-m&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;创建用户的登陆目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-s&lt;/td&gt;
+&lt;td&gt;-s /sbin/nologin&lt;/td&gt;
+&lt;td&gt;指定用户登陆后使用的 shell&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-g&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;指定用户所属群组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-G&lt;/td&gt;
+&lt;td&gt;-G wheel&lt;/td&gt;
+&lt;td&gt;指定用户所属附属群组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-u&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;指定 uid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-c&lt;/td&gt;
+&lt;td&gt;-c ‘use for game’&lt;/td&gt;
+&lt;td&gt;添加备注&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;centos&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;useradd&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-m&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-s&lt;/span&gt; /bin/bash &lt;span class=&#34;token parameter variable&#34;&gt;-G&lt;/span&gt; wheel user1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;删除用户&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#删除用户&#34;&gt;#&lt;/a&gt; 删除用户&lt;/h4&gt;
+&lt;p&gt;userdel&lt;/p&gt;
+&lt;p&gt;-r 清除用户目录和邮箱&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;userdel&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-r&lt;/span&gt; user1+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;密码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#密码&#34;&gt;#&lt;/a&gt; 密码&lt;/h2&gt;
+&lt;p&gt;使用 passwd 命令管理密码。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;passwd&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-l&lt;/span&gt; user1	&lt;span class=&#34;token comment&#34;&gt;# 禁止密码登陆&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;passwd&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; user1	&lt;span class=&#34;token comment&#34;&gt;# 清除密码免密登陆&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;passwd&lt;/span&gt; user1	&lt;span class=&#34;token comment&#34;&gt;# 修改指定用户密码&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;passwd&lt;/span&gt;			&lt;span class=&#34;token comment&#34;&gt;# 修改当前用户密码&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;登陆&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#登陆&#34;&gt;#&lt;/a&gt; 登陆&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyODE0Njg2NzMvYXJ0aWNsZS9kZXRhaWxzLzkwNzY1NDYz&#34;&gt;Linux 设置 root 密钥登录，普通用户密码登录&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;软件安装&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#软件安装&#34;&gt;#&lt;/a&gt; 软件安装&lt;/h1&gt;
+&lt;h2 id=&#34;centos&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#centos&#34;&gt;#&lt;/a&gt; CentOS&lt;/h2&gt;
+&lt;h3 id=&#34;yum&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#yum&#34;&gt;#&lt;/a&gt; yum&lt;/h3&gt;
+&lt;h4 id=&#34;yum源配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#yum源配置&#34;&gt;#&lt;/a&gt; yum 源配置&lt;/h4&gt;
+&lt;p&gt;配置文件位于 &lt;code&gt;/etc/yum.repos.d&lt;/code&gt;  目录。&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;curl &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;o &lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;etc&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;yum&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;repos&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;d&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;CentOS&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Base&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;repo http&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;//&lt;/span&gt;mirrors&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;aliyun&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;com&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;repo&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;Centos&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;repo &lt;span class=&#34;token comment&#34;&gt;# 获取阿里的 repo&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum clean &lt;span class=&#34;token builtin&#34;&gt;all&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;# 清除缓存&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum makecache	&lt;span class=&#34;token comment&#34;&gt;# 生成新缓存&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum install &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;y epel&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;release &lt;span class=&#34;token comment&#34;&gt;# epel 源&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum clean &lt;span class=&#34;token builtin&#34;&gt;all&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;# 清除缓存&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yum makecache	&lt;span class=&#34;token comment&#34;&gt;# 生成新缓存&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;rpm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rpm&#34;&gt;#&lt;/a&gt; rpm&lt;/h3&gt;
+&lt;h4 id=&#34;安装&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#安装&#34;&gt;#&lt;/a&gt; 安装&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;rpm -i 文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-i 指定包名&lt;/li&gt;
+&lt;li&gt;-v 显示安装信息&lt;/li&gt;
+&lt;li&gt;-h 显示安装进度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;rpm&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-ivh&lt;/span&gt; example.rpm&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;查询&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查询&#34;&gt;#&lt;/a&gt; 查询&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;rpm -q .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;卸载&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#卸载&#34;&gt;#&lt;/a&gt; 卸载&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;rpm -e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;其他命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#其他命令&#34;&gt;#&lt;/a&gt; 其他命令&lt;/h1&gt;
+&lt;p&gt;结束进程&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;kill&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;参数&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; 进程号&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;killall&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;参数&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; 进程名称&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;-8 强制结束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;kill&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-8&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;vim&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/</guid>
+            <title>异架构</title>
+            <link>http://waltcsz.github.io/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/</link>
+            <category>异架构</category>
+            <pubDate>Sat, 18 Nov 2023 17:26:53 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;debug&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#debug&#34;&gt;#&lt;/a&gt; debug&lt;/h1&gt;
+&lt;p&gt;可以使用 qemu 的 - g 指定端口&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ qemu-aarch64 &lt;span class=&#34;token parameter variable&#34;&gt;-g&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1234&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; /usr/aarch64-linux-gnu ./apollo&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后使用 gdb-multiarch 进行调试，先指定架构，然后使用 remote 功能&lt;/p&gt;
+&lt;p&gt;在另外一个终端（上一个你也用不了）打开 gdb -multiarch&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ gdb-multiarch ./apollo &lt;span class=&#34;token parameter variable&#34;&gt;-q&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后连接到端口进行远程调试&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gdb-peda$ &lt;span class=&#34;token builtin class-name&#34;&gt;set&lt;/span&gt; architecture aarch64&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;The target architecture is assumed to be aarch64&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gdb-peda$ target remote localhost:1234&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Remote debugging using localhost:1234&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h1 id=&#34;arm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#arm&#34;&gt;#&lt;/a&gt; ARM&lt;/h1&gt;
+&lt;h1 id=&#34;risc-v&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#risc-v&#34;&gt;#&lt;/a&gt; RISC-V&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;ABI 助记符&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;x0&lt;/td&gt;
+&lt;td&gt;zero&lt;/td&gt;
+&lt;td&gt;zero&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x1&lt;/td&gt;
+&lt;td&gt;ra&lt;/td&gt;
+&lt;td&gt;返回地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x2&lt;/td&gt;
+&lt;td&gt;sp&lt;/td&gt;
+&lt;td&gt;栈指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x3&lt;/td&gt;
+&lt;td&gt;gp&lt;/td&gt;
+&lt;td&gt;全局指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x4&lt;/td&gt;
+&lt;td&gt;tp&lt;/td&gt;
+&lt;td&gt;线程指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x5-x7&lt;/td&gt;
+&lt;td&gt;t0-t2&lt;/td&gt;
+&lt;td&gt;临时寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x8-x9&lt;/td&gt;
+&lt;td&gt;s0-s1&lt;/td&gt;
+&lt;td&gt;callee 保存的寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x10-x17&lt;/td&gt;
+&lt;td&gt;a0-a7&lt;/td&gt;
+&lt;td&gt;参数寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x18-27&lt;/td&gt;
+&lt;td&gt;s2-s11&lt;/td&gt;
+&lt;td&gt;callee 保存的寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x28-x31&lt;/td&gt;
+&lt;td&gt;t3-t6&lt;/td&gt;
+&lt;td&gt;临时寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在参数保存之后，通过 &lt;code&gt;jal&lt;/code&gt;  指令跳转到函数开始执行。jal 指令的规范为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;jal ra, offset
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将会把下一条指令 (pc+4) 地址存放到 ra 寄存器中，然后跳转到当前地址 + offset 位置开始执行。&lt;br&gt;
+在子函数中，将会把 ra 寄存器存放到栈上，在函数返回时从栈上恢复 ra 寄存器，这里也就 &lt;code&gt;存在栈溢出的机会&lt;/code&gt; 。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/docker/</guid>
+            <title>docker</title>
+            <link>http://waltcsz.github.io/2023/11/docker/</link>
+            <category>docker</category>
+            <pubDate>Sat, 18 Nov 2023 01:40:18 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;docker 使用&lt;/p&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;docker 是一款精简的虚拟机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;image 镜像&lt;/strong&gt;：储存固定的系统镜像。类似模板，类，或者类似 VMware 虚拟机的快照。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;container 容器&lt;/strong&gt;：从镜像生成出的实例。类似成品，对象，或者正常情况的 vmware 虚拟机。储存运行时的任何修改。&lt;/p&gt;
+&lt;p&gt;一个 image 可以生成出很多 container。container 可以保存为 image，然后供自己或他人后续使用。&lt;/p&gt;
+&lt;h1 id=&#34;包含&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#包含&#34;&gt;#&lt;/a&gt; 包含&lt;/h1&gt;
+&lt;p&gt;虚拟机包含的软件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0dhbGxvcHNsZWQvcHdudG9vbHM=&#34;&gt;pwntools&lt;/span&gt; —— CTF framework and exploit development library&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3B3bmRiZy9wd25kYmc=&#34;&gt;pwndbg&lt;/span&gt; —— a GDB plug-in that makes debugging with GDB suck less, with a focus on features needed by low-level software developers, hardware hackers, reverse-engineers and exploit developers&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3Njd3VhcHR4L1B3bmdkYg==&#34;&gt;pwngdb&lt;/span&gt; —— gdb for pwn&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0pvbmF0aGFuU2Fsd2FuL1JPUGdhZGdldA==&#34;&gt;ROPgadget&lt;/span&gt; —— facilitate ROP exploitation tool&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2luYXoyL3JvcHV0aWxz&#34;&gt;roputils&lt;/span&gt; —— A Return-oriented Programming toolkit&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9vbmVfZ2FkZ2V0&#34;&gt;one_gadget&lt;/span&gt; —— A searching one-gadget of execve(‘/bin/sh’, NULL, NULL) tool for amd64 and i386&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2FuZ3IvYW5ncg==&#34;&gt;angr&lt;/span&gt; —— A platform-agnostic binary analysis framework&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3JhZGFyZS9yYWRhcmUy&#34;&gt;radare2&lt;/span&gt; —— A rewrite from scratch of radare in order to provide a set of libraries and tools to work with binary files&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9zZWNjb21wLXRvb2xz&#34;&gt;seccomp-tools&lt;/span&gt; —— Provide powerful tools for seccomp analysis&lt;/li&gt;
+&lt;li&gt;linux_server[64] —— IDA 7.0 debug server for linux&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90bXV4LmdpdGh1Yi5pby8=&#34;&gt;tmux&lt;/span&gt; —— a terminal multiplexer&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL2x0cmFjZQ==&#34;&gt;ltrace&lt;/span&gt; —— trace library function call&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL3N0cmFjZQ==&#34;&gt;strace&lt;/span&gt; —— trace system call&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ubuntu初始化脚本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubuntu初始化脚本&#34;&gt;#&lt;/a&gt; ubuntu 初始化脚本&lt;/h2&gt;
+&lt;p&gt;pwndbg 仅负责 ubuntu22.04 版本及以上的可用性。在低版本可能不适用。github 尤其指出了 ubuntu18.04 已停止支持并给出了最后版本的代码。在安装时还需将 setup.sh 内的 &lt;code&gt;git submodule update --init --recursive&lt;/code&gt;  注释掉，因为文件夹内不含 &lt;code&gt;.git&lt;/code&gt;  文件夹并且不能更新至最新库。&lt;/p&gt;
+&lt;p&gt;同时需要&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpYW93ZW54aW9uZy9hcnRpY2xlL2RldGFpbHMvMTE2NDAxNTI0&#34;&gt;设置 locale&lt;/span&gt;，使得 LC_CTYPE=en_US.UTF-8.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+cd /root/
+unminimize
+apt install vim
+apt install git
+apt install python3-pip
+#pip3 install setuptools
+pip3 install --upgrade pip setuptools
+
+sudo pip3 install pwntools
+
+# git clone https://github.com/pwndbg/pwndbg.git
+if [ ! -f &#39;2023.07.17.tar.gz&#39; ]; then
+	wget https://github.com/pwndbg/pwndbg/archive/refs/tags/2023.07.17.tar.gz
+fi
+tar -xzvf 2023.07.17.tar.gz
+mv pwndbg* ./toolbox/pwndbg
+cd ./toolbox/pwndbg
+./setup.sh
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker容器&#34;&gt;#&lt;/a&gt; docker 容器&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;ubuntu18.04	skysider/pwndocker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;docker pull skysider/pwndocker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;pwndocker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;included-glibc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#included-glibc&#34;&gt;#&lt;/a&gt; included glibc&lt;/h2&gt;
+&lt;p&gt;Default compiled glibc path is  &lt;code&gt;/glibc&lt;/code&gt; .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.19 —— ubuntu 12.04 default libc version&lt;/li&gt;
+&lt;li&gt;2.23 —— ubuntu 16.04 default libc version&lt;/li&gt;
+&lt;li&gt;2.24 —— introduce vtable check in file struct&lt;/li&gt;
+&lt;li&gt;2.27 —— pwndocker default glibc version&lt;/li&gt;
+&lt;li&gt;2.28~2.31 —— latest libc versions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用&#34;&gt;#&lt;/a&gt; 使用&lt;/h1&gt;
+&lt;p&gt;建议用官方的使用姿势，用如下命令 run 起来&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d \
+	--rm \
+	-h $&amp;#123;ctf_name&amp;#125; \
+	--name $&amp;#123;ctf_name&amp;#125; \
+	-v $(pwd)/$&amp;#123;ctf_name&amp;#125;:/ctf/work \
+	-p 23946:23946 \
+	--cap-add=SYS_PTRACE \
+	skysider/pwndocker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中有两个重要的参数&lt;br&gt;
+ - v &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;(pwd)/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;pw&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{ctf_name}:/ctf/work 是将当前目录下的文件映射到 docker /ctf/work 目录下&lt;br&gt;
+这样你在物理机修改文件，docker 里面也会发生变化，就不用再 docker cp 了&lt;/p&gt;
+&lt;p&gt;–cap-add=SYS_PTRACE 这个参数也是要一定加的，不然 docker 里面没法用 gdb 调试。&lt;/p&gt;
+&lt;p&gt;可以把上述命令放到 pwndocker_run.sh 里面 方便下次使用&lt;/p&gt;
+&lt;h2 id=&#34;多终端调试&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#多终端调试&#34;&gt;#&lt;/a&gt; ？多终端调试&lt;/h2&gt;
+&lt;p&gt;然后调试脚本时，要先进去 tmux ，python 脚本里面指定终端为 tmux&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;terminal &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;tmux&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;sp&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;-h&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;就可以 gdb.attach (p) 了 如下图&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-itd&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt; u18 ubuntu:18.04 /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; u18:/lib/x86_64-linux-gnu/libselinux.so.1 &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; u18:/lib/x86_64-linux-gnu/libpcre2-8.so.0 &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; libselinux.so.1 pwn:/glibc/2.28/64/lib/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; libpcre2-8.so.0 pwn:/glibc/2.28/64/lib/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;docker-进程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker-进程&#34;&gt;#&lt;/a&gt; docker 进程&lt;/h2&gt;
+&lt;p&gt;docker 进程启动、停止、重启，常见的三种 case&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; start	&lt;span class=&#34;token comment&#34;&gt;# 启动 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; stop		&lt;span class=&#34;token comment&#34;&gt;# 关机 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; restart	&lt;span class=&#34;token comment&#34;&gt;# 重启 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;镜像操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#镜像操作&#34;&gt;#&lt;/a&gt; 镜像操作&lt;/h2&gt;
+&lt;p&gt;镜像作为容器执行的前提条件，一般需要掌握的几个命令无非是搜索，下载，删除，创建&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; images		&lt;span class=&#34;token comment&#34;&gt;# 镜像列表&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; search xxx	&lt;span class=&#34;token comment&#34;&gt;# 检索镜像，从镜像仓库中检索&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; pull xxx		&lt;span class=&#34;token comment&#34;&gt;# 下载镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; rmi xxx		&lt;span class=&#34;token comment&#34;&gt;# 删除镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;关于创建镜像，有必要稍微详细一点点&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; commit &lt;span class=&#34;token parameter variable&#34;&gt;-m&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;首次提交&#34;&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;一灰灰Blog&#34;&lt;/span&gt; dd85eb055fe8 yh/centos:v0.1	&lt;span class=&#34;token comment&#34;&gt;# 通过容器创建镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;history&lt;/span&gt; yh/centos	&lt;span class=&#34;token comment&#34;&gt;# 镜像历史查询&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;上面的几个参数进行说明&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-m&lt;/code&gt;  和 git 的提交一样，后面更上描述信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt;  版权声明，这个东西是我创建的，有啥问题，找我&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dd85eb055fe8&lt;/code&gt;  容器 id&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yhh/quick-os:0.1&lt;/code&gt;  创建的镜像名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;容器操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器操作&#34;&gt;#&lt;/a&gt; 容器操作&lt;/h2&gt;
+&lt;p&gt;接下来就是正菜了，容器的各种操作，启动，关闭，重启，日志查询以及各种进入容器内部搞事情&lt;/p&gt;
+&lt;h2 id=&#34;创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建&#34;&gt;#&lt;/a&gt; 创建&lt;/h2&gt;
+&lt;p&gt;万事开头第一步，加载镜像，创建容器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run 镜像名:版本 程序指令&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;run 后面可以跟很多的参数，比如容器暴露端口指定，存储映射，权限等等，由于参数过多，下面只给出几个不同的例子，来具体的演示参数可以怎么加 +&lt;/p&gt;
+&lt;h3 id=&#34;常用参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用参数&#34;&gt;#&lt;/a&gt; 常用参数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-i&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;打开 STDIN，支持交互&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-t&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;支持终端登陆&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;设置共享文件夹。宿主目录：容器目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;设为后台运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;–name&lt;/td&gt;
+&lt;td&gt;–nam=u18&lt;/td&gt;
+&lt;td&gt;指定容器名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-p&lt;/td&gt;
+&lt;td&gt;-p 8080:80&lt;/td&gt;
+&lt;td&gt;暴露端口。宿主端口：容器端口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;–restart&lt;/td&gt;
+&lt;td&gt;–restart=always&lt;/td&gt;
+&lt;td&gt;程序终止后是否重启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;示例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#示例&#34;&gt;#&lt;/a&gt; 示例&lt;/h3&gt;
+&lt;p&gt;创建交互型容器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; centos:latest /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;创建容器后运行在后台&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-i&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-t&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; centos:latest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;创建容器，运行后台，结束后自动重启，设置名称、端口、共享目录。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--restart&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;always &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;yhh_centos &lt;span class=&#34;token parameter variable&#34;&gt;-p&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;8080&lt;/span&gt;:80 &lt;span class=&#34;token parameter variable&#34;&gt;-v&lt;/span&gt; /home/yihui/html/www:/var/www centos:latest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;基础操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础操作&#34;&gt;#&lt;/a&gt; 基础操作&lt;/h2&gt;
+&lt;p&gt;容器创建完毕之后，就是一些基本操作了，启动、停止、重启、删除&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ps&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt;		&lt;span class=&#34;token comment&#34;&gt;# 查看容器列表， 列出所有的容器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; start xxx	&lt;span class=&#34;token comment&#34;&gt;# 启动容器，start 后面可以跟上容器名，或者容器 id&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# (这里的 xxx 可以是容器名：yhh_centos 也可以是容器 id：f57398ab22c5)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; stop xxx		&lt;span class=&#34;token comment&#34;&gt;# 关闭容器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; restart xxx	&lt;span class=&#34;token comment&#34;&gt;# 重启&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;rm&lt;/span&gt; xxx		&lt;span class=&#34;token comment&#34;&gt;# 删除&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在查看容器列表时，如果某个容器的启动参数特别长，直接使用 &lt;code&gt;docker ps -a&lt;/code&gt;  会发现看不到完整的启动命令，这个时候可以带上参数 &lt;code&gt;--no-trunc&lt;/code&gt;  来显示完整命令&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ps&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt; --no-trunc&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;高级操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#高级操作&#34;&gt;#&lt;/a&gt; 高级操作&lt;/h2&gt;
+&lt;p&gt;接下来进入一些容器的高级操作技巧（实际上也并没有特别酷炫）&lt;/p&gt;
+&lt;p&gt;为了演示一些进阶的内容，这里创建一个容器作为测试&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;yhhos centos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;容器日志查询&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器日志查询&#34;&gt;#&lt;/a&gt; 容器日志查询&lt;/h3&gt;
+&lt;p&gt;日志，定位问题的神器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; logs yhhos	&lt;span class=&#34;token comment&#34;&gt;# 查询 xxx 容器的日志&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;基本上不太会直接使用上面的命令，因为上面把所有的日志都打印出来了，可以直接晃瞎我们的钛合金 x 眼&lt;/p&gt;
+&lt;p&gt;一般日志可以加两个参数  &lt;code&gt;-f&lt;/code&gt; ,  &lt;code&gt;-t&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; logs &lt;span class=&#34;token parameter variable&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-t&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--since&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;2019-05-11&#34;&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--tail&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt; yhhos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--since&lt;/code&gt;  : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt;  : 查看实时日志&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt;  : 查看日志产生的日期&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--tail=10&lt;/code&gt;  : 查看最后的 10 条日志。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文件拷贝&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件拷贝&#34;&gt;#&lt;/a&gt; 文件拷贝&lt;/h3&gt;
+&lt;p&gt;将容器的某个文件捞出来；或者强塞，一个 cp 即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 将当前目录的 test.md 文件拷贝到容器的 /tmp 目录下&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; test.md yhhos:/tmp&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 将容器的 /tmp/test.md 目录拷贝到当前目录下&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; yhhos:/tmp/test.md ./out.md&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;进入容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#进入容器&#34;&gt;#&lt;/a&gt; 进入容器&lt;/h3&gt;
+&lt;p&gt;进入容器内部，然后就可以为所欲为了…&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;exec&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; yhhos /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;获取容器所有信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取容器所有信息&#34;&gt;#&lt;/a&gt; 获取容器所有信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; inspect yhhos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;环境变量设置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境变量设置&#34;&gt;#&lt;/a&gt; 环境变量设置&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExMjM0NTY3NmFiYy9hcnRpY2xlL2RldGFpbHMvODQ2NTE0Nzc=&#34;&gt;docker 环境变量设置_dockerfile env path-CSDN 博客&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;tmux&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tmux&#34;&gt;#&lt;/a&gt; tmux&lt;/h1&gt;
+&lt;p&gt;用于在 docker 同时运行多个终端。尤其是在使用 &lt;code&gt;gdb.attach()&lt;/code&gt;  时十分有用。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/vim/</guid>
+            <title>vim</title>
+            <link>http://waltcsz.github.io/2023/11/vim/</link>
+            <pubDate>Fri, 17 Nov 2023 00:45:03 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;查找&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查找&#34;&gt;#&lt;/a&gt; 查找&lt;/h2&gt;
+&lt;p&gt;斜杠 &lt;code&gt;/&lt;/code&gt; + 查找字符串，回车确定。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/string&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;按 n 下一个，N 上一个。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/shell/</guid>
+            <title>shell</title>
+            <link>http://waltcsz.github.io/2023/11/shell/</link>
+            <pubDate>Wed, 15 Nov 2023 18:15:54 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;基础语句格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础语句格式&#34;&gt;#&lt;/a&gt; 基础语句格式&lt;/h1&gt;
+&lt;h2 id=&#34;语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#语句&#34;&gt;#&lt;/a&gt; 语句&lt;/h2&gt;
+&lt;p&gt;一行一句，无需结尾标志。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;;&lt;/code&gt;  可在同一行执行多条语句。用 &lt;code&gt;;&lt;/code&gt;  将不同语句分割。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;|&lt;/code&gt;  管道符，将前一语句的结果作为后一语句的参数。&lt;/p&gt;
+&lt;h2 id=&#34;判断&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#判断&#34;&gt;#&lt;/a&gt; 判断&lt;/h2&gt;
+&lt;p&gt;判断条件需放在中括号内。&lt;/p&gt;
+&lt;p&gt;if 下一行接 &lt;code&gt;then&lt;/code&gt;  表示开始执行满足条件时的代码。也可以接在同一行，并用 &lt;code&gt;;&lt;/code&gt;  分隔。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;&lt;span class=&#34;token variable&#34;&gt;$obj&lt;/span&gt;&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;quit&#34;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;then&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token builtin class-name&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$obj&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;else&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token builtin class-name&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;Quit.&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;fi&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;&lt;span class=&#34;token variable&#34;&gt;$obj&lt;/span&gt;&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;quit&#34;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;then&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token builtin class-name&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$obj&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;fi&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;判断文件是否存在&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#判断文件是否存在&#34;&gt;#&lt;/a&gt; 判断文件是否存在：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; if [ -f 文件路径 ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#变量&#34;&gt;#&lt;/a&gt; 变量&lt;/h1&gt;
+&lt;h2 id=&#34;基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h2&gt;
+&lt;h3 id=&#34;定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义&#34;&gt;#&lt;/a&gt; 定义&lt;/h3&gt;
+&lt;p&gt;变量名 = 值&lt;/p&gt;
+&lt;p&gt;等号两边&lt;strong&gt;不&lt;/strong&gt;能有&lt;strong&gt;空格&lt;/strong&gt;。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;引用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#引用&#34;&gt;#&lt;/a&gt; 引用&lt;/h3&gt;
+&lt;p&gt;引用变量时前面需加上 &lt;code&gt;$&lt;/code&gt; ，定义时不需要。&lt;/p&gt;
+&lt;p&gt;变量名称两端可以选择加 &lt;code&gt;&amp;#123;&amp;#125;&lt;/code&gt; ，在不需要空格的时候&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$&amp;#123;a&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串&#34;&gt;#&lt;/a&gt; 字符串&lt;/h2&gt;
+&lt;p&gt;强制保留原格式：使用&lt;strong&gt;单引号&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所有内容都会原封不动输出，不能含有单引号，不会将形如 &lt;code&gt;$&amp;#123;&amp;#125;&lt;/code&gt;  的内容转换为变量。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;You can use $&amp;#123;name&amp;#125; to print name&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;格式化输出：使用&lt;strong&gt;双引号&lt;/strong&gt;。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;hello, &lt;span class=&#34;token variable&#34;&gt;$&amp;#123;name&amp;#125;&lt;/span&gt;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;获取字符串长度&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取字符串长度&#34;&gt;#&lt;/a&gt; 获取字符串长度&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;abcd&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;echo&lt;/span&gt; $&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/</guid>
+            <title>C++中知识收藏</title>
+            <link>http://waltcsz.github.io/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/</link>
+            <pubDate>Wed, 15 Nov 2023 11:02:38 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;作用域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#作用域&#34;&gt;#&lt;/a&gt; 作用域&lt;/h1&gt;
+&lt;h2 id=&#34;命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#命名空间&#34;&gt;#&lt;/a&gt; 命名空间&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace namespace_name &amp;#123;
+   // 代码声明
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;引用命名空间内的变量。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace_name::code;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;导入命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#导入命名空间&#34;&gt;#&lt;/a&gt; 导入命名空间&lt;/h3&gt;
+&lt;p&gt;使得后续代码在引用该命名空间时无需添加前缀。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导入整个命名空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;using namespace namespace_name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;仅导入命名空间部分变量或方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;using std::cout;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;嵌套的命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#嵌套的命名空间&#34;&gt;#&lt;/a&gt; 嵌套的命名空间&lt;/h3&gt;
+&lt;p&gt;命名空间可以嵌套，可以在一个命名空间中定义另一个命名空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace namespace_name1 &amp;#123;
+	// 代码声明   
+	namespace namespace_name2 &amp;#123;
+		// 代码声明   
+	&amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以通过使用 &lt;strong&gt;::&lt;/strong&gt; 运算符来访问嵌套的命名空间中的成员：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 访问 namespace_name2 中的成员
+using namespace namespace_name1::namespace_name2;
+// 访问 namespace_name1 中的成员
+using namespace namespace_name1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;作用域解析运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#作用域解析运算符&#34;&gt;#&lt;/a&gt; 作用域解析运算符&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;::&lt;/code&gt;  为作用域解析运算符。&lt;/p&gt;
+&lt;h3 id=&#34;用途&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用途&#34;&gt;#&lt;/a&gt; 用途&lt;/h3&gt;
+&lt;h4 id=&#34;命名空间的函数或类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#命名空间的函数或类型&#34;&gt;#&lt;/a&gt; 命名空间的函数或类型&lt;/h4&gt;
+&lt;p&gt;如上&lt;/p&gt;
+&lt;h4 id=&#34;类的属性或方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类的属性或方法&#34;&gt;#&lt;/a&gt; 类的属性或方法&lt;/h4&gt;
+&lt;p&gt;如同 python 内的 &lt;code&gt;.&lt;/code&gt; 。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;class Test &amp;#123;
+    Test();
+&amp;#125;;
+
+Test::Test() 
+&amp;#123;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;全局作用域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#全局作用域&#34;&gt;#&lt;/a&gt; 全局作用域&lt;/h4&gt;
+&lt;p&gt;单独的 &lt;code&gt;::&lt;/code&gt;  放在函数或变量前，表示调用全局的函数或变量。这在局部也存在同名函数或变量时很有用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;::s;	// 全局变量
+s;		// 局部变量
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/inputanalyse/</guid>
+            <title>inputAnalyse</title>
+            <link>http://waltcsz.github.io/2023/11/inputanalyse/</link>
+            <pubDate>Tue, 07 Nov 2023 21:55:24 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;fgets&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#fgets&#34;&gt;#&lt;/a&gt; fgets&lt;/h2&gt;
+&lt;h3 id=&#34;空字符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#空字符&#34;&gt;#&lt;/a&gt; 空字符&lt;/h3&gt;
+&lt;p&gt;遇到字符 &lt;code&gt;&#39;\0&#39;&lt;/code&gt;  不会停止。&lt;/p&gt;
+&lt;h3 id=&#34;截止&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#截止&#34;&gt;#&lt;/a&gt; 截止&lt;/h3&gt;
+&lt;p&gt;任意空字符停止输入，否则等待直到有新字符。&lt;/p&gt;
+&lt;p&gt;其中会将该空字符输入。最后在其后添加字符 &lt;code&gt;&#39;\0&#39;&lt;/code&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;上限&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#上限&#34;&gt;#&lt;/a&gt; 上限&lt;/h2&gt;
+&lt;p&gt;会预留一个字符给字符 &lt;code&gt;&#39;\0&#39;&lt;/code&gt; ，若输入数超过上限，则直接结束输入，在最后添加字符 &lt;code&gt;&#39;\0&#39;&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;同时会舍弃空字符前面的其他未输入字符。&lt;/p&gt;
+&lt;p&gt;即若允许输入 18 个字符，则最多输入 17 字符。若输入 20 个字符，截断至 17 个字符，然后舍弃最后 3 个，然后添加字符 &lt;code&gt;&#39;\0&#39;&lt;/code&gt; 。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
             <title>汇编基础知识</title>
-            <link>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</link>
+            <link>http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
             <category>汇编</category>
             <category>寄存器</category>
             <pubDate>Sun, 20 Aug 2023 17:58:02 +0800</pubDate>
@@ -64,6 +586,7 @@ jmp __printf
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;inc 将目标操作数自增 1&lt;/p&gt;
 &lt;p&gt;dec 将目标操作数自减 1&lt;/p&gt;
+&lt;h3 id=&#34;比较和跳转&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较和跳转&#34;&gt;#&lt;/a&gt; 比较和跳转&lt;/h3&gt;
 &lt;h2 id=&#34;寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#寄存器&#34;&gt;#&lt;/a&gt; 寄存器&lt;/h2&gt;
 &lt;h3 id=&#34;通用寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#通用寄存器&#34;&gt;#&lt;/a&gt; 通用寄存器&lt;/h3&gt;
 &lt;h4 id=&#34;指针寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指针寄存器&#34;&gt;#&lt;/a&gt; 指针寄存器&lt;/h4&gt;
@@ -315,27 +838,194 @@ jmp __printf
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E5%A0%86%E6%94%BB%E5%87%BB-89b5b4ffc084/</guid>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/08/%E5%A0%86%E6%94%BB%E5%87%BB/</guid>
             <title>堆攻击</title>
-            <link>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E5%A0%86%E6%94%BB%E5%87%BB-89b5b4ffc084/</link>
+            <link>http://waltcsz.github.io/2023/08/%E5%A0%86%E6%94%BB%E5%87%BB/</link>
             <category>heap</category>
             <pubDate>Sat, 12 Aug 2023 18:03:25 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;堆&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆&#34;&gt;#&lt;/a&gt; 堆&lt;/h1&gt;
-&lt;h2 id=&#34;tcache&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tcache&#34;&gt;#&lt;/a&gt; tcache&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jdGYtd2lraS5vcmcvcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi9pbXBsZW1lbnRhdGlvbi90Y2FjaGUvI18y&#34;&gt;基本工作原理&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;小知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#小知识&#34;&gt;#&lt;/a&gt; 小知识&lt;/h2&gt;
+            <description><![CDATA[ &lt;p&gt;&lt;strong&gt;堆 未完成&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;不同bin区别&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不同bin区别&#34;&gt;#&lt;/a&gt; 不同 bin 区别&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Fast Bin&lt;/th&gt;
+&lt;th&gt;Tcache bin&lt;/th&gt;
+&lt;th&gt;Small Bin&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;最小大小&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4*SIZE_SZ (16,32)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;每次增长&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2*SIZE_SZ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;最大大小&lt;/td&gt;
+&lt;td&gt;默认 64 (max 80) 不含头&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;63*2*SIZE_SZ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bin 数量&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;62 (2-63)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;储存地址&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;libc版本区别&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#libc版本区别&#34;&gt;#&lt;/a&gt; libc 版本区别&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;libc 版本&lt;/th&gt;
+&lt;th&gt;unlink&lt;/th&gt;
+&lt;th&gt;tcache&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;libc6_2.23&lt;/td&gt;
+&lt;td&gt;早就已经有前后块地址验证了&lt;br /&gt;所以无法任意地址分配，只能老实 p-&amp;gt;p-0x18&lt;/td&gt;
+&lt;td&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libc6_2.27-3ubuntu1_amd64&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;加入 tcache&lt;br /&gt;dup 实现极其简单，可以直接对同一个 chunk free 两次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libc6_2.27-3ubuntu1.6_amd64&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;dup 实现受阻&lt;br /&gt;free 时循环扫描当前 bin，寻找是否有相同地址&lt;br /&gt;这种情况下常常填充完 tcache bin 后利用 fastbin 的 double free&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libc6_2.35&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;tcache 的 fd 与 heap 基地址 &amp;gt;&amp;gt;3 异或&lt;br /&gt;同时 fd 后面紧接一串 key&lt;br /&gt;对 tcache 的利用变得尤其困难&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;小知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#小知识&#34;&gt;#&lt;/a&gt; 小知识&lt;/h1&gt;
 &lt;p&gt;calloc 会清空内存，而 malloc 不会&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;calloc(0x20);
 //等同于
 ptr=malloc(0x20);
 memset(ptr,0,0x20);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;攻击手段&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#攻击手段&#34;&gt;#&lt;/a&gt; 攻击手段&lt;/h1&gt;
+&lt;h2 id=&#34;基础思路&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础思路&#34;&gt;#&lt;/a&gt; 基础思路&lt;/h2&gt;
+&lt;p&gt;泄露 libc 地址，泄露 heap 地址，利用堆块漏洞实现任意地址读写。&lt;/p&gt;
+&lt;h2 id=&#34;use-after-free&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#use-after-free&#34;&gt;#&lt;/a&gt; use after free&lt;/h2&gt;
+&lt;p&gt;用途：其他绝大多数漏洞利用的基础。&lt;/p&gt;
+&lt;p&gt;同时也是大部分分配固定大小块去管理块的基础题的利用原理。&lt;/p&gt;
+&lt;h2 id=&#34;overlapping&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#overlapping&#34;&gt;#&lt;/a&gt; overlapping&lt;/h2&gt;
+&lt;p&gt;用途：其他部分漏洞利用的基础。&lt;/p&gt;
+&lt;h2 id=&#34;fastbin-attack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#fastbin-attack&#34;&gt;#&lt;/a&gt; fastbin attack&lt;/h2&gt;
+&lt;h3 id=&#34;double-free&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#double-free&#34;&gt;#&lt;/a&gt; double free&lt;/h3&gt;
+&lt;p&gt;用途：在有 fake size 的前提下实现任意地址读写&lt;/p&gt;
+&lt;h2 id=&#34;tcache&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tcache&#34;&gt;#&lt;/a&gt; tcache&lt;/h2&gt;
+&lt;h3 id=&#34;dup&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dup&#34;&gt;#&lt;/a&gt; dup&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jdGYtd2lraS5vcmcvcHduL2xpbnV4L3VzZXItbW9kZS9oZWFwL3B0bWFsbG9jMi9pbXBsZW1lbnRhdGlvbi90Y2FjaGUvI18y&#34;&gt;基本工作原理&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;unlink&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#unlink&#34;&gt;#&lt;/a&gt; unlink&lt;/h2&gt;
+&lt;h2 id=&#34;unsortbin-attack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#unsortbin-attack&#34;&gt;#&lt;/a&gt; unsortbin attack&lt;/h2&gt;
+&lt;p&gt;用途：在任意地址填充大整数，好像是 mainarena 的地址。&lt;/p&gt;
+&lt;p&gt;缺点：会导致 unsortbin 损坏，导致不能再分配块。&lt;/p&gt;
+&lt;h2 id=&#34;smallbin-attack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#smallbin-attack&#34;&gt;#&lt;/a&gt; smallbin attack&lt;/h2&gt;
+&lt;h2 id=&#34;largebin-attack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#largebin-attack&#34;&gt;#&lt;/a&gt; largebin attack&lt;/h2&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-538fa88b5663/</guid>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/07/pwn%E5%9F%BA%E7%A1%80/</guid>
+            <title>pwn基础</title>
+            <link>http://waltcsz.github.io/2023/07/pwn%E5%9F%BA%E7%A1%80/</link>
+            <pubDate>Thu, 20 Jul 2023 17:00:23 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;栈&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#栈&#34;&gt;#&lt;/a&gt; 栈&lt;/h1&gt;
+&lt;h2 id=&#34;传参&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#传参&#34;&gt;#&lt;/a&gt; 传参&lt;/h2&gt;
+&lt;h3 id=&#34;64位&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#64位&#34;&gt;#&lt;/a&gt; 64 位&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rdi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rsi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;rdx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;rcx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;r8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;r9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7+&lt;/td&gt;
+&lt;td&gt;从右向左压入栈中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ropgadget&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ropgadget&#34;&gt;#&lt;/a&gt; ROPgadget&lt;/h2&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ROPgadget &lt;span class=&#34;token parameter variable&#34;&gt;--binary&lt;/span&gt; pwn &lt;span class=&#34;token parameter variable&#34;&gt;--only&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;pop|ret&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;shellcode&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#shellcode&#34;&gt;#&lt;/a&gt; shellcode&lt;/h2&gt;
+&lt;p&gt;64 位&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;shellcode &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#34;\x48\x31\xc9\x48\xf7\xe1\x04\x3b\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x52\x53\x54\x5f\x52\x57\x54\x5e\x0f\x05&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;ret2libc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ret2libc&#34;&gt;#&lt;/a&gt; ret2libc&lt;/h2&gt;
+&lt;h3 id=&#34;64位-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#64位-2&#34;&gt;#&lt;/a&gt; 64 位&lt;/h3&gt;
+&lt;p&gt;写 system 和 binsh 时可能需要在前面加 ret&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;payload &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; offset &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;b&#39;a&#39;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ret&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;prdi&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;bs_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; p64&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;sys_a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;栈迁移&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#栈迁移&#34;&gt;#&lt;/a&gt; 栈迁移&lt;/h2&gt;
+&lt;p&gt;栈迁移大致在以下情况使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;栈空间太小不足以用来攻击&lt;/li&gt;
+&lt;li&gt;为了利用缓冲区溢出攻击某些地址（待验证）&lt;/li&gt;
+&lt;li&gt;迁移至.bss 段上确保权限足够&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;函数返回时将栈中旧 ebp 弹入 ebp 寄存器，而对旧 ebp 进行伪造可以将栈底迁移至构造的 fake_stage，再次利用 ROP 执行 leave, ret 可以将 ebp 弹入 esp，实现完整的栈迁移。&lt;/p&gt;
+&lt;h2 id=&#34;ret2dlresolve&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ret2dlresolve&#34;&gt;#&lt;/a&gt; ret2dlresolve&lt;/h2&gt;
+&lt;h2 id=&#34;汇编&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编&#34;&gt;#&lt;/a&gt; 汇编&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;lea eax, [addr]	//将addr的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;c语言函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#c语言函数&#34;&gt;#&lt;/a&gt; c 语言函数&lt;/h1&gt;
+&lt;h2 id=&#34;mmap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mmap&#34;&gt;#&lt;/a&gt; mmap&lt;/h2&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
             <title>pwn常用工具及环境配置</title>
-            <link>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-538fa88b5663/</link>
+            <link>http://waltcsz.github.io/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
             <category>工具</category>
             <pubDate>Wed, 19 Jul 2023 22:59:36 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;环境&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境&#34;&gt;#&lt;/a&gt; 环境&lt;/h1&gt;

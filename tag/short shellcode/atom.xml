@@ -4,30 +4,41 @@
     <title>Walt&#39;s Blog • Posts by &#34;short shellcode&#34; tag</title>
     <link href="http://waltcsz.github.io" />
     <updated>2023-08-12T10:03:43.000Z</updated>
-    <category term="heap" />
-    <category term="工具" />
-    <category term="stack migration" />
+    <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
+    <category term="heap" />
+    <category term="异架构" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
     <category term="random" />
+    <category term="interger overflow" />
+    <category term="shellcode" />
+    <category term="format string" />
+    <category term="overlap" />
+    <category term="unlink" />
     <category term="cdll" />
     <category term="侧信道攻击" />
     <category term="时间差" />
     <category term="full RELRO" />
     <category term="brop" />
-    <category term="新生题" />
-    <category term="short shellcode" />
+    <category term="tcache" />
+    <category term="dup" />
+    <category term="srop" />
+    <category term="orw" />
+    <category term="dlresolve" />
     <category term="double free" />
     <category term="fastbin attack" />
     <category term="chunk_extend_and_overlapping" />
     <category term="one_gadget" />
-    <category term="tcache" />
     <category term="malloc_hook" />
     <category term="free_hook" />
     <entry>
-        <id>http://waltcsz.github.io/PWN/Write-Up/moectf2023-be99d9c78b26/</id>
+        <id>http://waltcsz.github.io/2023/08/moectf2023/</id>
         <title>moectf2023</title>
-        <link rel="alternate" href="http://waltcsz.github.io/PWN/Write-Up/moectf2023-be99d9c78b26/"/>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/08/moectf2023/"/>
         <content type="html">&lt;h1 id=&#34;moectf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#moectf&#34;&gt;#&lt;/a&gt; Moectf&lt;/h1&gt;
 &lt;h2 id=&#34;test_nc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#test_nc&#34;&gt;#&lt;/a&gt; test_nc&lt;/h2&gt;
 &lt;p&gt;了解了 nc 指令，在不使用 pwntools 的 remote 命令连接靶机时可以用。直接连接靶机更方便。&lt;/p&gt;

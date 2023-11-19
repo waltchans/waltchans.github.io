@@ -7,30 +7,41 @@
         <language>zh-CN</language>
         <pubDate>Sun, 20 Aug 2023 17:58:02 +0800</pubDate>
         <lastBuildDate>Sun, 20 Aug 2023 17:58:02 +0800</lastBuildDate>
-        <category>heap</category>
-        <category>工具</category>
-        <category>stack migration</category>
+        <category>docker</category>
         <category>汇编</category>
         <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
         <category>random</category>
+        <category>interger overflow</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
         <category>cdll</category>
         <category>侧信道攻击</category>
         <category>时间差</category>
         <category>full RELRO</category>
         <category>brop</category>
-        <category>新生题</category>
-        <category>short shellcode</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
         <category>double free</category>
         <category>fastbin attack</category>
         <category>chunk_extend_and_overlapping</category>
         <category>one_gadget</category>
-        <category>tcache</category>
         <category>malloc_hook</category>
         <category>free_hook</category>
         <item>
-            <guid isPermalink="true">http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</guid>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
             <title>汇编基础知识</title>
-            <link>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</link>
+            <link>http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
             <category>汇编</category>
             <category>寄存器</category>
             <pubDate>Sun, 20 Aug 2023 17:58:02 +0800</pubDate>
@@ -64,6 +75,7 @@ jmp __printf
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;inc 将目标操作数自增 1&lt;/p&gt;
 &lt;p&gt;dec 将目标操作数自减 1&lt;/p&gt;
+&lt;h3 id=&#34;比较和跳转&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较和跳转&#34;&gt;#&lt;/a&gt; 比较和跳转&lt;/h3&gt;
 &lt;h2 id=&#34;寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#寄存器&#34;&gt;#&lt;/a&gt; 寄存器&lt;/h2&gt;
 &lt;h3 id=&#34;通用寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#通用寄存器&#34;&gt;#&lt;/a&gt; 通用寄存器&lt;/h3&gt;
 &lt;h4 id=&#34;指针寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指针寄存器&#34;&gt;#&lt;/a&gt; 指针寄存器&lt;/h4&gt;

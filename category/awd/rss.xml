@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Walt&#39;s Blog • Posts by &#34;awd&#34; category</title>
+        <link>http://waltcsz.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 02 Nov 2023 23:39:19 +0800</pubDate>
+        <lastBuildDate>Thu, 02 Nov 2023 23:39:19 +0800</lastBuildDate>
+        <category>docker</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
+        <category>random</category>
+        <category>interger overflow</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>brop</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
+        <category>double free</category>
+        <category>fastbin attack</category>
+        <category>chunk_extend_and_overlapping</category>
+        <category>one_gadget</category>
+        <category>malloc_hook</category>
+        <category>free_hook</category>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/awdtools/</guid>
+            <title>awdTools</title>
+            <link>http://waltcsz.github.io/2023/11/awdtools/</link>
+            <pubDate>Thu, 02 Nov 2023 23:39:19 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;端口扫描&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#端口扫描&#34;&gt;#&lt;/a&gt; 端口扫描&lt;/h1&gt;
+&lt;h2 id=&#34;nmap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nmap&#34;&gt;#&lt;/a&gt; nmap&lt;/h2&gt;
+&lt;p&gt;nmap [scan type] [option] [target]&lt;/p&gt;
+&lt;p&gt;命令	描述&lt;br&gt;
+ nmap IP	扫描 IP&lt;br&gt;
+nmap -v IP	加强扫描&lt;br&gt;
+ nmap IP1 IP2 …	扫描多 IP&lt;br&gt;
+nmap a.b.c.*	扫描整个子网&lt;br&gt;
+ nmap a.b.c.x,y,…	扫描多子网地址&lt;br&gt;
+ nmap -iL xxx.txt	根据文件扫描多 IP&lt;br&gt;
+nmap a.b.c.x-y	扫描子网 IP 范围&lt;br&gt;
+ nmap a.b.c.* --exclude IP	排除指定 IP 扫描整个子网&lt;br&gt;
+ nmap -A IP	扫描操作系统和路由跟踪&lt;br&gt;
+ nmap -O IP	探测操作系统&lt;br&gt;
+ nmap -sA/-PN IP	探测防火墙&lt;br&gt;
+ nmap -sP a.b.c.*	探测在线主机&lt;br&gt;
+ nmap -F IP	快速扫描&lt;br&gt;
+ nmap -r IP	按顺序扫描&lt;br&gt;
+ nmap -iflist	显示接口和路由信息&lt;br&gt;
+ nmap -p n1,n2… IP	扫描指定端口&lt;br&gt;
+ nmap -p T:n1,n2… IP	扫描 TCP 端口&lt;br&gt;
+ nmap -sU n1,n2… IP	扫描 UDP 端口&lt;br&gt;
+ nmap -sV IP	查看服务的版本&lt;br&gt;
+ nmap -PS IP	TCP ACK 扫描&lt;br&gt;
+ nmap -PA IP	TCP SYN 扫描&lt;br&gt;
+ nmap -sS IP	隐蔽扫描&lt;br&gt;
+ nmap -sN IP	TCP 空扫描欺骗防火墙&lt;/p&gt;
+&lt;h1 id=&#34;流量监控&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#流量监控&#34;&gt;#&lt;/a&gt; 流量监控&lt;/h1&gt;
+&lt;h2 id=&#34;sar&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#sar&#34;&gt;#&lt;/a&gt; sar&lt;/h2&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;sar 的使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;sar 命令包含在 sysstat 工具包中，提供系统的众多统计数据。其在不同的系统上命令有些差异，某些系统提供的 sar 支持基于网络接口的数据统计，也可以查看设备上每秒收发包的个数和流量。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;sre@CDVM-213017031 ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;$ sar &lt;span class=&#34;token parameter variable&#34;&gt;-n&lt;/span&gt; DEV &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Linux &lt;span class=&#34;token number&#34;&gt;2.6&lt;/span&gt;.32-431.el6.x86_64 &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;CDVM-213017031&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;  05/04/2017  _x86_64_ &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt; CPU&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:30 PM  IFACE rxpck/s txpck/s rxkB/s txkB/s rxcmp/s txcmp/s rxmcst/s&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:31 PM  lo  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:31 PM  eth0 &lt;span class=&#34;token number&#34;&gt;1788.00&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1923.00&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;930.47&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;335.60&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:31 PM  IFACE rxpck/s txpck/s rxkB/s txkB/s rxcmp/s txcmp/s rxmcst/s&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:32 PM  lo  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;08:05:32 PM  eth0 &lt;span class=&#34;token number&#34;&gt;1387.00&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1469.00&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;652.12&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;256.98&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Average:  IFACE rxpck/s txpck/s rxkB/s txkB/s rxcmp/s txcmp/s rxmcst/s&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Average:   lo  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Average:   eth0 &lt;span class=&#34;token number&#34;&gt;1587.50&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1696.00&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;791.29&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;296.29&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;命令后面 1 2 意思是：每一秒钟取 1 次值，取 2 次。&lt;/p&gt;
+&lt;p&gt;DEV 显示网络接口信息&lt;/p&gt;
+&lt;p&gt;另外，-n 参数很有用，他有 6 个不同的开关：DEV | EDEV | NFS | NFSD | SOCK | ALL ，其代表的含义如下：&lt;/p&gt;
+&lt;p&gt;DEV 显示网络接口信息。&lt;br&gt;
+EDEV 显示关于网络错误的统计数据。&lt;br&gt;
+NFS 统计活动的 NFS 客户端的信息。&lt;br&gt;
+NFSD 统计 NFS 服务器的信息&lt;br&gt;
+ SOCK 显示套接字信息&lt;br&gt;
+ ALL 显示所有 5 个开关&lt;br&gt;
+参数说明：&lt;/p&gt;
+&lt;p&gt;IFACE：LAN 接口&lt;br&gt;
+ rxpck/s：每秒钟接收的数据包&lt;br&gt;
+ txpck/s：每秒钟发送的数据包&lt;br&gt;
+ rxbyt/s：每秒钟接收的字节数&lt;br&gt;
+ txbyt/s：每秒钟发送的字节数&lt;br&gt;
+ rxcmp/s：每秒钟接收的压缩数据包&lt;br&gt;
+ txcmp/s：每秒钟发送的压缩数据包&lt;br&gt;
+ rxmcst/s：每秒钟接收的多播数据包&lt;br&gt;
+ rxerr/s：每秒钟接收的坏数据包&lt;br&gt;
+ txerr/s：每秒钟发送的坏数据包&lt;br&gt;
+ coll/s：每秒冲突数&lt;br&gt;
+ rxdrop/s：因为缓冲充满，每秒钟丢弃的已接收数据包数&lt;br&gt;
+ txdrop/s：因为缓冲充满，每秒钟丢弃的已发送数据包数&lt;br&gt;
+ txcarr/s：发送数据包时，每秒载波错误数&lt;br&gt;
+ rxfram/s：每秒接收数据包的帧对齐错误数&lt;br&gt;
+ rxfifo/s：接收的数据包每秒 FIFO 过速的错误数&lt;br&gt;
+ txfifo/s：发送的数据包每秒 FIFO 过速的错误数&lt;br&gt;
+这种方式简单，直观，推荐使用。&lt;/p&gt;
+&lt;h1 id=&#34;信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#信息&#34;&gt;#&lt;/a&gt; 信息&lt;/h1&gt;
+&lt;h2 id=&#34;共享文件夹&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#共享文件夹&#34;&gt;#&lt;/a&gt; 共享文件夹&lt;/h2&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;vmhgfs-fuse .host:/ /mnt/hgfs&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;常见端口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常见端口&#34;&gt;#&lt;/a&gt; 常见端口&lt;/h2&gt;
+&lt;p&gt;ssh 22&lt;/p&gt;
+&lt;p&gt;rdp 3389&lt;/p&gt;
+&lt;p&gt;sql server 1443&lt;/p&gt;
+&lt;p&gt;mysql 3306&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

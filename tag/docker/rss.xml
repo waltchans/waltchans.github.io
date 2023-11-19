@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Walt&#39;s Blog • Posts by &#34;docker&#34; tag</title>
+        <link>http://waltcsz.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sat, 18 Nov 2023 01:40:18 +0800</pubDate>
+        <lastBuildDate>Sat, 18 Nov 2023 01:40:18 +0800</lastBuildDate>
+        <category>docker</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
+        <category>random</category>
+        <category>interger overflow</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>brop</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
+        <category>double free</category>
+        <category>fastbin attack</category>
+        <category>chunk_extend_and_overlapping</category>
+        <category>one_gadget</category>
+        <category>malloc_hook</category>
+        <category>free_hook</category>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/docker/</guid>
+            <title>docker</title>
+            <link>http://waltcsz.github.io/2023/11/docker/</link>
+            <category>docker</category>
+            <pubDate>Sat, 18 Nov 2023 01:40:18 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;docker 使用&lt;/p&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;docker 是一款精简的虚拟机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;image 镜像&lt;/strong&gt;：储存固定的系统镜像。类似模板，类，或者类似 VMware 虚拟机的快照。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;container 容器&lt;/strong&gt;：从镜像生成出的实例。类似成品，对象，或者正常情况的 vmware 虚拟机。储存运行时的任何修改。&lt;/p&gt;
+&lt;p&gt;一个 image 可以生成出很多 container。container 可以保存为 image，然后供自己或他人后续使用。&lt;/p&gt;
+&lt;h1 id=&#34;包含&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#包含&#34;&gt;#&lt;/a&gt; 包含&lt;/h1&gt;
+&lt;p&gt;虚拟机包含的软件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0dhbGxvcHNsZWQvcHdudG9vbHM=&#34;&gt;pwntools&lt;/span&gt; —— CTF framework and exploit development library&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3B3bmRiZy9wd25kYmc=&#34;&gt;pwndbg&lt;/span&gt; —— a GDB plug-in that makes debugging with GDB suck less, with a focus on features needed by low-level software developers, hardware hackers, reverse-engineers and exploit developers&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3Njd3VhcHR4L1B3bmdkYg==&#34;&gt;pwngdb&lt;/span&gt; —— gdb for pwn&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0pvbmF0aGFuU2Fsd2FuL1JPUGdhZGdldA==&#34;&gt;ROPgadget&lt;/span&gt; —— facilitate ROP exploitation tool&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2luYXoyL3JvcHV0aWxz&#34;&gt;roputils&lt;/span&gt; —— A Return-oriented Programming toolkit&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9vbmVfZ2FkZ2V0&#34;&gt;one_gadget&lt;/span&gt; —— A searching one-gadget of execve(‘/bin/sh’, NULL, NULL) tool for amd64 and i386&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2FuZ3IvYW5ncg==&#34;&gt;angr&lt;/span&gt; —— A platform-agnostic binary analysis framework&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3JhZGFyZS9yYWRhcmUy&#34;&gt;radare2&lt;/span&gt; —— A rewrite from scratch of radare in order to provide a set of libraries and tools to work with binary files&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9zZWNjb21wLXRvb2xz&#34;&gt;seccomp-tools&lt;/span&gt; —— Provide powerful tools for seccomp analysis&lt;/li&gt;
+&lt;li&gt;linux_server[64] —— IDA 7.0 debug server for linux&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90bXV4LmdpdGh1Yi5pby8=&#34;&gt;tmux&lt;/span&gt; —— a terminal multiplexer&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL2x0cmFjZQ==&#34;&gt;ltrace&lt;/span&gt; —— trace library function call&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL3N0cmFjZQ==&#34;&gt;strace&lt;/span&gt; —— trace system call&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ubuntu初始化脚本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubuntu初始化脚本&#34;&gt;#&lt;/a&gt; ubuntu 初始化脚本&lt;/h2&gt;
+&lt;p&gt;pwndbg 仅负责 ubuntu22.04 版本及以上的可用性。在低版本可能不适用。github 尤其指出了 ubuntu18.04 已停止支持并给出了最后版本的代码。在安装时还需将 setup.sh 内的 &lt;code&gt;git submodule update --init --recursive&lt;/code&gt;  注释掉，因为文件夹内不含 &lt;code&gt;.git&lt;/code&gt;  文件夹并且不能更新至最新库。&lt;/p&gt;
+&lt;p&gt;同时需要&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpYW93ZW54aW9uZy9hcnRpY2xlL2RldGFpbHMvMTE2NDAxNTI0&#34;&gt;设置 locale&lt;/span&gt;，使得 LC_CTYPE=en_US.UTF-8.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+cd /root/
+unminimize
+apt install vim
+apt install git
+apt install python3-pip
+#pip3 install setuptools
+pip3 install --upgrade pip setuptools
+
+sudo pip3 install pwntools
+
+# git clone https://github.com/pwndbg/pwndbg.git
+if [ ! -f &#39;2023.07.17.tar.gz&#39; ]; then
+	wget https://github.com/pwndbg/pwndbg/archive/refs/tags/2023.07.17.tar.gz
+fi
+tar -xzvf 2023.07.17.tar.gz
+mv pwndbg* ./toolbox/pwndbg
+cd ./toolbox/pwndbg
+./setup.sh
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker容器&#34;&gt;#&lt;/a&gt; docker 容器&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;ubuntu18.04	skysider/pwndocker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;docker pull skysider/pwndocker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;pwndocker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;included-glibc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#included-glibc&#34;&gt;#&lt;/a&gt; included glibc&lt;/h2&gt;
+&lt;p&gt;Default compiled glibc path is  &lt;code&gt;/glibc&lt;/code&gt; .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2.19 —— ubuntu 12.04 default libc version&lt;/li&gt;
+&lt;li&gt;2.23 —— ubuntu 16.04 default libc version&lt;/li&gt;
+&lt;li&gt;2.24 —— introduce vtable check in file struct&lt;/li&gt;
+&lt;li&gt;2.27 —— pwndocker default glibc version&lt;/li&gt;
+&lt;li&gt;2.28~2.31 —— latest libc versions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用&#34;&gt;#&lt;/a&gt; 使用&lt;/h1&gt;
+&lt;p&gt;建议用官方的使用姿势，用如下命令 run 起来&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d \
+	--rm \
+	-h $&amp;#123;ctf_name&amp;#125; \
+	--name $&amp;#123;ctf_name&amp;#125; \
+	-v $(pwd)/$&amp;#123;ctf_name&amp;#125;:/ctf/work \
+	-p 23946:23946 \
+	--cap-add=SYS_PTRACE \
+	skysider/pwndocker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中有两个重要的参数&lt;br&gt;
+ - v &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;(pwd)/&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;pw&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{ctf_name}:/ctf/work 是将当前目录下的文件映射到 docker /ctf/work 目录下&lt;br&gt;
+这样你在物理机修改文件，docker 里面也会发生变化，就不用再 docker cp 了&lt;/p&gt;
+&lt;p&gt;–cap-add=SYS_PTRACE 这个参数也是要一定加的，不然 docker 里面没法用 gdb 调试。&lt;/p&gt;
+&lt;p&gt;可以把上述命令放到 pwndocker_run.sh 里面 方便下次使用&lt;/p&gt;
+&lt;h2 id=&#34;多终端调试&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#多终端调试&#34;&gt;#&lt;/a&gt; ？多终端调试&lt;/h2&gt;
+&lt;p&gt;然后调试脚本时，要先进去 tmux ，python 脚本里面指定终端为 tmux&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;context&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;terminal &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;tmux&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;sp&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;-h&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;就可以 gdb.attach (p) 了 如下图&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-itd&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt; u18 ubuntu:18.04 /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; u18:/lib/x86_64-linux-gnu/libselinux.so.1 &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; u18:/lib/x86_64-linux-gnu/libpcre2-8.so.0 &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; libselinux.so.1 pwn:/glibc/2.28/64/lib/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; libpcre2-8.so.0 pwn:/glibc/2.28/64/lib/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;docker-进程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker-进程&#34;&gt;#&lt;/a&gt; docker 进程&lt;/h2&gt;
+&lt;p&gt;docker 进程启动、停止、重启，常见的三种 case&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; start	&lt;span class=&#34;token comment&#34;&gt;# 启动 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; stop		&lt;span class=&#34;token comment&#34;&gt;# 关机 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; restart	&lt;span class=&#34;token comment&#34;&gt;# 重启 docker&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;镜像操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#镜像操作&#34;&gt;#&lt;/a&gt; 镜像操作&lt;/h2&gt;
+&lt;p&gt;镜像作为容器执行的前提条件，一般需要掌握的几个命令无非是搜索，下载，删除，创建&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; images		&lt;span class=&#34;token comment&#34;&gt;# 镜像列表&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; search xxx	&lt;span class=&#34;token comment&#34;&gt;# 检索镜像，从镜像仓库中检索&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; pull xxx		&lt;span class=&#34;token comment&#34;&gt;# 下载镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; rmi xxx		&lt;span class=&#34;token comment&#34;&gt;# 删除镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;关于创建镜像，有必要稍微详细一点点&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; commit &lt;span class=&#34;token parameter variable&#34;&gt;-m&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;首次提交&#34;&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;一灰灰Blog&#34;&lt;/span&gt; dd85eb055fe8 yh/centos:v0.1	&lt;span class=&#34;token comment&#34;&gt;# 通过容器创建镜像&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;history&lt;/span&gt; yh/centos	&lt;span class=&#34;token comment&#34;&gt;# 镜像历史查询&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;上面的几个参数进行说明&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-m&lt;/code&gt;  和 git 的提交一样，后面更上描述信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt;  版权声明，这个东西是我创建的，有啥问题，找我&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dd85eb055fe8&lt;/code&gt;  容器 id&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yhh/quick-os:0.1&lt;/code&gt;  创建的镜像名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;容器操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器操作&#34;&gt;#&lt;/a&gt; 容器操作&lt;/h2&gt;
+&lt;p&gt;接下来就是正菜了，容器的各种操作，启动，关闭，重启，日志查询以及各种进入容器内部搞事情&lt;/p&gt;
+&lt;h2 id=&#34;创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建&#34;&gt;#&lt;/a&gt; 创建&lt;/h2&gt;
+&lt;p&gt;万事开头第一步，加载镜像，创建容器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run 镜像名:版本 程序指令&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;run 后面可以跟很多的参数，比如容器暴露端口指定，存储映射，权限等等，由于参数过多，下面只给出几个不同的例子，来具体的演示参数可以怎么加 +&lt;/p&gt;
+&lt;h3 id=&#34;常用参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用参数&#34;&gt;#&lt;/a&gt; 常用参数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-i&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;打开 STDIN，支持交互&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-t&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;支持终端登陆&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-v&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;设置共享文件夹。宿主目录：容器目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-d&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;设为后台运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;–name&lt;/td&gt;
+&lt;td&gt;–nam=u18&lt;/td&gt;
+&lt;td&gt;指定容器名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-p&lt;/td&gt;
+&lt;td&gt;-p 8080:80&lt;/td&gt;
+&lt;td&gt;暴露端口。宿主端口：容器端口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;–restart&lt;/td&gt;
+&lt;td&gt;–restart=always&lt;/td&gt;
+&lt;td&gt;程序终止后是否重启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;示例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#示例&#34;&gt;#&lt;/a&gt; 示例&lt;/h3&gt;
+&lt;p&gt;创建交互型容器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; centos:latest /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;创建容器后运行在后台&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-i&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-t&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; centos:latest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;创建容器，运行后台，结束后自动重启，设置名称、端口、共享目录。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--restart&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;always &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;yhh_centos &lt;span class=&#34;token parameter variable&#34;&gt;-p&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;8080&lt;/span&gt;:80 &lt;span class=&#34;token parameter variable&#34;&gt;-v&lt;/span&gt; /home/yihui/html/www:/var/www centos:latest&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;基础操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础操作&#34;&gt;#&lt;/a&gt; 基础操作&lt;/h2&gt;
+&lt;p&gt;容器创建完毕之后，就是一些基本操作了，启动、停止、重启、删除&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ps&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt;		&lt;span class=&#34;token comment&#34;&gt;# 查看容器列表， 列出所有的容器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; start xxx	&lt;span class=&#34;token comment&#34;&gt;# 启动容器，start 后面可以跟上容器名，或者容器 id&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# (这里的 xxx 可以是容器名：yhh_centos 也可以是容器 id：f57398ab22c5)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; stop xxx		&lt;span class=&#34;token comment&#34;&gt;# 关闭容器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; restart xxx	&lt;span class=&#34;token comment&#34;&gt;# 重启&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;rm&lt;/span&gt; xxx		&lt;span class=&#34;token comment&#34;&gt;# 删除&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在查看容器列表时，如果某个容器的启动参数特别长，直接使用 &lt;code&gt;docker ps -a&lt;/code&gt;  会发现看不到完整的启动命令，这个时候可以带上参数 &lt;code&gt;--no-trunc&lt;/code&gt;  来显示完整命令&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ps&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-a&lt;/span&gt; --no-trunc&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;高级操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#高级操作&#34;&gt;#&lt;/a&gt; 高级操作&lt;/h2&gt;
+&lt;p&gt;接下来进入一些容器的高级操作技巧（实际上也并没有特别酷炫）&lt;/p&gt;
+&lt;p&gt;为了演示一些进阶的内容，这里创建一个容器作为测试&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; run &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-d&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--name&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;yhhos centos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;容器日志查询&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器日志查询&#34;&gt;#&lt;/a&gt; 容器日志查询&lt;/h3&gt;
+&lt;p&gt;日志，定位问题的神器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; logs yhhos	&lt;span class=&#34;token comment&#34;&gt;# 查询 xxx 容器的日志&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;基本上不太会直接使用上面的命令，因为上面把所有的日志都打印出来了，可以直接晃瞎我们的钛合金 x 眼&lt;/p&gt;
+&lt;p&gt;一般日志可以加两个参数  &lt;code&gt;-f&lt;/code&gt; ,  &lt;code&gt;-t&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; logs &lt;span class=&#34;token parameter variable&#34;&gt;-f&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-t&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--since&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;2019-05-11&#34;&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--tail&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt; yhhos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--since&lt;/code&gt;  : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt;  : 查看实时日志&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt;  : 查看日志产生的日期&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--tail=10&lt;/code&gt;  : 查看最后的 10 条日志。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文件拷贝&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件拷贝&#34;&gt;#&lt;/a&gt; 文件拷贝&lt;/h3&gt;
+&lt;p&gt;将容器的某个文件捞出来；或者强塞，一个 cp 即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 将当前目录的 test.md 文件拷贝到容器的 /tmp 目录下&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; test.md yhhos:/tmp&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 将容器的 /tmp/test.md 目录拷贝到当前目录下&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;cp&lt;/span&gt; yhhos:/tmp/test.md ./out.md&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;进入容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#进入容器&#34;&gt;#&lt;/a&gt; 进入容器&lt;/h3&gt;
+&lt;p&gt;进入容器内部，然后就可以为所欲为了…&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;exec&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-it&lt;/span&gt; yhhos /bin/bash&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;获取容器所有信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取容器所有信息&#34;&gt;#&lt;/a&gt; 获取容器所有信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;docker&lt;/span&gt; inspect yhhos&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h3 id=&#34;环境变量设置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境变量设置&#34;&gt;#&lt;/a&gt; 环境变量设置&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExMjM0NTY3NmFiYy9hcnRpY2xlL2RldGFpbHMvODQ2NTE0Nzc=&#34;&gt;docker 环境变量设置_dockerfile env path-CSDN 博客&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;tmux&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tmux&#34;&gt;#&lt;/a&gt; tmux&lt;/h1&gt;
+&lt;p&gt;用于在 docker 同时运行多个终端。尤其是在使用 &lt;code&gt;gdb.attach()&lt;/code&gt;  时十分有用。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

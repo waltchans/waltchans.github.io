@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Walt&#39;s Blog • Posts by &#34;异架构&#34; tag</title>
+        <link>http://waltcsz.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sat, 18 Nov 2023 17:26:53 +0800</pubDate>
+        <lastBuildDate>Sat, 18 Nov 2023 17:26:53 +0800</lastBuildDate>
+        <category>docker</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
+        <category>random</category>
+        <category>interger overflow</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>brop</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
+        <category>double free</category>
+        <category>fastbin attack</category>
+        <category>chunk_extend_and_overlapping</category>
+        <category>one_gadget</category>
+        <category>malloc_hook</category>
+        <category>free_hook</category>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/</guid>
+            <title>异架构</title>
+            <link>http://waltcsz.github.io/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/</link>
+            <category>异架构</category>
+            <pubDate>Sat, 18 Nov 2023 17:26:53 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;debug&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#debug&#34;&gt;#&lt;/a&gt; debug&lt;/h1&gt;
+&lt;p&gt;可以使用 qemu 的 - g 指定端口&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ qemu-aarch64 &lt;span class=&#34;token parameter variable&#34;&gt;-g&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1234&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-L&lt;/span&gt; /usr/aarch64-linux-gnu ./apollo&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后使用 gdb-multiarch 进行调试，先指定架构，然后使用 remote 功能&lt;/p&gt;
+&lt;p&gt;在另外一个终端（上一个你也用不了）打开 gdb -multiarch&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ gdb-multiarch ./apollo &lt;span class=&#34;token parameter variable&#34;&gt;-q&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后连接到端口进行远程调试&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gdb-peda$ &lt;span class=&#34;token builtin class-name&#34;&gt;set&lt;/span&gt; architecture aarch64&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;The target architecture is assumed to be aarch64&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gdb-peda$ target remote localhost:1234&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Remote debugging using localhost:1234&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h1 id=&#34;arm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#arm&#34;&gt;#&lt;/a&gt; ARM&lt;/h1&gt;
+&lt;h1 id=&#34;risc-v&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#risc-v&#34;&gt;#&lt;/a&gt; RISC-V&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;ABI 助记符&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;x0&lt;/td&gt;
+&lt;td&gt;zero&lt;/td&gt;
+&lt;td&gt;zero&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x1&lt;/td&gt;
+&lt;td&gt;ra&lt;/td&gt;
+&lt;td&gt;返回地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x2&lt;/td&gt;
+&lt;td&gt;sp&lt;/td&gt;
+&lt;td&gt;栈指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x3&lt;/td&gt;
+&lt;td&gt;gp&lt;/td&gt;
+&lt;td&gt;全局指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x4&lt;/td&gt;
+&lt;td&gt;tp&lt;/td&gt;
+&lt;td&gt;线程指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x5-x7&lt;/td&gt;
+&lt;td&gt;t0-t2&lt;/td&gt;
+&lt;td&gt;临时寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x8-x9&lt;/td&gt;
+&lt;td&gt;s0-s1&lt;/td&gt;
+&lt;td&gt;callee 保存的寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x10-x17&lt;/td&gt;
+&lt;td&gt;a0-a7&lt;/td&gt;
+&lt;td&gt;参数寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x18-27&lt;/td&gt;
+&lt;td&gt;s2-s11&lt;/td&gt;
+&lt;td&gt;callee 保存的寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;x28-x31&lt;/td&gt;
+&lt;td&gt;t3-t6&lt;/td&gt;
+&lt;td&gt;临时寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在参数保存之后，通过 &lt;code&gt;jal&lt;/code&gt;  指令跳转到函数开始执行。jal 指令的规范为：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;jal ra, offset
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将会把下一条指令 (pc+4) 地址存放到 ra 寄存器中，然后跳转到当前地址 + offset 位置开始执行。&lt;br&gt;
+在子函数中，将会把 ra 寄存器存放到栈上，在函数返回时从栈上恢复 ra 寄存器，这里也就 &lt;code&gt;存在栈溢出的机会&lt;/code&gt; 。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

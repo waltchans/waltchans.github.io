@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Walt's Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Walt's Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="Walt's Blog" href="http://waltcsz.github.io/feed.json"/><link rel="preconnect" href="https://lf9-cdn-tos.bytecdntp.com"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.3.6"><script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js"></script><meta name="keywords" content="docker"/><link rel="canonical" href="http://waltcsz.github.io/2023/11/docker/"><title>docker</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">docker</h1><div class="meta"><span class="item" title="创建时间：2023-11-18 01:40:18"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2023-11-18T01:40:18+08:00">2023-11-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>6.5k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>6 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">BLOG</a></li></ul><ul class="right" id="rightNav"><li class="item theme" @click="changeThemeByBtn"><i class="ic" :class="{'i-sun': !themeStatus,'i-moon': themeStatus}"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/CTF/" itemprop="item" rel="index" title="分类于CTF"><span itemprop="name">CTF<meta itemprop="position" content="0"/></span></a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="item" rel="index" title="分类于笔记"><span itemprop="name">笔记<meta itemprop="position" content="1"/></span></a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/CTF/PWN/" itemprop="item" rel="index" title="分类于PWN"><span itemprop="name">PWN<meta itemprop="position" content="2"/></span></a></span><i class="ic i-angle-right"></i><span itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" itemprop="item" rel="index" title="分类于Linux"><span itemprop="name">Linux<meta itemprop="position" content="3"/></span></a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/CTF/PWN/%E7%AC%94%E8%AE%B0/" itemprop="item" rel="index" title="分类于笔记"><span itemprop="name">笔记<meta itemprop="position" content="4"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://waltcsz.github.io/2023/11/docker/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="Walt CSZ"/><meta itemprop="description" content=", "/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Walt's Blog"/></span><div class="body md" itemprop="articleBody"><p>docker 使用</p>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+<p>docker 是一款精简的虚拟机。</p>
+<p><strong>image 镜像</strong>：储存固定的系统镜像。类似模板，类，或者类似 VMware 虚拟机的快照。</p>
+<p><strong>container 容器</strong>：从镜像生成出的实例。类似成品，对象，或者正常情况的 vmware 虚拟机。储存运行时的任何修改。</p>
+<p>一个 image 可以生成出很多 container。container 可以保存为 image，然后供自己或他人后续使用。</p>
+<h1 id="包含"><a class="markdownIt-Anchor" href="#包含">#</a> 包含</h1>
+<p>虚拟机包含的软件。</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0dhbGxvcHNsZWQvcHdudG9vbHM=">pwntools</span> —— CTF framework and exploit development library</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3B3bmRiZy9wd25kYmc=">pwndbg</span> —— a GDB plug-in that makes debugging with GDB suck less, with a focus on features needed by low-level software developers, hardware hackers, reverse-engineers and exploit developers</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Njd3VhcHR4L1B3bmdkYg==">pwngdb</span> —— gdb for pwn</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbmF0aGFuU2Fsd2FuL1JPUGdhZGdldA==">ROPgadget</span> —— facilitate ROP exploitation tool</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2luYXoyL3JvcHV0aWxz">roputils</span> —— A Return-oriented Programming toolkit</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9vbmVfZ2FkZ2V0">one_gadget</span> —— A searching one-gadget of execve(‘/bin/sh’, NULL, NULL) tool for amd64 and i386</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FuZ3IvYW5ncg==">angr</span> —— A platform-agnostic binary analysis framework</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JhZGFyZS9yYWRhcmUy">radare2</span> —— A rewrite from scratch of radare in order to provide a set of libraries and tools to work with binary files</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RhdmlkOTQyai9zZWNjb21wLXRvb2xz">seccomp-tools</span> —— Provide powerful tools for seccomp analysis</li>
+<li>linux_server[64] —— IDA 7.0 debug server for linux</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly90bXV4LmdpdGh1Yi5pby8=">tmux</span> —— a terminal multiplexer</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL2x0cmFjZQ==">ltrace</span> —— trace library function call</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi8xL3N0cmFjZQ==">strace</span> —— trace system call</li>
+</ul>
+<h2 id="ubuntu初始化脚本"><a class="markdownIt-Anchor" href="#ubuntu初始化脚本">#</a> ubuntu 初始化脚本</h2>
+<p>pwndbg 仅负责 ubuntu22.04 版本及以上的可用性。在低版本可能不适用。github 尤其指出了 ubuntu18.04 已停止支持并给出了最后版本的代码。在安装时还需将 setup.sh 内的 <code>git submodule update --init --recursive</code>  注释掉，因为文件夹内不含 <code>.git</code>  文件夹并且不能更新至最新库。</p>
+<p>同时需要<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpYW93ZW54aW9uZy9hcnRpY2xlL2RldGFpbHMvMTE2NDAxNTI0">设置 locale</span>，使得 LC_CTYPE=en_US.UTF-8.</p>
+<pre><code>#!/bin/sh
+cd /root/
+unminimize
+apt install vim
+apt install git
+apt install python3-pip
+#pip3 install setuptools
+pip3 install --upgrade pip setuptools
+
+sudo pip3 install pwntools
+
+# git clone https://github.com/pwndbg/pwndbg.git
+if [ ! -f '2023.07.17.tar.gz' ]; then
+	wget https://github.com/pwndbg/pwndbg/archive/refs/tags/2023.07.17.tar.gz
+fi
+tar -xzvf 2023.07.17.tar.gz
+mv pwndbg* ./toolbox/pwndbg
+cd ./toolbox/pwndbg
+./setup.sh
+
+
+</code></pre>
+<h1 id="docker容器"><a class="markdownIt-Anchor" href="#docker容器">#</a> docker 容器</h1>
+<ul>
+<li>ubuntu18.04	skysider/pwndocker</li>
+</ul>
+<pre><code>docker pull skysider/pwndocker
+</code></pre>
+<ul>
+<li>pwndocker</li>
+</ul>
+<h2 id="included-glibc"><a class="markdownIt-Anchor" href="#included-glibc">#</a> included glibc</h2>
+<p>Default compiled glibc path is  <code>/glibc</code> .</p>
+<ul>
+<li>2.19 —— ubuntu 12.04 default libc version</li>
+<li>2.23 —— ubuntu 16.04 default libc version</li>
+<li>2.24 —— introduce vtable check in file struct</li>
+<li>2.27 —— pwndocker default glibc version</li>
+<li>2.28~2.31 —— latest libc versions</li>
+</ul>
+<h1 id="使用"><a class="markdownIt-Anchor" href="#使用">#</a> 使用</h1>
+<p>建议用官方的使用姿势，用如下命令 run 起来</p>
+<pre><code>docker run -d \
+	--rm \
+	-h $&#123;ctf_name&#125; \
+	--name $&#123;ctf_name&#125; \
+	-v $(pwd)/$&#123;ctf_name&#125;:/ctf/work \
+	-p 23946:23946 \
+	--cap-add=SYS_PTRACE \
+	skysider/pwndocker
+</code></pre>
+<p>其中有两个重要的参数<br>
+ - v <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>p</mi><mi>w</mi><mi>d</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">(pwd)/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">pw</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mord">/</span></span></span></span>{ctf_name}:/ctf/work 是将当前目录下的文件映射到 docker /ctf/work 目录下<br>
+这样你在物理机修改文件，docker 里面也会发生变化，就不用再 docker cp 了</p>
+<p>–cap-add=SYS_PTRACE 这个参数也是要一定加的，不然 docker 里面没法用 gdb 调试。</p>
+<p>可以把上述命令放到 pwndocker_run.sh 里面 方便下次使用</p>
+<h2 id="多终端调试"><a class="markdownIt-Anchor" href="#多终端调试">#</a> ？多终端调试</h2>
+<p>然后调试脚本时，要先进去 tmux ，python 脚本里面指定终端为 tmux</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>context<span class="token punctuation">.</span>terminal <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'tmux'</span><span class="token punctuation">,</span> <span class="token string">'sp'</span><span class="token punctuation">,</span> <span class="token string">'-h'</span><span class="token punctuation">]</span></pre></td></tr></table></figure><p>就可以 gdb.attach (p) 了 如下图</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run <span class="token parameter variable">-itd</span> <span class="token parameter variable">--name</span> u18 ubuntu:18.04 /bin/bash</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> <span class="token parameter variable">-L</span> u18:/lib/x86_64-linux-gnu/libselinux.so.1 <span class="token builtin class-name">.</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> <span class="token parameter variable">-L</span> u18:/lib/x86_64-linux-gnu/libpcre2-8.so.0 <span class="token builtin class-name">.</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> libselinux.so.1 pwn:/glibc/2.28/64/lib/</pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> libpcre2-8.so.0 pwn:/glibc/2.28/64/lib/</pre></td></tr></table></figure><h2 id="docker-进程"><a class="markdownIt-Anchor" href="#docker-进程">#</a> docker 进程</h2>
+<p>docker 进程启动、停止、重启，常见的三种 case</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">service</span> <span class="token function">docker</span> start	<span class="token comment"># 启动 docker</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">service</span> <span class="token function">docker</span> stop		<span class="token comment"># 关机 docker</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">service</span> <span class="token function">docker</span> restart	<span class="token comment"># 重启 docker</span></pre></td></tr></table></figure><h2 id="镜像操作"><a class="markdownIt-Anchor" href="#镜像操作">#</a> 镜像操作</h2>
+<p>镜像作为容器执行的前提条件，一般需要掌握的几个命令无非是搜索，下载，删除，创建</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> images		<span class="token comment"># 镜像列表</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">docker</span> search xxx	<span class="token comment"># 检索镜像，从镜像仓库中检索</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">docker</span> pull xxx		<span class="token comment"># 下载镜像</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">docker</span> rmi xxx		<span class="token comment"># 删除镜像</span></pre></td></tr></table></figure><p>关于创建镜像，有必要稍微详细一点点</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> commit <span class="token parameter variable">-m</span><span class="token operator">=</span><span class="token string">"首次提交"</span> <span class="token parameter variable">-a</span><span class="token operator">=</span><span class="token string">"一灰灰Blog"</span> dd85eb055fe8 yh/centos:v0.1	<span class="token comment"># 通过容器创建镜像</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">docker</span> <span class="token function">history</span> yh/centos	<span class="token comment"># 镜像历史查询</span></pre></td></tr></table></figure><p>上面的几个参数进行说明</p>
+<ul>
+<li><code>-m</code>  和 git 的提交一样，后面更上描述信息</li>
+<li><code>-a</code>  版权声明，这个东西是我创建的，有啥问题，找我</li>
+<li><code>dd85eb055fe8</code>  容器 id</li>
+<li><code>yhh/quick-os:0.1</code>  创建的镜像名</li>
+</ul>
+<h2 id="容器操作"><a class="markdownIt-Anchor" href="#容器操作">#</a> 容器操作</h2>
+<p>接下来就是正菜了，容器的各种操作，启动，关闭，重启，日志查询以及各种进入容器内部搞事情</p>
+<h2 id="创建"><a class="markdownIt-Anchor" href="#创建">#</a> 创建</h2>
+<p>万事开头第一步，加载镜像，创建容器</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run 镜像名:版本 程序指令</pre></td></tr></table></figure><p>run 后面可以跟很多的参数，比如容器暴露端口指定，存储映射，权限等等，由于参数过多，下面只给出几个不同的例子，来具体的演示参数可以怎么加 +</p>
+<h3 id="常用参数"><a class="markdownIt-Anchor" href="#常用参数">#</a> 常用参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>示例</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td></td>
+<td>打开 STDIN，支持交互</td>
+</tr>
+<tr>
+<td>-t</td>
+<td></td>
+<td>支持终端登陆</td>
+</tr>
+<tr>
+<td>-v</td>
+<td></td>
+<td>设置共享文件夹。宿主目录：容器目录</td>
+</tr>
+<tr>
+<td>-d</td>
+<td></td>
+<td>设为后台运行</td>
+</tr>
+<tr>
+<td>–name</td>
+<td>–nam=u18</td>
+<td>指定容器名称</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>-p 8080:80</td>
+<td>暴露端口。宿主端口：容器端口</td>
+</tr>
+<tr>
+<td>–restart</td>
+<td>–restart=always</td>
+<td>程序终止后是否重启</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例">#</a> 示例</h3>
+<p>创建交互型容器</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run <span class="token parameter variable">-it</span> centos:latest /bin/bash</pre></td></tr></table></figure><p>创建容器后运行在后台</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run <span class="token parameter variable">-i</span> <span class="token parameter variable">-t</span> <span class="token parameter variable">-d</span> centos:latest</pre></td></tr></table></figure><p>创建容器，运行后台，结束后自动重启，设置名称、端口、共享目录。</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--restart</span><span class="token operator">=</span>always <span class="token parameter variable">--name</span><span class="token operator">=</span>yhh_centos <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/yihui/html/www:/var/www centos:latest</pre></td></tr></table></figure><h2 id="基础操作"><a class="markdownIt-Anchor" href="#基础操作">#</a> 基础操作</h2>
+<p>容器创建完毕之后，就是一些基本操作了，启动、停止、重启、删除</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>		<span class="token comment"># 查看容器列表， 列出所有的容器</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">docker</span> start xxx	<span class="token comment"># 启动容器，start 后面可以跟上容器名，或者容器 id</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># (这里的 xxx 可以是容器名：yhh_centos 也可以是容器 id：f57398ab22c5)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">docker</span> stop xxx		<span class="token comment"># 关闭容器</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">docker</span> restart xxx	<span class="token comment"># 重启</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">docker</span> <span class="token function">rm</span> xxx		<span class="token comment"># 删除</span></pre></td></tr></table></figure><p>在查看容器列表时，如果某个容器的启动参数特别长，直接使用 <code>docker ps -a</code>  会发现看不到完整的启动命令，这个时候可以带上参数 <code>--no-trunc</code>  来显示完整命令</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> --no-trunc</pre></td></tr></table></figure><h2 id="高级操作"><a class="markdownIt-Anchor" href="#高级操作">#</a> 高级操作</h2>
+<p>接下来进入一些容器的高级操作技巧（实际上也并没有特别酷炫）</p>
+<p>为了演示一些进阶的内容，这里创建一个容器作为测试</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span><span class="token operator">=</span>yhhos centos</pre></td></tr></table></figure><h3 id="容器日志查询"><a class="markdownIt-Anchor" href="#容器日志查询">#</a> 容器日志查询</h3>
+<p>日志，定位问题的神器</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> logs yhhos	<span class="token comment"># 查询 xxx 容器的日志</span></pre></td></tr></table></figure><p>基本上不太会直接使用上面的命令，因为上面把所有的日志都打印出来了，可以直接晃瞎我们的钛合金 x 眼</p>
+<p>一般日志可以加两个参数  <code>-f</code> ,  <code>-t</code></p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> logs <span class="token parameter variable">-f</span> <span class="token parameter variable">-t</span> <span class="token parameter variable">--since</span><span class="token operator">=</span><span class="token string">"2019-05-11"</span> <span class="token parameter variable">--tail</span><span class="token operator">=</span><span class="token number">10</span> yhhos</pre></td></tr></table></figure><ul>
+<li><code>--since</code>  : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。</li>
+<li><code>-f</code>  : 查看实时日志</li>
+<li><code>-t</code>  : 查看日志产生的日期</li>
+<li><code>--tail=10</code>  : 查看最后的 10 条日志。</li>
+</ul>
+<h3 id="文件拷贝"><a class="markdownIt-Anchor" href="#文件拷贝">#</a> 文件拷贝</h3>
+<p>将容器的某个文件捞出来；或者强塞，一个 cp 即可</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 将当前目录的 test.md 文件拷贝到容器的 /tmp 目录下</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> test.md yhhos:/tmp</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 将容器的 /tmp/test.md 目录拷贝到当前目录下</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">docker</span> <span class="token function">cp</span> yhhos:/tmp/test.md ./out.md</pre></td></tr></table></figure><h3 id="进入容器"><a class="markdownIt-Anchor" href="#进入容器">#</a> 进入容器</h3>
+<p>进入容器内部，然后就可以为所欲为了…</p>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> yhhos /bin/bash</pre></td></tr></table></figure><h3 id="获取容器所有信息"><a class="markdownIt-Anchor" href="#获取容器所有信息">#</a> 获取容器所有信息</h3>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">docker</span> inspect yhhos</pre></td></tr></table></figure><h3 id="环境变量设置"><a class="markdownIt-Anchor" href="#环境变量设置">#</a> 环境变量设置</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExMjM0NTY3NmFiYy9hcnRpY2xlL2RldGFpbHMvODQ2NTE0Nzc=">docker 环境变量设置_dockerfile env path-CSDN 博客</span></p>
+<h1 id="tmux"><a class="markdownIt-Anchor" href="#tmux">#</a> tmux</h1>
+<p>用于在 docker 同时运行多个终端。尤其是在使用 <code>gdb.attach()</code>  时十分有用。</p>
+<div class="tags"><a href="/tags/docker/" rel="tag"><i class="ic i-tag"></i>docker</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于</span><time title="修改时间：2023-11-18 22:04:38" itemprop="dateModified" datetime="2023-11-18T22:04:38+08:00">2023-11-18</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/assets/wechatpay.png" alt="Walt CSZ 微信支付"/><p>微信支付</p></div><div><img data-src="/assets/alipay.png" alt="Walt CSZ 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Walt CSZ<i class="ic i-at"><em>@</em></i>Walt's Blog</li><li class="link"><strong>本文链接：</strong><a href="http://waltcsz.github.io/2023/11/docker/" title="docker">http://waltcsz.github.io/2023/11/docker/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2023/11/buu-1117/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit4jrvuj20zk0m8785.jpg" title="buu_1117"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>Write Up</span><h3>buu_1117</h3></a></div><div class="item right"><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/" rel="next" itemprop="url" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis3attqj20zk0m8k7l.jpg" title="异架构"><span class="type">下一篇</span><span class="category"><i class="ic i-flag"></i>笔记</span><h3>异架构</h3></a></div></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%85%E5%90%AB"><span class="toc-number">2.</span> <span class="toc-text"> 包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu%E5%88%9D%E5%A7%8B%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text"> ubuntu 初始化脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E5%AE%B9%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text"> docker 容器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#included-glibc"><span class="toc-number">3.1.</span> <span class="toc-text"> included glibc</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text"> 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BB%88%E7%AB%AF%E8%B0%83%E8%AF%95"><span class="toc-number">4.1.</span> <span class="toc-text"> ？多终端调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E8%BF%9B%E7%A8%8B"><span class="toc-number">4.2.</span> <span class="toc-text"> docker 进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">4.3.</span> <span class="toc-text"> 镜像操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">4.4.</span> <span class="toc-text"> 容器操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">4.5.</span> <span class="toc-text"> 创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-number">4.5.1.</span> <span class="toc-text"> 常用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.5.2.</span> <span class="toc-text"> 示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">4.6.</span> <span class="toc-text"> 基础操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">4.7.</span> <span class="toc-text"> 高级操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.7.1.</span> <span class="toc-text"> 容器日志查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D"><span class="toc-number">4.7.2.</span> <span class="toc-text"> 文件拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="toc-number">4.7.3.</span> <span class="toc-text"> 进入容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AE%B9%E5%99%A8%E6%89%80%E6%9C%89%E4%BF%A1%E6%81%AF"><span class="toc-number">4.7.4.</span> <span class="toc-text"> 获取容器所有信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.7.5.</span> <span class="toc-text"> 环境变量设置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tmux"><span class="toc-number">5.</span> <span class="toc-text"> tmux</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li  class="active"><a href="/2023/11/docker/" rel="bookmark" title="docker">docker</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Walt CSZ" data-src="/assets/avatar.jpg"/><p class="name" itemprop="name">Walt CSZ</p><div class="description" itemprop="description"></div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">24</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">13</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">31</span><span class="name">标签</span></a></div></nav><div class="social"><a href="https://github.com/waltcsz" class="item github" rel="noopener" title="https:&#x2F;&#x2F;github.com&#x2F;waltcsz" target="_blank"><i class="ic i-github"></i></a><a href="https://music.163.com/#/user/home?id=1352209376" class="item music" rel="noopener" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1352209376" target="_blank"><i class="ic i-cloud-music"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-user"></i>关于</a><ul class="submenu"><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于本站</a></li><li class="item"><a href="/admiration/" rel="section"><i class="ic i-coffee"></i>赞赏博主</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2023/11/buu-1117/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/linuxcommand/">linuxCommand</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/08/%E5%A0%86%E6%94%BB%E5%87%BB/">堆攻击</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/10/newstarctf2023-week4/">newstarctf2023 week4</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/shell/">shell</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">pwn常用工具及环境配置</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/11/buu-1117/">buu_1117</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/08/moectf2023/">moectf2023</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/vim/">vim</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="分类于编程语言">编程语言</a></div><span><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/">C++中知识收藏</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/CTF/" title="分类于CTF">CTF</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/CTF/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a><i class="ic i-angle-right"></i><a href="/categories/CTF/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/11/docker/">docker</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2023</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Walt CSZ @ BLOG</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">138k 字</span><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">2:06</span></div><div class="powered-by">基于 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & Theme.<a href="https://github.com/theme-shoka-x/hexo-theme-shokaX/" rel="noopener" target="_blank">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+        path: `2023/11/docker/`,
+        favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,
+    chart: false,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    fancybox: true,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    },
+    ignores: [
+        (uri) => uri.includes('#'),
+        (uri) => new RegExp(LOCAL.path + '$').test(uri),
+            []
+    ]
+};
+</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default,fetch"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/pace/1.0.2/pace.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/algoliasearch/4.12.1/algoliasearch-lite.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/instantsearch.js/4.39.0/instantsearch.production.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/quicklink/2.2.0/quicklink.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/??jquery/3.5.1/jquery.min.js,fancybox/3.5.7/jquery.fancybox.min.js,justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" async></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/KaTeX/0.15.2/contrib/copy-tex.min.js" async></script><script src="/js/app.js?v=0.3.6"></script></body></html>

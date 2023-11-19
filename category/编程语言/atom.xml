@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://waltcsz.github.io</id>
+    <title>Walt&#39;s Blog • Posts by &#34;编程语言&#34; category</title>
+    <link href="http://waltcsz.github.io" />
+    <updated>2023-11-15T03:02:38.000Z</updated>
+    <category term="docker" />
+    <category term="汇编" />
+    <category term="寄存器" />
+    <category term="heap" />
+    <category term="异架构" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
+    <category term="random" />
+    <category term="interger overflow" />
+    <category term="shellcode" />
+    <category term="format string" />
+    <category term="overlap" />
+    <category term="unlink" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="brop" />
+    <category term="tcache" />
+    <category term="dup" />
+    <category term="srop" />
+    <category term="orw" />
+    <category term="dlresolve" />
+    <category term="double free" />
+    <category term="fastbin attack" />
+    <category term="chunk_extend_and_overlapping" />
+    <category term="one_gadget" />
+    <category term="malloc_hook" />
+    <category term="free_hook" />
+    <entry>
+        <id>http://waltcsz.github.io/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/</id>
+        <title>C++中知识收藏</title>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/"/>
+        <content type="html">&lt;h1 id=&#34;作用域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#作用域&#34;&gt;#&lt;/a&gt; 作用域&lt;/h1&gt;
+&lt;h2 id=&#34;命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#命名空间&#34;&gt;#&lt;/a&gt; 命名空间&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace namespace_name &amp;#123;
+   // 代码声明
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;引用命名空间内的变量。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace_name::code;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;导入命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#导入命名空间&#34;&gt;#&lt;/a&gt; 导入命名空间&lt;/h3&gt;
+&lt;p&gt;使得后续代码在引用该命名空间时无需添加前缀。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导入整个命名空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;using namespace namespace_name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;仅导入命名空间部分变量或方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;using std::cout;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;嵌套的命名空间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#嵌套的命名空间&#34;&gt;#&lt;/a&gt; 嵌套的命名空间&lt;/h3&gt;
+&lt;p&gt;命名空间可以嵌套，可以在一个命名空间中定义另一个命名空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;namespace namespace_name1 &amp;#123;
+	// 代码声明   
+	namespace namespace_name2 &amp;#123;
+		// 代码声明   
+	&amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以通过使用 &lt;strong&gt;::&lt;/strong&gt; 运算符来访问嵌套的命名空间中的成员：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 访问 namespace_name2 中的成员
+using namespace namespace_name1::namespace_name2;
+// 访问 namespace_name1 中的成员
+using namespace namespace_name1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;作用域解析运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#作用域解析运算符&#34;&gt;#&lt;/a&gt; 作用域解析运算符&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;::&lt;/code&gt;  为作用域解析运算符。&lt;/p&gt;
+&lt;h3 id=&#34;用途&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用途&#34;&gt;#&lt;/a&gt; 用途&lt;/h3&gt;
+&lt;h4 id=&#34;命名空间的函数或类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#命名空间的函数或类型&#34;&gt;#&lt;/a&gt; 命名空间的函数或类型&lt;/h4&gt;
+&lt;p&gt;如上&lt;/p&gt;
+&lt;h4 id=&#34;类的属性或方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类的属性或方法&#34;&gt;#&lt;/a&gt; 类的属性或方法&lt;/h4&gt;
+&lt;p&gt;如同 python 内的 &lt;code&gt;.&lt;/code&gt; 。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;class Test &amp;#123;
+    Test();
+&amp;#125;;
+
+Test::Test() 
+&amp;#123;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;全局作用域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#全局作用域&#34;&gt;#&lt;/a&gt; 全局作用域&lt;/h4&gt;
+&lt;p&gt;单独的 &lt;code&gt;::&lt;/code&gt;  放在函数或变量前，表示调用全局的函数或变量。这在局部也存在同名函数或变量时很有用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;::s;	// 全局变量
+s;		// 局部变量
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <updated>2023-11-15T03:02:38.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
+        <title>汇编基础知识</title>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+        <content type="html">&lt;h1 id=&#34;汇编&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编&#34;&gt;#&lt;/a&gt; 汇编&lt;/h1&gt;
+&lt;h2 id=&#34;汇编指令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编指令&#34;&gt;#&lt;/a&gt; 汇编指令&lt;/h2&gt;
+&lt;p&gt;在 Linux 上，大部分双操作数的指令均已前者为目的操作数，后者为源操作数。&lt;/p&gt;
+&lt;h3 id=&#34;间接寻址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#间接寻址&#34;&gt;#&lt;/a&gt; 间接寻址&lt;/h3&gt;
+&lt;p&gt;**[] ** 表示间接寻址，类似 c 语言的 ***** .&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;mov eax, [ebx+8]	;若ebx储存值为0x4008，则该指令将0x4010处的值赋给eax
+mov eax, [0x4001]	;将地址0x4001处的值赋给eax(该代码为推测，不一定合法)
+lea eax, [ebx]	;直接将ebx的值赋值给eax
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
+&lt;p&gt;push 将数据入栈，pop 将栈顶数据弹出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;push eip	；将eip储存的值入栈
+pop eip		;将栈顶数据弹出并存入eip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mov 传送字节，相当于赋值语句。&lt;/p&gt;
+&lt;p&gt;lea 装入有效地址，相当于取地址。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;mov eax, ebx	;将ebx的值赋给eax
+mov ecx, 0Ah	;将ecx赋值为0x0A
+
+lea eax, [ebp+buf]	;将局部变量buf的地址存入eax
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;call 调用函数。jmp 跳转指令。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;call __printf	;跳转printf函数
+				;call相当于入栈当前eip后执行jmp
+push eip
+jmp __printf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;inc 将目标操作数自增 1&lt;/p&gt;
+&lt;p&gt;dec 将目标操作数自减 1&lt;/p&gt;
+&lt;h3 id=&#34;比较和跳转&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较和跳转&#34;&gt;#&lt;/a&gt; 比较和跳转&lt;/h3&gt;
+&lt;h2 id=&#34;寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#寄存器&#34;&gt;#&lt;/a&gt; 寄存器&lt;/h2&gt;
+&lt;h3 id=&#34;通用寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#通用寄存器&#34;&gt;#&lt;/a&gt; 通用寄存器&lt;/h3&gt;
+&lt;h4 id=&#34;指针寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指针寄存器&#34;&gt;#&lt;/a&gt; 指针寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EBP&lt;/td&gt;
+&lt;td&gt;RBP&lt;/td&gt;
+&lt;td&gt;基址指针寄存器 (extended base pointer)&lt;/td&gt;
+&lt;td&gt;指向栈帧的底部&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ESP&lt;/td&gt;
+&lt;td&gt;RSP&lt;/td&gt;
+&lt;td&gt;栈指针寄存器 (extended stack pointer)&lt;/td&gt;
+&lt;td&gt;指向栈帧的顶部&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ESI&lt;/td&gt;
+&lt;td&gt;RSI&lt;/td&gt;
+&lt;td&gt;源变址寄存器 (Source Index)&lt;/td&gt;
+&lt;td&gt;字符串操作源指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDI&lt;/td&gt;
+&lt;td&gt;RDI&lt;/td&gt;
+&lt;td&gt;目的指针寄存器 (Destination Index)&lt;/td&gt;
+&lt;td&gt;字符串操作目标指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;数据寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据寄存器&#34;&gt;#&lt;/a&gt; 数据寄存器&lt;/h4&gt;
+&lt;p&gt;数据寄存器主要用来保存操作数和运算结果等信息。&lt;/p&gt;
+&lt;p&gt;在 64 位系统下，32 位寄存器代表对应 64 位寄存器的低 32 位。例如 eax 为 rax 的低 32 位。修改 eax 不影响 rax 高位部分。16 位寄存器同理。&lt;/p&gt;
+&lt;p&gt;此外，16 位寄存器可分为 2 个 8 位寄存器。(AX: ah~al; BX: bh~bl; CX: ch~cl; DX: dh~dl) 分别表示高 8 位和低 8 位。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;16 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EAX&lt;/td&gt;
+&lt;td&gt;RAX&lt;/td&gt;
+&lt;td&gt;AX&lt;/td&gt;
+&lt;td&gt;累加寄存器 (Accumulator)&lt;/td&gt;
+&lt;td&gt;在乘法和除法指令中被自动使用；在 Win32 中，一般用在函数的返回值中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EBX&lt;/td&gt;
+&lt;td&gt;RBX&lt;/td&gt;
+&lt;td&gt;BX&lt;/td&gt;
+&lt;td&gt;基址寄存器 (Base)&lt;/td&gt;
+&lt;td&gt;DS 段中的数据指针&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ECX&lt;/td&gt;
+&lt;td&gt;RCX&lt;/td&gt;
+&lt;td&gt;CX&lt;/td&gt;
+&lt;td&gt;计数寄存器 (Count)&lt;/td&gt;
+&lt;td&gt;CPU 自动使用 ECX 作为循环计数器，在字符串和循环操作中常用，在循环指令（LOOP）或串操作中，ECX 用来进行循环计数，每执行一次循环，ECX 都会被 CPU 自动减一&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EDX&lt;/td&gt;
+&lt;td&gt;RDX&lt;/td&gt;
+&lt;td&gt;DX&lt;/td&gt;
+&lt;td&gt;数据寄存器 (Data)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;img data-src=&#34;./Center.png&#34; alt=&#34;寄存器&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;h3 id=&#34;指令寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指令寄存器&#34;&gt;#&lt;/a&gt; 指令寄存器&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;32 位&lt;/th&gt;
+&lt;th&gt;64 位&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EIP&lt;/td&gt;
+&lt;td&gt;RIP&lt;/td&gt;
+&lt;td&gt;指令指针寄存器 (Instruction Pointer)&lt;/td&gt;
+&lt;td&gt;保存着下一条要执行的指令的地址。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;段寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#段寄存器&#34;&gt;#&lt;/a&gt; 段寄存器&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CS&lt;/td&gt;
+&lt;td&gt;代码段 (Code Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DS&lt;/td&gt;
+&lt;td&gt;数据段 (Data Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SS&lt;/td&gt;
+&lt;td&gt;堆栈段 (Stack Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ES&lt;/td&gt;
+&lt;td&gt;附加数据段 (Extra Segment)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FS&lt;/td&gt;
+&lt;td&gt;附加数据段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GS&lt;/td&gt;
+&lt;td&gt;附加数据段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;标志寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标志寄存器&#34;&gt;#&lt;/a&gt; 标志寄存器&lt;/h3&gt;
+&lt;h4 id=&#34;条件标志寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#条件标志寄存器&#34;&gt;#&lt;/a&gt; 条件标志寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;OF&lt;/td&gt;
+&lt;td&gt;溢出标志位 (OverFlow Flag)&lt;/td&gt;
+&lt;td&gt;用来反应有符号数加减法运算所得结果是否溢出。运算超出当前运算位数所能表示的范围，则称为溢出，标志位被置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SF&lt;/td&gt;
+&lt;td&gt;符号标志位 (Sign Flag)&lt;/td&gt;
+&lt;td&gt;用来反应运算结果是否为 0。运算结果为负时置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ZF&lt;/td&gt;
+&lt;td&gt;零标志位 (Zero Flag)&lt;/td&gt;
+&lt;td&gt;用来反应运算结果是否为 0。为零时置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AF&lt;/td&gt;
+&lt;td&gt;辅助进位标志位 (Auxilliary carry Flag)&lt;/td&gt;
+&lt;td&gt;在字操作址，发生低字节向高字节进位或借位时该标志位被置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PF&lt;/td&gt;
+&lt;td&gt;奇偶标志位 (Parity Flag)&lt;/td&gt;
+&lt;td&gt;用于反应结果中 “1” 的个数的奇偶性。如果 “1” 为偶数置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CF&lt;/td&gt;
+&lt;td&gt;进位标志位 (Carry Flag)&lt;/td&gt;
+&lt;td&gt;运算结果的最高位产生了一个进位或错位，则该标志位置为 1，否则为 0。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;控制控制寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#控制控制寄存器&#34;&gt;#&lt;/a&gt; 控制控制寄存器&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;DF&lt;/td&gt;
+&lt;td&gt;方向标志位 (Direction Flag)&lt;/td&gt;
+&lt;td&gt;用于串操作指令中，控制地址的变化方向。当 DF 为 0 时，存储器地址自动增加；当 DF 为 1 时，存储器地址自动减少。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IF&lt;/td&gt;
+&lt;td&gt;中断标志位 (Interrupt Flag)&lt;/td&gt;
+&lt;td&gt;用于控制外部可屏蔽中断是否可以被处理器响应。[^1]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TF&lt;/td&gt;
+&lt;td&gt;陷阱标志位 (Trap Flag)&lt;/td&gt;
+&lt;td&gt;用于控制处理器是否进入单步操作方式。当 TF 为 0 时，处理器在正常模式下运行；当为 1 时，处理器单步执行指令，调试器可以逐步指令进行执行就是使用了该标志位。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;特殊64位调用函数传参&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#特殊64位调用函数传参&#34;&gt;#&lt;/a&gt; 特殊：64 位调用函数传参&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;寄存器&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rdi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;rsi&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;rdx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;rcx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;r8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;r9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7+&lt;/td&gt;
+&lt;td&gt;从右向左压入栈中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+        <category term="汇编" />
+        <category term="寄存器" />
+        <updated>2023-08-20T09:58:02.000Z</updated>
+    </entry>
+</feed>

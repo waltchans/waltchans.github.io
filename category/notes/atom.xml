@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://waltcsz.github.io</id>
+    <title>Walt&#39;s Blog • Posts by &#34;notes&#34; category</title>
+    <link href="http://waltcsz.github.io" />
+    <updated>2023-11-06T09:27:29.000Z</updated>
+    <category term="docker" />
+    <category term="汇编" />
+    <category term="寄存器" />
+    <category term="heap" />
+    <category term="异架构" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
+    <category term="random" />
+    <category term="interger overflow" />
+    <category term="shellcode" />
+    <category term="format string" />
+    <category term="overlap" />
+    <category term="unlink" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="brop" />
+    <category term="tcache" />
+    <category term="dup" />
+    <category term="srop" />
+    <category term="orw" />
+    <category term="dlresolve" />
+    <category term="double free" />
+    <category term="fastbin attack" />
+    <category term="chunk_extend_and_overlapping" />
+    <category term="one_gadget" />
+    <category term="malloc_hook" />
+    <category term="free_hook" />
+    <entry>
+        <id>http://waltcsz.github.io/2023/11/findlibc/</id>
+        <title>findLibc</title>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/11/findlibc/"/>
+        <content type="html">&lt;h1 id=&#34;libc应用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#libc应用&#34;&gt;#&lt;/a&gt; libc 应用&lt;/h1&gt;
+&lt;h2 id=&#34;libc修补&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#libc修补&#34;&gt;#&lt;/a&gt; libc 修补&lt;/h2&gt;
+&lt;p&gt;由于靶机运行环境与本地机器环境可能不同，会导致程序实现的方式有所差异。&lt;/p&gt;
+&lt;p&gt;尤其是对于堆题而言，不同版本有不同的检测机制以及 tcache 的有无和截然不同的安全检测。使得 libc 的修正变得十分重要。&lt;/p&gt;
+&lt;p&gt;目前主要有以下几种方法实现 libc 的修正。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 patchelf 修改 elf 文件的依赖&lt;/li&gt;
+&lt;li&gt;pwntools 中利用 process 指定 libc 版本。&lt;/li&gt;
+&lt;li&gt;在 docker 容器中运行和调试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;patchelf修改libc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#patchelf修改libc&#34;&gt;#&lt;/a&gt; patchelf 修改 libc&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;该方式会&lt;strong&gt;修改文件本身&lt;/strong&gt;，尽量先对文件进行&lt;strong&gt;备份&lt;/strong&gt;。主要会修改文件内依赖的地址，可能造成文件内部分数据的地址出现偏移。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;利用 &lt;code&gt;patchelf&lt;/code&gt;  或者 &lt;code&gt;process([&amp;quot;/path/to/ld.so&amp;quot;, &amp;quot;./test&amp;quot;], env=&amp;#123;&amp;quot;LD_PRELOAD&amp;quot;:&amp;quot;/path/to/libc.so.6&amp;quot;&amp;#125;)&lt;/code&gt;  指定 libc 版本运行。&lt;/p&gt;
+&lt;h4 id=&#34;how-to-run-in-custom-libc-version&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#how-to-run-in-custom-libc-version&#34;&gt;#&lt;/a&gt; How to run in custom libc version?&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cp /glibc/2.27/64/lib/ld-2.27.so /tmp/ld-2.27.so
+patchelf --set-interpreter /tmp/ld-2.27.so ./test
+LD_PRELOAD=./libc.so.6 ./test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;pwntools指定libc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pwntools指定libc&#34;&gt;#&lt;/a&gt; pwntools 指定 libc&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;from pwn import *
+p = process([&amp;quot;/path/to/ld.so&amp;quot;, &amp;quot;./test&amp;quot;], env=&amp;#123;&amp;quot;LD_PRELOAD&amp;quot;:&amp;quot;/path/to/libc.so.6&amp;quot;&amp;#125;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;具体参考 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NreXNpZGVyL3B3bmRvY2tlcg==&#34;&gt;https://github.com/skysider/pwndocker&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查找libc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查找libc&#34;&gt;#&lt;/a&gt; 查找 libc&lt;/h2&gt;
+&lt;h3 id=&#34;利用glibc-all-in-one&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用glibc-all-in-one&#34;&gt;#&lt;/a&gt; 利用 glibc-all-in-one&lt;/h3&gt;
+&lt;p&gt;只能查到每个大版本内的初始版本和最新版本&lt;/p&gt;
+&lt;h3 id=&#34;利用官网&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用官网&#34;&gt;#&lt;/a&gt; 利用官网&lt;/h3&gt;
+&lt;p&gt;拥有最全的版本&lt;/p&gt;
+&lt;p&gt;如 buuoj 一般使用 &lt;code&gt;libc6_2.23-0ubuntu10_*&lt;/code&gt;  的版本作为题目的 libc 库，该版本无法在 glibc-all-in-one 中下载。&lt;/p&gt;
+&lt;p&gt;在官网找到 libc 后进行解包。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dpkg-deb &lt;span class=&#34;token parameter variable&#34;&gt;-x&lt;/span&gt; libc6_2.23-0ubuntu10_amd64.deb ./libc&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sYXVuY2hwYWQubmV0L3VidW50dS8rc291cmNlL2dsaWJjLytwdWJsaXNoaW5naGlzdG9yeQ==&#34;&gt;libc 历史版本&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ubuntu对应libc版本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubuntu对应libc版本&#34;&gt;#&lt;/a&gt; ubuntu 对应 libc 版本&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ubuntu&lt;/th&gt;
+&lt;th&gt;libc&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;16.04&lt;/td&gt;
+&lt;td&gt;2.23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;18.04&lt;/td&gt;
+&lt;td&gt;2.27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;19&lt;/td&gt;
+&lt;td&gt;2.29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;20.04&lt;/td&gt;
+&lt;td&gt;2.30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;22.04&lt;/td&gt;
+&lt;td&gt;2.37&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+        <updated>2023-11-06T09:27:29.000Z</updated>
+    </entry>
+</feed>

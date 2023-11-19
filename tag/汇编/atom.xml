@@ -4,30 +4,41 @@
     <title>Walt&#39;s Blog • Posts by &#34;汇编&#34; tag</title>
     <link href="http://waltcsz.github.io" />
     <updated>2023-08-20T09:58:02.000Z</updated>
-    <category term="heap" />
-    <category term="工具" />
-    <category term="stack migration" />
+    <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
+    <category term="heap" />
+    <category term="异架构" />
+    <category term="工具" />
+    <category term="stack migration" />
+    <category term="新生题" />
+    <category term="short shellcode" />
     <category term="random" />
+    <category term="interger overflow" />
+    <category term="shellcode" />
+    <category term="format string" />
+    <category term="overlap" />
+    <category term="unlink" />
     <category term="cdll" />
     <category term="侧信道攻击" />
     <category term="时间差" />
     <category term="full RELRO" />
     <category term="brop" />
-    <category term="新生题" />
-    <category term="short shellcode" />
+    <category term="tcache" />
+    <category term="dup" />
+    <category term="srop" />
+    <category term="orw" />
+    <category term="dlresolve" />
     <category term="double free" />
     <category term="fastbin attack" />
     <category term="chunk_extend_and_overlapping" />
     <category term="one_gadget" />
-    <category term="tcache" />
     <category term="malloc_hook" />
     <category term="free_hook" />
     <entry>
-        <id>http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/</id>
+        <id>http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
         <title>汇编基础知识</title>
-        <link rel="alternate" href="http://waltcsz.github.io/PWN/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-e0573c3bcf7a/"/>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
         <content type="html">&lt;h1 id=&#34;汇编&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编&#34;&gt;#&lt;/a&gt; 汇编&lt;/h1&gt;
 &lt;h2 id=&#34;汇编指令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编指令&#34;&gt;#&lt;/a&gt; 汇编指令&lt;/h2&gt;
 &lt;p&gt;在 Linux 上，大部分双操作数的指令均已前者为目的操作数，后者为源操作数。&lt;/p&gt;
@@ -58,6 +69,7 @@ jmp __printf
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;inc 将目标操作数自增 1&lt;/p&gt;
 &lt;p&gt;dec 将目标操作数自减 1&lt;/p&gt;
+&lt;h3 id=&#34;比较和跳转&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较和跳转&#34;&gt;#&lt;/a&gt; 比较和跳转&lt;/h3&gt;
 &lt;h2 id=&#34;寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#寄存器&#34;&gt;#&lt;/a&gt; 寄存器&lt;/h2&gt;
 &lt;h3 id=&#34;通用寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#通用寄存器&#34;&gt;#&lt;/a&gt; 通用寄存器&lt;/h3&gt;
 &lt;h4 id=&#34;指针寄存器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#指针寄存器&#34;&gt;#&lt;/a&gt; 指针寄存器&lt;/h4&gt;
