@@ -14,7 +14,6 @@
     <category term="新生题" />
     <category term="short shellcode" />
     <category term="random" />
-    <category term="interger overflow" />
     <category term="shellcode" />
     <category term="format string" />
     <category term="overlap" />
@@ -35,6 +34,8 @@
     <category term="one_gadget" />
     <category term="malloc_hook" />
     <category term="free_hook" />
+    <category term="integer overflow" />
+    <category term="canary" />
     <entry>
         <id>http://waltcsz.github.io/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</id>
         <title>pwn常用工具及环境配置</title>

@@ -1,6 +1,6 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "Walt's Blog • All posts by \"interger overflow\" tag",
+    "title": "Walt's Blog • All posts by \"integer overflow\" tag",
     "description": "",
     "home_page_url": "http://waltcsz.github.io",
     "items": [
@@ -13,9 +13,10 @@
             "tags": [
                 "stack migration",
                 "random",
-                "interger overflow",
                 "shellcode",
-                "format string"
+                "format string",
+                "integer overflow",
+                "canary"
             ]
         }
     ]

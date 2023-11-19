@@ -14,7 +14,6 @@
     <category term="新生题" />
     <category term="short shellcode" />
     <category term="random" />
-    <category term="interger overflow" />
     <category term="shellcode" />
     <category term="format string" />
     <category term="overlap" />
@@ -35,6 +34,8 @@
     <category term="one_gadget" />
     <category term="malloc_hook" />
     <category term="free_hook" />
+    <category term="integer overflow" />
+    <category term="canary" />
     <entry>
         <id>http://waltcsz.github.io/2023/11/buu-1106/</id>
         <title>buu 1106</title>

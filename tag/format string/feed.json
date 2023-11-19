@@ -26,9 +26,10 @@
             "tags": [
                 "stack migration",
                 "random",
-                "interger overflow",
                 "shellcode",
-                "format string"
+                "format string",
+                "integer overflow",
+                "canary"
             ]
         }
     ]

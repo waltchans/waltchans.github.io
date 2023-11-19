@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>Walt&#39;s Blog • Posts by &#34;interger overflow&#34; tag</title>
+        <title>Walt&#39;s Blog • Posts by &#34;integer overflow&#34; tag</title>
         <link>http://waltcsz.github.io</link>
         <description></description>
         <language>zh-CN</language>
@@ -17,7 +17,6 @@
         <category>新生题</category>
         <category>short shellcode</category>
         <category>random</category>
-        <category>interger overflow</category>
         <category>shellcode</category>
         <category>format string</category>
         <category>overlap</category>
@@ -38,15 +37,18 @@
         <category>one_gadget</category>
         <category>malloc_hook</category>
         <category>free_hook</category>
+        <category>integer overflow</category>
+        <category>canary</category>
         <item>
             <guid isPermalink="true">http://waltcsz.github.io/2023/10/newstarctf2023-week1-2/</guid>
             <title>newstarctf2023_week1-2</title>
             <link>http://waltcsz.github.io/2023/10/newstarctf2023-week1-2/</link>
             <category>stack migration</category>
             <category>random</category>
-            <category>interger overflow</category>
             <category>shellcode</category>
             <category>format string</category>
+            <category>integer overflow</category>
+            <category>canary</category>
             <pubDate>Thu, 12 Oct 2023 01:11:10 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;week1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#week1&#34;&gt;#&lt;/a&gt; week1&lt;/h1&gt;
 &lt;h2 id=&#34;ret2text&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ret2text&#34;&gt;#&lt;/a&gt; ret2text&lt;/h2&gt;

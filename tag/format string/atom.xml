@@ -14,7 +14,6 @@
     <category term="新生题" />
     <category term="short shellcode" />
     <category term="random" />
-    <category term="interger overflow" />
     <category term="shellcode" />
     <category term="format string" />
     <category term="overlap" />
@@ -35,6 +34,8 @@
     <category term="one_gadget" />
     <category term="malloc_hook" />
     <category term="free_hook" />
+    <category term="integer overflow" />
+    <category term="canary" />
     <entry>
         <id>http://waltcsz.github.io/2023/10/newstarctf2023-week3/</id>
         <title>newstarctf2023_week3</title>
@@ -311,9 +312,10 @@ xor rdi, QWORD PTR [rcx];
 </content>
         <category term="stack migration" />
         <category term="random" />
-        <category term="interger overflow" />
         <category term="shellcode" />
         <category term="format string" />
+        <category term="integer overflow" />
+        <category term="canary" />
         <updated>2023-10-11T17:11:10.000Z</updated>
     </entry>
 </feed>
