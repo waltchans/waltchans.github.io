@@ -3,7 +3,7 @@
     <id>http://waltcsz.github.io</id>
     <title>Walt&#39;s Blog</title>
     <link href="http://waltcsz.github.io" />
-    <updated>2023-12-07T07:39:52.000Z</updated>
+    <updated>2023-12-04T07:39:52.000Z</updated>
     <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
@@ -39,17 +39,6 @@
     <category term="brop" />
     <category term="overlap" />
     <category term="unlink" />
-    <entry>
-        <id>http://waltcsz.github.io/2023/12/%E8%B4%B1%E4%BA%BA/</id>
-        <title>贱人</title>
-        <link rel="alternate" href="http://waltcsz.github.io/2023/12/%E8%B4%B1%E4%BA%BA/"/>
-        <content type="html">&lt;h1 id=&#34;永远缅怀&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#永远缅怀&#34;&gt;#&lt;/a&gt; 永远缅怀&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;./image-20231207171458831.png&#34; alt=&#34;image-20231207171458831&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;死于2023127&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#死于2023127&#34;&gt;#&lt;/a&gt; 死于 2023/12/7&lt;/h2&gt;
-&lt;h2 id=&#34;因犯贱而亡&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#因犯贱而亡&#34;&gt;#&lt;/a&gt; 因犯贱而亡&lt;/h2&gt;
-</content>
-        <updated>2023-12-07T07:39:52.000Z</updated>
-    </entry>
     <entry>
         <id>http://waltcsz.github.io/2023/12/toolbox/</id>
         <title>toolBox</title>

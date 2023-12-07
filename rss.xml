@@ -5,8 +5,8 @@
         <link>http://waltcsz.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 07 Dec 2023 15:39:52 +0800</pubDate>
-        <lastBuildDate>Thu, 07 Dec 2023 15:39:52 +0800</lastBuildDate>
+        <pubDate>Mon, 04 Dec 2023 15:39:52 +0800</pubDate>
+        <lastBuildDate>Mon, 04 Dec 2023 15:39:52 +0800</lastBuildDate>
         <category>docker</category>
         <category>汇编</category>
         <category>寄存器</category>
@@ -42,17 +42,6 @@
         <category>brop</category>
         <category>overlap</category>
         <category>unlink</category>
-        <item>
-            <guid isPermalink="true">http://waltcsz.github.io/2023/12/%E8%B4%B1%E4%BA%BA/</guid>
-            <title>贱人</title>
-            <link>http://waltcsz.github.io/2023/12/%E8%B4%B1%E4%BA%BA/</link>
-            <pubDate>Thu, 07 Dec 2023 15:39:52 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;永远缅怀&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#永远缅怀&#34;&gt;#&lt;/a&gt; 永远缅怀&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;./image-20231207171458831.png&#34; alt=&#34;image-20231207171458831&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;死于2023127&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#死于2023127&#34;&gt;#&lt;/a&gt; 死于 2023/12/7&lt;/h2&gt;
-&lt;h2 id=&#34;因犯贱而亡&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#因犯贱而亡&#34;&gt;#&lt;/a&gt; 因犯贱而亡&lt;/h2&gt;
- ]]></description>
-        </item>
         <item>
             <guid isPermalink="true">http://waltcsz.github.io/2023/12/toolbox/</guid>
             <title>toolBox</title>
