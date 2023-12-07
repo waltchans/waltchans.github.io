@@ -7,38 +7,38 @@
     <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
-    <category term="heap" />
+    <category term="IO_FILE" />
     <category term="异架构" />
+    <category term="shellcode" />
     <category term="工具" />
+    <category term="heap" />
     <category term="stack migration" />
     <category term="新生题" />
     <category term="short shellcode" />
-    <category term="random" />
-    <category term="shellcode" />
-    <category term="format string" />
-    <category term="overlap" />
-    <category term="unlink" />
-    <category term="cdll" />
-    <category term="侧信道攻击" />
-    <category term="时间差" />
-    <category term="full RELRO" />
-    <category term="brop" />
     <category term="tcache" />
     <category term="dup" />
-    <category term="srop" />
-    <category term="orw" />
-    <category term="dlresolve" />
+    <category term="calloc" />
+    <category term="fini_array" />
+    <category term="format string" />
+    <category term="integer overflow" />
+    <category term="random" />
+    <category term="canary" />
     <category term="double free" />
     <category term="fastbin attack" />
     <category term="chunk_extend_and_overlapping" />
     <category term="one_gadget" />
     <category term="malloc_hook" />
     <category term="free_hook" />
-    <category term="integer overflow" />
-    <category term="canary" />
-    <category term="IO_FILE" />
-    <category term="calloc" />
-    <category term="fini_array" />
+    <category term="srop" />
+    <category term="orw" />
+    <category term="dlresolve" />
+    <category term="cdll" />
+    <category term="侧信道攻击" />
+    <category term="时间差" />
+    <category term="full RELRO" />
+    <category term="brop" />
+    <category term="overlap" />
+    <category term="unlink" />
     <entry>
         <id>http://waltcsz.github.io/2023/10/newstarctf2023-week3/</id>
         <title>newstarctf2023_week3</title>
@@ -313,11 +313,11 @@ xor rdi, QWORD PTR [rcx];
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9uZXRzLmVjL0FscGhhbnVtZXJpY19zaGVsbGNvZGU=&#34;&gt; https://nets.ec/Alphanumeric_shellcode&lt;/span&gt;&lt;br&gt;
 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYW5xdWFua2UuY29tL3Bvc3QvaWQvODU4NzE=&#34;&gt;https://www.anquanke.com/post/id/85871&lt;/span&gt;&lt;/p&gt;
 </content>
-        <category term="stack migration" />
-        <category term="random" />
         <category term="shellcode" />
+        <category term="stack migration" />
         <category term="format string" />
         <category term="integer overflow" />
+        <category term="random" />
         <category term="canary" />
         <updated>2023-10-11T17:11:10.000Z</updated>
     </entry>

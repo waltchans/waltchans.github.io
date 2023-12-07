@@ -1,175 +1,103 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Walt's Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Walt's Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="Walt's Blog" href="http://waltcsz.github.io/feed.json"/><link rel="preconnect" href="https://lf9-cdn-tos.bytecdntp.com"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.3.6"><script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js"></script><link rel="canonical" href="http://waltcsz.github.io/page/3/"><title>BLOG = Walt's Blog</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a class="logo" href="/" rel="start"><p class="artboard">BLOG</p><h1 class="title" itemprop="name headline">Walt's Blog</h1></a></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">BLOG</a></li></ul><ul class="right" id="rightNav"><li class="item theme" @click="changeThemeByBtn"><i class="ic" :class="{'i-sun': !themeStatus,'i-moon': themeStatus}"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="index wrap"><div class="segments posts"><article class="item"><div class="cover"><a href="/2023/11/http/" itemprop="url" title="http"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciszlczyj20zk0m816d.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-20 01:18:23"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-20T01:18:23+08:00">2023-11-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.6k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/http/" itemprop="url" title="http">http</a></h3><div class="excerpt"># 简介
-HTTP  协议 (超文本传输协议 HyperText Transfer Protocol)，它是基于 TCP 协议的应用层传输协议。是一种无状态 (stateless) 协议。
-# HTTP URL
-HTTP URL  包含了用于查找某个资源的详细信息，格式如下:
-http:&#x2F;&#x2F;host[&quot;:&quot;port][abs_path]# http 请求报文
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Walt's Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Walt's Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="Walt's Blog" href="http://waltcsz.github.io/feed.json"/><link rel="preconnect" href="https://lf9-cdn-tos.bytecdntp.com"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.3.6"><script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js"></script><link rel="canonical" href="http://waltcsz.github.io/page/3/"><title>BLOG = Walt's Blog</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a class="logo" href="/" rel="start"><p class="artboard">BLOG</p><h1 class="title" itemprop="name headline">Walt's Blog</h1></a></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">BLOG</a></li></ul><ul class="right" id="rightNav"><li class="item theme" @click="changeThemeByBtn"><i class="ic" :class="{'i-sun': !themeStatus,'i-moon': themeStatus}"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="index wrap"><div class="segments posts"><article class="item"><div class="cover"><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" itemprop="url" title="C++中知识收藏"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-15 11:02:38"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-15T11:02:38+08:00">2023-11-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>996</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" itemprop="url" title="C++中知识收藏">C++中知识收藏</a></h3><div class="excerpt"># 作用域
+# 命名空间
+namespace namespace_name &amp;#123;
+   &#x2F;&#x2F; 代码声明
+&amp;#125;
 
-# 请求行
+引用命名空间内的变量。
+namespace_name::code;
 
-Method
-URL
-HTTP Version
+# 导入命名空间
+使得后续代码在引用该命名空间时无需添加前缀。
 
-GET &#x2F;example.html HTTP&#x2F;1.1 (CRLF)# http 协议
+导入整个命名空间
 
-GET ：	 请求获取 </div><a href="/2023/11/http/" class="btn" itemprop="url" title="http">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/php/" itemprop="url" title="php"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciryrr3rj20zk0m8nhk.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-20 00:52:46"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-20T00:52:46+08:00">2023-11-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>256</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/php/" itemprop="url" title="php">php</a></h3><div class="excerpt"># 函数
-# mb_substr
-截取函数
-mb_substr( $str, $start, $length, $encoding )$str，需要截断的字符串$start，截断开始处，起始处为0$length，要截取的字数$encoding，网页编码，如utf-8,GB2312,GBK# mb_strpos
-查找字符
-返回匹配的字符第一次出现的位置。
-mb_strpos($page, &#39;?&#39;)	$查找?在page第一次出现的位置</div><a href="/2023/11/php/" class="btn" itemprop="url" title="php">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/buu-1120/" itemprop="url" title="buu_1120"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-20 00:36:42"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-20T00:36:42+08:00">2023-11-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>579</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/buu-1120/" itemprop="url" title="buu_1120">buu_1120</a></h3><div class="excerpt"># [极客大挑战 2019] EasySQL
-** 考点：**sql 万能密码
-用户名输入万能账户，使得 sql 检测语句通过。
-
-# [极客大挑战 2019] EasySQL
-** 考点：**http 参数传递
-看注释，利用 get 传参，让 cat 变量值为’dog’。
-
-# [ACTF2020 新生赛] Include
-用 php 过滤器将 flag.php 加密，然后解密。
-flag 存放在文件中，但是注释掉了，用 base64 加密后输出的字符就不会包含注释符了。
-?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.bas</div><a href="/2023/11/buu-1120/" class="btn" itemprop="url" title="buu_1120">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/shellcode/" itemprop="url" title="shellcode"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-19 15:43:55"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-19T15:43:55+08:00">2023-11-19</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>6.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>6 分钟</span></span></div><h3><a href="/2023/11/shellcode/" itemprop="url" title="shellcode">shellcode</a></h3><div class="excerpt">当题目执行流程会跳转到可读写执行的地址时，我们就需要构造合适的 shellcode 来实现我们的目的。
+using namespace namespace_name;
 
 
+仅导入命名空间部分变量或方法。
 
+using std::cout;
 
-“&#x2F;bin”-&gt;rdi
-“&#x2F;sh\0”
-syscall 机器码
-execve 调用号 - rax
-rsi
-rdx
+# 嵌套的命名空间
+命名空间可以嵌套，可以在一个命名空间中定义另一个命名空间。
+namespace namespace_name1 &amp;</div><div class="meta footer"><span><a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" title="编程语言"><i class="ic i-flag"></i>编程语言</a></span></div><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" class="btn" itemprop="url" title="C++中知识收藏">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/inputanalyse/" itemprop="url" title="inputAnalyse"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-07 21:55:24"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-07T21:55:24+08:00">2023-11-07</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>238</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/inputanalyse/" itemprop="url" title="inputAnalyse">inputAnalyse</a></h3><div class="excerpt"># fgets
+# 空字符
+遇到字符 &#39;\0&#39;  不会停止。
+# 截止
+任意空字符停止输入，否则等待直到有新字符。
+其中会将该空字符输入。最后在其后添加字符 &#39;\0&#39; 。
+# 上限
+会预留一个字符给字符 &#39;\0&#39; ，若输入数超过上限，则直接结束输入，在最后添加字符 &#39;\0&#39; 。
+同时会舍弃空字符前面的其他未输入字符。
+即若允许输入 18 个字符，则最多输入 17 字符。若输入 20 个字符，截断至 17 个字符，然后舍弃最后 3 个，然后添加字符 &#39;\0&#39; 。
+</div><div class="meta footer"><span><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" itemprop="url" title="笔记"><i class="ic i-flag"></i>笔记</a></span></div><a href="/2023/11/inputanalyse/" class="btn" itemprop="url" title="inputAnalyse">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/findlibc/" itemprop="url" title="findLibc"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-06 17:27:29"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-06T17:27:29+08:00">2023-11-06</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.3k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/findlibc/" itemprop="url" title="findLibc">findLibc</a></h3><div class="excerpt"># libc 应用
+# libc 修补
+由于靶机运行环境与本地机器环境可能不同，会导致程序实现的方式有所差异。
+尤其是对于堆题而言，不同版本有不同的检测机制以及 tcache 的有无和截然不同的安全检测。使得 libc 的修正变得十分重要。
+目前主要有以下几种方法实现 libc 的修正。
 
+使用 patchelf 修改 elf 文件的依赖
+pwntools 中利用 process 指定 libc 版本。
+在 docker 容器中运行和调试
 
+# patchelf 修改 libc
 
+该方式会修改文件本身，尽量先对文件进行备份。主要会修改文件内依赖的地址，可能造成文件内部分数据的地址出现偏移。
 
-编码
-\x2f\x62\x69\x6e
-\x2f\x7c\x68\x00
-\x0f\x05
-\x3b
-0
-0
-
-
-16 进制
-0x6e69622f
-0x68732f
-0x50f
-0x3b
-0
-0
-
-
-xor
-31 30 30 36
-31 30 30 5a
-41 30
-39
+</div><div class="meta footer"><span><a href="/categories/PWN/Notes/" itemprop="url" title="Notes"><i class="ic i-flag"></i>Notes</a></span></div><a href="/2023/11/findlibc/" class="btn" itemprop="url" title="findLibc">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/buu-1106/" itemprop="url" title="buu 1106"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-06 16:07:06"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-06T16:07:06+08:00">2023-11-06</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>29k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>27 分钟</span></span></div><h3><a href="/2023/11/buu-1106/" itemprop="url" title="buu 1106">buu 1106</a></h3><div class="excerpt"># [ZJCTF 2019]EasyHeap
+heap, unlink, overlap
+用数组储存堆地址。利用 unlink 将地址指向数组，即可实现任意地址读写。
+unlink 修改的堆地址应该为真实地址，而 malloc 返回的地址为用户地址。所以伪造的 fakechunk 要在当前块的头部紧接着的地方。例如：
+数组储存的某个块的地址为 0x5010，则该处应为 chunk 的头，所以直接将 fakechunk 输入至 chunk 中。addr 为数组上储存 0x5010 处的地址。unlink 后 addr 指向 addr-0x18，即数组下标小 3 的位置。
 
 
 
+地址
+0x0
+0x</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/11/buu-1106/" class="btn" itemprop="url" title="buu 1106">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/awdtools/" itemprop="url" title="awdTools"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giciszlczyj20zk0m816d.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-02 23:39:19"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-02T23:39:19+08:00">2023-11-02</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2023/11/awdtools/" itemprop="url" title="awdTools">awdTools</a></h3><div class="excerpt"># 端口扫描
+# nmap
+nmap [scan type] [option] [target]
+命令	描述
+ nmap IP	扫描 IP
+nmap -v IP	加强扫描
+ nmap IP1 IP2 …	扫描多 IP
+nmap a.b.c.*	扫描整个子网
+ nmap a.b.c.x,y,…	扫描多子网地址
+ nmap -iL xxx.txt	根据文件扫描多 IP
+nmap a.b.c.x-y	扫描子网 IP 范围
+ nmap a.b.c.* --exclude IP	排除指定 IP 扫描整个子网
+ nmap -A IP	扫描操作系统和路由跟踪
+ nmap -O IP	探测操作系统
+ nmap</div><div class="meta footer"><span><a href="/categories/CTF/awd/" itemprop="url" title="awd"><i class="ic i-flag"></i>awd</a></span></div><a href="/2023/11/awdtools/" class="btn" itemprop="url" title="awdTools">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" itemprop="url" title="hexo部署配置"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicitcxhpij20zk0m8hdt.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-29 07:40:41"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-29T07:40:41+08:00">2023-10-29</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.3k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" itemprop="url" title="hexo部署配置">hexo部署配置</a></h3><div class="excerpt"># 下载安装
+该软件是在安装 Node.js 后使用 npm install  安装的。
+在官网下载 Node.js 后，新建文件夹，运行以下命令。
+npm install hexo-clihexo init# Git 配置
+git 由于之前配置过，所以维持原样。总归就是设置用户名和邮箱，添加登陆密钥。
+而后需要将 _config.yml  文件中的配置改为如下。
+deploy:  type: git  repository: git@github.com:WaltCSZ&#x2F;waltcsz.github.io.git  branch: master这样之后就可以用 hexo d  将网</div><div class="meta footer"><span><a href="/categories/blog/%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" itemprop="url" title="安装记录"><i class="ic i-flag"></i>安装记录</a></span></div><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" class="btn" itemprop="url" title="hexo部署配置">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week5/" itemprop="url" title="newstarctf2023 week5"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-23 14:07:01"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-23T14:07:01+08:00">2023-10-23</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>6k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>5 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week5/" itemprop="url" title="newstarctf2023 week5">newstarctf2023 week5</a></h3><div class="excerpt"># newstarctf2023 week5
+# login
+brop 侧信道攻击
+存在栈溢出，但是有 canary。
+输入时可以用空格等空字符分隔输入，所以输入函数用的是 scanf，scanf 会在输入字符串后面自动添加 &#39;\0&#39; ，所以无法爆破 canary。于是也没办法用栈溢出了。
 
-xor
-48 52 59 58
-48 53 58 5a
-4</div><div class="meta footer"><span><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" itemprop="url" title="笔记"><i class="ic i-flag"></i>笔记</a></span></div><a href="/2023/11/shellcode/" class="btn" itemprop="url" title="shellcode">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/linuxcommand/" itemprop="url" title="linuxCommand"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-18 19:57:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-18T19:57:00+08:00">2023-11-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.6k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/linuxcommand/" itemprop="url" title="linuxCommand">linuxCommand</a></h3><div class="excerpt"># 用户
-# 用户组
-管理员组
+考虑过通过大量溢出覆盖栈高处的 TLS（Thread Local Storage）存储的 canary 值，但是好像先因为 scanf 输入字符过多崩溃了
 
+经 Lxxxt 爷指点，发现这道题是 2023 年全国信息安全大赛原题改编。要用的是侧信道攻击法，利用程序判断密码（或 PIN 码）</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week5/" class="btn" itemprop="url" title="newstarctf2023 week5">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week4/" itemprop="url" title="newstarctf2023 week4"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicitcxhpij20zk0m8hdt.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-20 01:20:21"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-20T01:20:21+08:00">2023-10-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>14k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>13 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week4/" itemprop="url" title="newstarctf2023 week4">newstarctf2023 week4</a></h3><div class="excerpt"># newstartctf2023_week4 pwn
+# Double
+堆 heap, double_free, fastbin
+libc: 2.23
+程序中功能选择只有创建 add() ，删除 del()  和检查 check() 。其中， check()  内存在后门函数，只要 0x602070 处的值为 1638，即可直接 getsshell。
+其次， del()  中释放块后没有清除指针，可以进行 double free。因此只要在 0x602070 处伪造块，并设置值为 1638。
+add()  中固定分配 0x28 大小的块，并且同时写入内容。释放后进入 fastbin。
 
-
-系统
-管理员组
-
-
-
-
-CentOS
-wheel
-
-
-ubuntu
-
-
-
-rhel
-
-
-
-
-# 操作
-# 获取用户列表
-cat &#x2F;etc&#x2F;passwd  以以下格式显示用户数据
-用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell
-
-# 添加用户
-useradd
-参数
-adduser
-参数
-
-
-
-参数
-实例
-备注
-
-
-
-
--m
-
-创建用户的登陆目录
-
-
--s
--s &#x2F;sbin&#x2F;nologin
-指定用户登陆后使用的 shell
-
-
--g
-
-指定用户所属群组
-
-
--G
--G wheel
-指定用户所属附属</div><div class="meta footer"><span><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" itemprop="url" title="Linux"><i class="ic i-flag"></i>Linux</a></span></div><a href="/2023/11/linuxcommand/" class="btn" itemprop="url" title="linuxCommand">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/" itemprop="url" title="异架构"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciryrr3rj20zk0m8nhk.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-18 17:26:53"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-18T17:26:53+08:00">2023-11-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/" itemprop="url" title="异架构">异架构</a></h3><div class="excerpt"># debug
-可以使用 qemu 的 - g 指定端口
-$ qemu-aarch64 -g 1234 -L &#x2F;usr&#x2F;aarch64-linux-gnu .&#x2F;apollo然后使用 gdb-multiarch 进行调试，先指定架构，然后使用 remote 功能
-在另外一个终端（上一个你也用不了）打开 gdb -multiarch
-$ gdb-multiarch .&#x2F;apollo -q然后连接到端口进行远程调试
-gdb-peda$ set architecture aarch64The target architecture is assumed to b</div><div class="meta footer"><span><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" itemprop="url" title="笔记"><i class="ic i-flag"></i>笔记</a></span></div><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/" class="btn" itemprop="url" title="异架构">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/docker/" itemprop="url" title="docker"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit31ffoj20zk0m8naf.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-18 01:40:18"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-18T01:40:18+08:00">2023-11-18</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>6.5k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>6 分钟</span></span></div><h3><a href="/2023/11/docker/" itemprop="url" title="docker">docker</a></h3><div class="excerpt">docker 使用
-# 前言
-docker 是一款精简的虚拟机。
-image 镜像：储存固定的系统镜像。类似模板，类，或者类似 VMware 虚拟机的快照。
-container 容器：从镜像生成出的实例。类似成品，对象，或者正常情况的 vmware 虚拟机。储存运行时的任何修改。
-一个 image 可以生成出很多 container。container 可以保存为 image，然后供自己或他人后续使用。
-# 包含
-虚拟机包含的软件。
-
-pwntools —— CTF framework and exploit development library
-pwndbg —— a GDB plug-i</div><div class="meta footer"><span><a href="/categories/CTF/PWN/%E7%AC%94%E8%AE%B0/" itemprop="url" title="笔记"><i class="ic i-flag"></i>笔记</a></span></div><a href="/2023/11/docker/" class="btn" itemprop="url" title="docker">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/buu-1117/" itemprop="url" title="buu_1117"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicitcxhpij20zk0m8hdt.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-17 20:40:02"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-17T20:40:02+08:00">2023-11-17</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>50k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>46 分钟</span></span></div><h3><a href="/2023/11/buu-1117/" itemprop="url" title="buu_1117">buu_1117</a></h3><div class="excerpt"># actf_2019_babyheap
-tcache dup
-libc-2.27_0ubuntu1_amd64
-这道题除了地址随机，其他保护都开了。有 tcache dup 漏洞。
-经典的使用块去管理用户块。管理块先存放用户块地址，然后存放输出函数地址。
-释放块后形成块链，由于 tcache 只会清空 8 字节存放 fd，所以输出函数地址不会被清除。利用这点输出 tcache bin 链上某个块的地址，实现堆地址泄露。
-构造 管理块 -&gt; 管理块，在后者中输入块地址和 system 函数地址。输入的地址对应的块为存放 &quot;&#x2F;bin&#x2F;sh\0&quot;  字</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/11/buu-1117/" class="btn" itemprop="url" title="buu_1117">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/vim/" itemprop="url" title="vim"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-17 00:45:03"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-17T00:45:03+08:00">2023-11-17</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>50</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/vim/" itemprop="url" title="vim">vim</a></h3><div class="excerpt"># 查找
-斜杠 &#x2F; + 查找字符串，回车确定。
-&#x2F;string
-按 n 下一个，N 上一个。
-</div><div class="meta footer"><span><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" itemprop="url" title="Linux"><i class="ic i-flag"></i>Linux</a></span></div><a href="/2023/11/vim/" class="btn" itemprop="url" title="vim">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/shell/" itemprop="url" title="shell"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-15 18:15:54"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-15T18:15:54+08:00">2023-11-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.3k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2023/11/shell/" itemprop="url" title="shell">shell</a></h3><div class="excerpt"># 基础语句格式
-# 语句
-一行一句，无需结尾标志。
-使用 ;  可在同一行执行多条语句。用 ;  将不同语句分割。
-使用 |  管道符，将前一语句的结果作为后一语句的参数。
-# 判断
-判断条件需放在中括号内。
-if 下一行接 then  表示开始执行满足条件时的代码。也可以接在同一行，并用 ;  分隔。
-if [ &quot;$obj&quot; !&#x3D; &quot;quit&quot; ]then	echo $objelse	echo &quot;Quit.&quot;fiif [ &quot;$obj&quot; !&#x3D; &quot;quit&quot; ]; then	</div><div class="meta footer"><span><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" itemprop="url" title="Linux"><i class="ic i-flag"></i>Linux</a></span></div><a href="/2023/11/shell/" class="btn" itemprop="url" title="shell">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Walt CSZ" data-src="/assets/avatar.jpg"/><p class="name" itemprop="name">Walt CSZ</p><div class="description" itemprop="description"></div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">48</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">14</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">35</span><span class="name">标签</span></a></div></nav><div class="social"><a href="https://github.com/waltcsz" class="item github" rel="noopener" title="https:&#x2F;&#x2F;github.com&#x2F;waltcsz" target="_blank"><i class="ic i-github"></i></a><a href="https://music.163.com/#/user/home?id=1352209376" class="item music" rel="noopener" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1352209376" target="_blank"><i class="ic i-cloud-music"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-user"></i>关于</a><ul class="submenu"><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于本站</a></li><li class="item"><a href="/admiration/" rel="section"><i class="ic i-coffee"></i>赞赏博主</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/page/2/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/4/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2023/11/buu-1120/">buu_1120</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Notes/" title="分类于Notes">Notes</a></div><span><a href="/2023/11/findlibc/">findLibc</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/11/http/">http</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/09/buu-0910/">buu 0910</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">pwn常用工具及环境配置</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/10/newstarctf2023-week3/">newstarctf2023_week3</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/linuxcommand/">linuxCommand</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/">未命名</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/">未命名</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2023</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Walt CSZ @ BLOG</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">378k 字</span><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">5:44</span></div><div class="powered-by">基于 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & Theme.<a href="https://github.com/theme-shoka-x/hexo-theme-shokaX/" rel="noopener" target="_blank">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+实际</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week4/" class="btn" itemprop="url" title="newstarctf2023 week4">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week3/" itemprop="url" title="newstarctf2023_week3"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-15 13:32:08"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-15T13:32:08+08:00">2023-10-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>13k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>11 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week3/" itemprop="url" title="newstarctf2023_week3">newstarctf2023_week3</a></h3><div class="excerpt"># puts or system?
+format_string 修改 got
+ 存在 printf 格式化漏洞，并且有个 puts(&quot;&#x2F;bin&#x2F;sh&quot;); 。只要把 puts 的 got 表值修改为 system 函数的真实值或者 plt 值，就可以 getshell。
+经调试，printf 的第 9 个参数（%8p）为0x7fffffffdc90处的值。即输入的buf的内容。由此构造payload，在对应第10个参数处写入&#96;__libc_start_main&#96;的got地址，利用&#96;%9s 泄露其真实地址。 随后拿到  system</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week3/" class="btn" itemprop="url" title="newstarctf2023_week3">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week1-2/" itemprop="url" title="newstarctf2023_week1-2"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giciszlczyj20zk0m816d.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-12 01:11:10"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-12T01:11:10+08:00">2023-10-12</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>9.8k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>9 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week1-2/" itemprop="url" title="newstarctf2023_week1-2">newstarctf2023_week1-2</a></h3><div class="excerpt"># week1
+# ret2text
+ret2text
+#!&#x2F;usr&#x2F;bin&#x2F;python3from pwn import *context(log_level&#x3D;&#39;debug&#39;)#e&#x3D;ELF(&#39;.&#x2F;&#39;)#p&#x3D;process(&#39;.&#x2F;ret2text&#39;)p&#x3D;remote(&#39;node4.buuoj.cn&#39;,27637)#gdb.attach(p, &#39;b &#39;)offset &#x3D; 0x020+8target &#x3D; 0x0</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week1-2/" class="btn" itemprop="url" title="newstarctf2023_week1-2">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Walt CSZ" data-src="/assets/avatar.jpg"/><p class="name" itemprop="name">Walt CSZ</p><div class="description" itemprop="description"></div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">38</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">14</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">35</span><span class="name">标签</span></a></div></nav><div class="social"><a href="https://github.com/waltcsz" class="item github" rel="noopener" title="https:&#x2F;&#x2F;github.com&#x2F;waltcsz" target="_blank"><i class="ic i-github"></i></a><a href="https://music.163.com/#/user/home?id=1352209376" class="item music" rel="noopener" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1352209376" target="_blank"><i class="ic i-cloud-music"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-user"></i>关于</a><ul class="submenu"><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于本站</a></li><li class="item"><a href="/admiration/" rel="section"><i class="ic i-coffee"></i>赞赏博主</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/page/2/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/4/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/11/buu-1106/">buu 1106</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/11/%E5%BC%82%E6%9E%B6%E6%9E%84/">异架构</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/blog/" title="分类于blog">blog</a><i class="ic i-angle-right"></i><a href="/categories/blog/%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="分类于安装记录">安装记录</a></div><span><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/">hexo部署配置</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/09/buu-0910/">buu 0910</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/vim/">vim</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/08/%E5%A0%86%E6%94%BB%E5%87%BB/">堆攻击</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">pwn常用工具及环境配置</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/11/other/">other</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/11/knapsack/">knapsack</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/10/newstarctf2023-week3/">newstarctf2023_week3</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2023</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Walt CSZ @ BLOG</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">199k 字</span><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">3:01</span></div><div class="powered-by">基于 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & Theme.<a href="https://github.com/theme-shoka-x/hexo-theme-shokaX/" rel="noopener" target="_blank">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
         path: `page/3/`,
         favicon: {
         show: `（●´3｀●）やれやれだぜ`,
