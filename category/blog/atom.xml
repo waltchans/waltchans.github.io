@@ -3,7 +3,7 @@
     <id>http://waltcsz.github.io</id>
     <title>Walt&#39;s Blog • Posts by &#34;blog&#34; category</title>
     <link href="http://waltcsz.github.io" />
-    <updated>2023-10-28T23:40:41.000Z</updated>
+    <updated>2023-11-23T13:20:47.000Z</updated>
     <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
@@ -36,6 +36,56 @@
     <category term="free_hook" />
     <category term="integer overflow" />
     <category term="canary" />
+    <category term="IO_FILE" />
+    <category term="calloc" />
+    <category term="fini_array" />
+    <entry>
+        <id>http://waltcsz.github.io/2023/11/vscode%E9%85%8D%E7%BD%AE/</id>
+        <title>vscode配置</title>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/11/vscode%E9%85%8D%E7%BD%AE/"/>
+        <content type="html">&lt;h1 id=&#34;常用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用&#34;&gt;#&lt;/a&gt; 常用&lt;/h1&gt;
+&lt;h2 id=&#34;快捷键&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#快捷键&#34;&gt;#&lt;/a&gt; 快捷键&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl+F5&lt;/code&gt;  调试&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;F5&lt;/code&gt;  直接运行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Shift+P&lt;/code&gt; vscode 命令窗口&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Alt+Shift+F&lt;/code&gt;  格式化代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Shift+K&lt;/code&gt;  删除一行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#变量&#34;&gt;#&lt;/a&gt; 变量&lt;/h2&gt;
+&lt;p&gt;如下是可能出现在  &lt;code&gt;tasks.json&lt;/code&gt; ,  &lt;code&gt;launch.json&lt;/code&gt;  中的所有变量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;workspaceFolder&amp;#125;&lt;/code&gt;  - 图中的 redis 项目在 vs code 中打开的文件夹路径 /home/chenrui/Documents/redis&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;workspaceFolderBasename&amp;#125;&lt;/code&gt;  - 图中的 redis 项目在 vs code 中打开的没有任何斜杠 (/) 的文件夹的名称 redis&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;file&amp;#125;&lt;/code&gt;  - 当前打开的文件，如果我当前打开的是 tasks.json，那么此时中的  &lt;code&gt;$&amp;#123;file&amp;#125;&lt;/code&gt;  就是表示的当前的 &lt;code&gt;tasks.json&lt;/code&gt;  的绝对路径  &lt;code&gt;/home/chenrui/Documents/redis/.vscode/tasks.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;relativeFile&amp;#125;&lt;/code&gt;  - 当前打开文件的相对路径，如果我当前打开的是 tasks.json，那么其相对路径.vscode/tasks.json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;relativeFileDirname&amp;#125;&lt;/code&gt;  - 当前打开文件相对于 workspaceFolder 的文件名 .vscode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;fileWorkspaceFolder&amp;#125;&lt;/code&gt;  - 当前打开文件的工作空间文件夹 /home/chenrui/Documents/redis&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;fileBasename&amp;#125;&lt;/code&gt;  - 当前打开文件的文件名，如果我当前打开的是 tasks.json, tasks.json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;fileBasenameNoExtension&amp;#125;&lt;/code&gt;  - 当前打开的文件的没有扩展名的文件名，如果我当前打开的是 tasks.json, tasks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;fileDirname&amp;#125;&lt;/code&gt;  - 当前打开文件的 dirname，如果我当前打开的是 task.json, 那么他的文件名 /home/chenrui/Documents/redis/.vscode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;fileExtname&amp;#125;&lt;/code&gt;  - 当前打开文件的扩展名，如果我当前打开的是 task.json， 那么他的扩展名 json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;cwd&amp;#125;&lt;/code&gt;  - 任务运行器启动时的当前工作目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;lineNumber&amp;#125;&lt;/code&gt;  - 活动文件中当前选定的行号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;selectedText&amp;#125;&lt;/code&gt;  - 活动文件中当前选定的文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;execPath&amp;#125;&lt;/code&gt;  - 运行 VS Code 可执行文件的路径&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;defaultBuildTask&amp;#125;&lt;/code&gt;  - 默认构建任务的名称&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&amp;#123;pathSeparator&amp;#125;&lt;/code&gt;  - 操作系统用来分隔文件路径中的组件的字符，/on macOS or linux,\ on Windows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9lZGl0b3IvdmFyaWFibGVzLXJlZmVyZW5jZQ==&#34;&gt;Visual Studio Code Variables Reference&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置&#34;&gt;#&lt;/a&gt; 配置&lt;/h1&gt;
+&lt;h2 id=&#34;launchjson&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#launchjson&#34;&gt;#&lt;/a&gt;  &lt;code&gt;launch.json&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;决定项目运行时的配置，即按 &lt;code&gt;F5&lt;/code&gt;  或点击 &lt;code&gt;run-&amp;gt;Start debugging&lt;/code&gt;  时的配置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;preLaunchTask&amp;quot;&lt;/code&gt;  该项指定在执行调试前执行的任务。在 c++ 项目中一般会指定在调试前进行编译。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight json&#34;&gt;&lt;figcaption data-lang=&#34;JSON&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token property&#34;&gt;&#34;preLaunchTask&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;g++.exe build active file&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;cwd&amp;quot;&lt;/code&gt;  设置工作目录。如果打开的文件夹内为整个项目，一般设置为该文件夹，即 &lt;code&gt;&amp;quot;cwd&amp;quot;: &amp;quot;$&amp;#123;workspaceFolder&amp;#125;&amp;quot;,&lt;/code&gt; 。如果文件夹内为零散的源文件，如题库，那根目录一般设置为运行某个文件时该文件所在目录，即 &lt;code&gt;&amp;quot;cwd&amp;quot;: &amp;quot;$&amp;#123;fileDirname&amp;#125;&amp;quot;,&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;externalConsole&amp;quot;&lt;/code&gt;  是否在外部控制台运行。 &lt;code&gt;true&lt;/code&gt;  或 &lt;code&gt;false&lt;/code&gt; 。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <updated>2023-11-23T13:20:47.000Z</updated>
+    </entry>
     <entry>
         <id>http://waltcsz.github.io/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/</id>
         <title>hexo部署配置</title>

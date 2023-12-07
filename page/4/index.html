@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="Walt's Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="Walt's Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="Walt's Blog" href="http://waltcsz.github.io/feed.json"/><link rel="preconnect" href="https://lf9-cdn-tos.bytecdntp.com"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.3.6"><script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.js"></script><link rel="canonical" href="http://waltcsz.github.io/page/4/"><title>BLOG = Walt's Blog</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a class="logo" href="/" rel="start"><p class="artboard">BLOG</p><h1 class="title" itemprop="name headline">Walt's Blog</h1></a></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">BLOG</a></li></ul><ul class="right" id="rightNav"><li class="item theme" @click="changeThemeByBtn"><i class="ic" :class="{'i-sun': !themeStatus,'i-moon': themeStatus}"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li><li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="index wrap"><div class="segments posts"><article class="item"><div class="cover"><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" itemprop="url" title="C++中知识收藏"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicitcxhpij20zk0m8hdt.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-15 11:02:38"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-15T11:02:38+08:00">2023-11-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>996</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" itemprop="url" title="C++中知识收藏">C++中知识收藏</a></h3><div class="excerpt"># 作用域
+# 命名空间
+namespace namespace_name &amp;#123;
+   &#x2F;&#x2F; 代码声明
+&amp;#125;
+
+引用命名空间内的变量。
+namespace_name::code;
+
+# 导入命名空间
+使得后续代码在引用该命名空间时无需添加前缀。
+
+导入整个命名空间
+
+using namespace namespace_name;
+
+
+仅导入命名空间部分变量或方法。
+
+using std::cout;
+
+# 嵌套的命名空间
+命名空间可以嵌套，可以在一个命名空间中定义另一个命名空间。
+namespace namespace_name1 &amp;</div><div class="meta footer"><span><a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" title="编程语言"><i class="ic i-flag"></i>编程语言</a></span></div><a href="/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/" class="btn" itemprop="url" title="C++中知识收藏">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/inputanalyse/" itemprop="url" title="inputAnalyse"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis081o9j20zk0m8dmr.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-07 21:55:24"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-07T21:55:24+08:00">2023-11-07</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>238</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/inputanalyse/" itemprop="url" title="inputAnalyse">inputAnalyse</a></h3><div class="excerpt"># fgets
+# 空字符
+遇到字符 &#39;\0&#39;  不会停止。
+# 截止
+任意空字符停止输入，否则等待直到有新字符。
+其中会将该空字符输入。最后在其后添加字符 &#39;\0&#39; 。
+# 上限
+会预留一个字符给字符 &#39;\0&#39; ，若输入数超过上限，则直接结束输入，在最后添加字符 &#39;\0&#39; 。
+同时会舍弃空字符前面的其他未输入字符。
+即若允许输入 18 个字符，则最多输入 17 字符。若输入 20 个字符，截断至 17 个字符，然后舍弃最后 3 个，然后添加字符 &#39;\0&#39; 。
+</div><div class="meta footer"><span><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" itemprop="url" title="笔记"><i class="ic i-flag"></i>笔记</a></span></div><a href="/2023/11/inputanalyse/" class="btn" itemprop="url" title="inputAnalyse">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/findlibc/" itemprop="url" title="findLibc"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciryrr3rj20zk0m8nhk.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-06 17:27:29"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-06T17:27:29+08:00">2023-11-06</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.3k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/11/findlibc/" itemprop="url" title="findLibc">findLibc</a></h3><div class="excerpt"># libc 应用
+# libc 修补
+由于靶机运行环境与本地机器环境可能不同，会导致程序实现的方式有所差异。
+尤其是对于堆题而言，不同版本有不同的检测机制以及 tcache 的有无和截然不同的安全检测。使得 libc 的修正变得十分重要。
+目前主要有以下几种方法实现 libc 的修正。
+
+使用 patchelf 修改 elf 文件的依赖
+pwntools 中利用 process 指定 libc 版本。
+在 docker 容器中运行和调试
+
+# patchelf 修改 libc
+
+该方式会修改文件本身，尽量先对文件进行备份。主要会修改文件内依赖的地址，可能造成文件内部分数据的地址出现偏移。
+
+</div><div class="meta footer"><span><a href="/categories/PWN/Notes/" itemprop="url" title="Notes"><i class="ic i-flag"></i>Notes</a></span></div><a href="/2023/11/findlibc/" class="btn" itemprop="url" title="findLibc">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/buu-1106/" itemprop="url" title="buu 1106"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-06 16:07:06"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-06T16:07:06+08:00">2023-11-06</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>29k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>27 分钟</span></span></div><h3><a href="/2023/11/buu-1106/" itemprop="url" title="buu 1106">buu 1106</a></h3><div class="excerpt"># [ZJCTF 2019]EasyHeap
+heap, unlink, overlap
+用数组储存堆地址。利用 unlink 将地址指向数组，即可实现任意地址读写。
+unlink 修改的堆地址应该为真实地址，而 malloc 返回的地址为用户地址。所以伪造的 fakechunk 要在当前块的头部紧接着的地方。例如：
+数组储存的某个块的地址为 0x5010，则该处应为 chunk 的头，所以直接将 fakechunk 输入至 chunk 中。addr 为数组上储存 0x5010 处的地址。unlink 后 addr 指向 addr-0x18，即数组下标小 3 的位置。
+
+
+
+地址
+0x0
+0x</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/11/buu-1106/" class="btn" itemprop="url" title="buu 1106">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/awdtools/" itemprop="url" title="awdTools"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciszlczyj20zk0m816d.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-02 23:39:19"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-11-02T23:39:19+08:00">2023-11-02</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2023/11/awdtools/" itemprop="url" title="awdTools">awdTools</a></h3><div class="excerpt"># 端口扫描
+# nmap
+nmap [scan type] [option] [target]
+命令	描述
+ nmap IP	扫描 IP
+nmap -v IP	加强扫描
+ nmap IP1 IP2 …	扫描多 IP
+nmap a.b.c.*	扫描整个子网
+ nmap a.b.c.x,y,…	扫描多子网地址
+ nmap -iL xxx.txt	根据文件扫描多 IP
+nmap a.b.c.x-y	扫描子网 IP 范围
+ nmap a.b.c.* --exclude IP	排除指定 IP 扫描整个子网
+ nmap -A IP	扫描操作系统和路由跟踪
+ nmap -O IP	探测操作系统
+ nmap</div><div class="meta footer"><span><a href="/categories/CTF/awd/" itemprop="url" title="awd"><i class="ic i-flag"></i>awd</a></span></div><a href="/2023/11/awdtools/" class="btn" itemprop="url" title="awdTools">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" itemprop="url" title="hexo部署配置"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis3attqj20zk0m8k7l.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-29 07:40:41"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-29T07:40:41+08:00">2023-10-29</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.3k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" itemprop="url" title="hexo部署配置">hexo部署配置</a></h3><div class="excerpt"># 下载安装
+该软件是在安装 Node.js 后使用 npm install  安装的。
+在官网下载 Node.js 后，新建文件夹，运行以下命令。
+npm install hexo-clihexo init# Git 配置
+git 由于之前配置过，所以维持原样。总归就是设置用户名和邮箱，添加登陆密钥。
+而后需要将 _config.yml  文件中的配置改为如下。
+deploy:  type: git  repository: git@github.com:WaltCSZ&#x2F;waltcsz.github.io.git  branch: master这样之后就可以用 hexo d  将网</div><div class="meta footer"><span><a href="/categories/blog/%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" itemprop="url" title="安装记录"><i class="ic i-flag"></i>安装记录</a></span></div><a href="/2023/10/hexo%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE/" class="btn" itemprop="url" title="hexo部署配置">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week5/" itemprop="url" title="newstarctf2023 week5"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-23 14:07:01"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-23T14:07:01+08:00">2023-10-23</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>6k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>5 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week5/" itemprop="url" title="newstarctf2023 week5">newstarctf2023 week5</a></h3><div class="excerpt"># newstarctf2023 week5
+# login
+brop 侧信道攻击
+存在栈溢出，但是有 canary。
+输入时可以用空格等空字符分隔输入，所以输入函数用的是 scanf，scanf 会在输入字符串后面自动添加 &#39;\0&#39; ，所以无法爆破 canary。于是也没办法用栈溢出了。
+
+考虑过通过大量溢出覆盖栈高处的 TLS（Thread Local Storage）存储的 canary 值，但是好像先因为 scanf 输入字符过多崩溃了
+
+经 Lxxxt 爷指点，发现这道题是 2023 年全国信息安全大赛原题改编。要用的是侧信道攻击法，利用程序判断密码（或 PIN 码）</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week5/" class="btn" itemprop="url" title="newstarctf2023 week5">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week4/" itemprop="url" title="newstarctf2023 week4"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giciryrr3rj20zk0m8nhk.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-20 01:20:21"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-20T01:20:21+08:00">2023-10-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>14k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>13 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week4/" itemprop="url" title="newstarctf2023 week4">newstarctf2023 week4</a></h3><div class="excerpt"># newstartctf2023_week4 pwn
+# Double
+堆 heap, double_free, fastbin
+libc: 2.23
+程序中功能选择只有创建 add() ，删除 del()  和检查 check() 。其中， check()  内存在后门函数，只要 0x602070 处的值为 1638，即可直接 getsshell。
+其次， del()  中释放块后没有清除指针，可以进行 double free。因此只要在 0x602070 处伪造块，并设置值为 1638。
+add()  中固定分配 0x28 大小的块，并且同时写入内容。释放后进入 fastbin。
+
+实际</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week4/" class="btn" itemprop="url" title="newstarctf2023 week4">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week3/" itemprop="url" title="newstarctf2023_week3"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicis081o9j20zk0m8dmr.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-15 13:32:08"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-15T13:32:08+08:00">2023-10-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>13k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>11 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week3/" itemprop="url" title="newstarctf2023_week3">newstarctf2023_week3</a></h3><div class="excerpt"># puts or system?
+format_string 修改 got
+ 存在 printf 格式化漏洞，并且有个 puts(&quot;&#x2F;bin&#x2F;sh&quot;); 。只要把 puts 的 got 表值修改为 system 函数的真实值或者 plt 值，就可以 getshell。
+经调试，printf 的第 9 个参数（%8p）为0x7fffffffdc90处的值。即输入的buf的内容。由此构造payload，在对应第10个参数处写入&#96;__libc_start_main&#96;的got地址，利用&#96;%9s 泄露其真实地址。 随后拿到  system</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week3/" class="btn" itemprop="url" title="newstarctf2023_week3">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/newstarctf2023-week1-2/" itemprop="url" title="newstarctf2023_week1-2"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicit31ffoj20zk0m8naf.jpg" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-12 01:11:10"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2023-10-12T01:11:10+08:00">2023-10-12</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>9.8k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>9 分钟</span></span></div><h3><a href="/2023/10/newstarctf2023-week1-2/" itemprop="url" title="newstarctf2023_week1-2">newstarctf2023_week1-2</a></h3><div class="excerpt"># week1
+# ret2text
+ret2text
+#!&#x2F;usr&#x2F;bin&#x2F;python3from pwn import *context(log_level&#x3D;&#39;debug&#39;)#e&#x3D;ELF(&#39;.&#x2F;&#39;)#p&#x3D;process(&#39;.&#x2F;ret2text&#39;)p&#x3D;remote(&#39;node4.buuoj.cn&#39;,27637)#gdb.attach(p, &#39;b &#39;)offset &#x3D; 0x020+8target &#x3D; 0x0</div><div class="meta footer"><span><a href="/categories/PWN/Write-Up/" itemprop="url" title="Write Up"><i class="ic i-flag"></i>Write Up</a></span></div><a href="/2023/10/newstarctf2023-week1-2/" class="btn" itemprop="url" title="newstarctf2023_week1-2">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><a class="extend prev" rel="prev" href="/page/3/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Walt CSZ" data-src="/assets/avatar.jpg"/><p class="name" itemprop="name">Walt CSZ</p><div class="description" itemprop="description"></div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">48</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">14</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">35</span><span class="name">标签</span></a></div></nav><div class="social"><a href="https://github.com/waltcsz" class="item github" rel="noopener" title="https:&#x2F;&#x2F;github.com&#x2F;waltcsz" target="_blank"><i class="ic i-github"></i></a><a href="https://music.163.com/#/user/home?id=1352209376" class="item music" rel="noopener" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1352209376" target="_blank"><i class="ic i-cloud-music"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-user"></i>关于</a><ul class="submenu"><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于本站</a></li><li class="item"><a href="/admiration/" rel="section"><i class="ic i-coffee"></i>赞赏博主</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/page/3/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/5/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/08/buu-0824/">buu 0824</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a></div><span><a href="/2023/07/pwn%E5%9F%BA%E7%A1%80/">pwn基础</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/vim/">vim</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/python/">python</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/08/buu-0830/">buu 0830</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/PWN/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="分类于编程语言">编程语言</a></div><span><a href="/2023/08/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">汇编基础知识</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%AC%94%E8%AE%B0/" title="分类于笔记">笔记</a><i class="ic i-angle-right"></i><a href="/categories/%E7%AC%94%E8%AE%B0/Linux/" title="分类于Linux">Linux</a></div><span><a href="/2023/11/shell/">shell</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/12/">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/PWN/" title="分类于PWN">PWN</a><i class="ic i-angle-right"></i><a href="/categories/PWN/Write-Up/" title="分类于Write Up">Write Up</a></div><span><a href="/2023/10/newstarctf2023-week4/">newstarctf2023 week4</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2023</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Walt CSZ @ BLOG</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">378k 字</span><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">5:44</span></div><div class="powered-by">基于 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & Theme.<a href="https://github.com/theme-shoka-x/hexo-theme-shokaX/" rel="noopener" target="_blank">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+        path: `page/4/`,
+        favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,
+    chart: false,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    fancybox: true,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    },
+    ignores: [
+        (uri) => uri.includes('#'),
+        (uri) => new RegExp(LOCAL.path + '$').test(uri),
+            []
+    ]
+};
+</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default,fetch"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/pace/1.0.2/pace.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/algoliasearch/4.12.1/algoliasearch-lite.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/instantsearch.js/4.39.0/instantsearch.production.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/quicklink/2.2.0/quicklink.umd.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/??jquery/3.5.1/jquery.min.js,fancybox/3.5.7/jquery.fancybox.min.js,justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" async></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/KaTeX/0.15.2/contrib/copy-tex.min.js" async></script><script src="/js/app.js?v=0.3.6"></script></body></html>

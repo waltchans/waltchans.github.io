@@ -3,7 +3,7 @@
     <id>http://waltcsz.github.io</id>
     <title>Walt&#39;s Blog • Posts by &#34;笔记&#34; category</title>
     <link href="http://waltcsz.github.io" />
-    <updated>2023-11-19T07:43:55.000Z</updated>
+    <updated>2023-11-20T11:15:54.000Z</updated>
     <category term="docker" />
     <category term="汇编" />
     <category term="寄存器" />
@@ -36,6 +36,248 @@
     <category term="free_hook" />
     <category term="integer overflow" />
     <category term="canary" />
+    <category term="IO_FILE" />
+    <category term="calloc" />
+    <category term="fini_array" />
+    <entry>
+        <id>http://waltcsz.github.io/2023/11/iofile%E4%BB%8B%E7%BB%8D/</id>
+        <title>ioFile介绍</title>
+        <link rel="alternate" href="http://waltcsz.github.io/2023/11/iofile%E4%BB%8B%E7%BB%8D/"/>
+        <content type="html">&lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
+&lt;p&gt;IO_FILE 是描述 IO 的文件结构体，相关源码来自 libio/libioP.h 文件中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IO_FILE 结构&lt;/strong&gt;：在执行 fopen 等函数时创建。不同 IO_FILE 以链表形式串接起来。&lt;/p&gt;
+&lt;h1 id=&#34;_io_list_all变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#_io_list_all变量&#34;&gt;#&lt;/a&gt;  &lt;code&gt;_IO_list_all&lt;/code&gt;  变量&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;_IO_list_all&lt;/code&gt;  变量&lt;/strong&gt;：指向链表头部。默认链如下。&lt;/p&gt;
+&lt;figure class=&#34;highlight tex&#34;&gt;&lt;figcaption data-lang=&#34;TeX&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;_IO_list_all - stderr -&gt; stdout -&gt; stdin&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;三文件流&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三文件流&#34;&gt;#&lt;/a&gt; 三文件流&lt;/h2&gt;
+&lt;p&gt;存在以下三种符号，指向他们对应的 file 结构。&lt;/p&gt;
+&lt;p&gt;其存放在 libc.so 中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_IO_2_1_stderr_
+_IO_2_1_stdout_
+_IO_2_1_stdin_
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;io-file-plus&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#io-file-plus&#34;&gt;#&lt;/a&gt; io file plus&lt;/h1&gt;
+&lt;p&gt;包裹着 file 结构体。&lt;/p&gt;
+&lt;p&gt;vtable 的偏移&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;架构&lt;/th&gt;
+&lt;th&gt;偏移&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;0x94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;0xd8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct _IO_FILE_plus
+&amp;#123;
+	_IO_FILE    file;
+	_IO_jump_t   *vtable;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;file结构&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#file结构&#34;&gt;#&lt;/a&gt; file 结构&lt;/h1&gt;
+&lt;p&gt;不同 file 结构体用 chain 域串起形成链表。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct _IO_FILE &amp;#123;
+  int _flags;        /* High-order word is _IO_MAGIC; rest is flags. */
+#define _IO_file_flags _flags
+
+  /* The following pointers correspond to the C++ streambuf protocol. */
+  /* Note:  Tk uses the _IO_read_ptr and _IO_read_end fields directly. */
+  char* _IO_read_ptr;    /* Current read pointer */
+  char* _IO_read_end;    /* End of get area. */
+  char* _IO_read_base;    /* Start of putback+get area. */
+  char* _IO_write_base;    /* Start of put area. */
+  char* _IO_write_ptr;    /* Current put pointer. */
+  char* _IO_write_end;    /* End of put area. */
+  char* _IO_buf_base;    /* Start of reserve area. */
+  char* _IO_buf_end;    /* End of reserve area. */
+  /* The following fields are used to support backing up and undo. */
+  char *_IO_save_base; /* Pointer to start of non-current get area. */
+  char *_IO_backup_base;  /* Pointer to first valid character of backup area */
+  char *_IO_save_end; /* Pointer to end of non-current get area. */
+  struct _IO_marker *_markers;
+  struct _IO_FILE *_chain;
+  int _fileno;
+#if 0
+  int _blksize;
+#else
+  int _flags2;
+#endif
+  _IO_off_t _old_offset; /* This used to be _offset but it&#39;s too small.  */
+#define __HAVE_COLUMN /* temporary */
+  /* 1+column number of pbase(); 0 is unknown. */
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+
+  /*  char* _save_gptr;  char* _save_egptr; */
+
+  _IO_lock_t *_lock;
+#ifdef _IO_USE_OLD_IO_FILE
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct _IO_FILE_complete
+&amp;#123;
+  struct _IO_FILE _file;
+#endif
+#if defined _G_IO_IO_FILE_VERSION &amp;amp;&amp;amp; _G_IO_IO_FILE_VERSION == 0x20001
+  _IO_off64_t _offset;
+# if defined _LIBC || defined _GLIBCPP_USE_WCHAR_T
+  /* Wide character stream stuff.  */
+  struct _IO_codecvt *_codecvt;
+  struct _IO_wide_data *_wide_data;
+  struct _IO_FILE *_freeres_list;
+  void *_freeres_buf;
+# else
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+# endif
+  size_t __pad5;
+  int _mode;
+  /* Make sure we don&#39;t get into trouble again.  */
+  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+#endif
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;_io_jump_t&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#_io_jump_t&#34;&gt;#&lt;/a&gt;  &lt;code&gt;_IO_jump_t&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;是 vtable 指针指向的结构体，存放着各种函数跳转地址。&lt;/p&gt;
+&lt;p&gt;其中偏移为 7 的 xsputn 很有用。&lt;/p&gt;
+&lt;p&gt;libc.so 自带的 &lt;code&gt;_IO_jump_t&lt;/code&gt;  一般不可修改。但我们可以伪造 &lt;code&gt;_IO_jump_t&lt;/code&gt;  并修改 vtable 的值指向伪造的结构体。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#define JUMP_FIELD(TYPE, NAME) TYPE NAME
+struct _IO_jump_t
+&amp;#123;
+    JUMP_FIELD(size_t, __dummy);
+    JUMP_FIELD(size_t, __dummy2);
+    JUMP_FIELD(_IO_finish_t, __finish);
+    JUMP_FIELD(_IO_overflow_t, __overflow); // !!
+    JUMP_FIELD(_IO_underflow_t, __underflow);
+    JUMP_FIELD(_IO_underflow_t, __uflow);
+    JUMP_FIELD(_IO_pbackfail_t, __pbackfail);
+    /* showmany */
+    JUMP_FIELD(_IO_xsputn_t, __xsputn);	// printf函数会用 
+    JUMP_FIELD(_IO_xsgetn_t, __xsgetn);
+    JUMP_FIELD(_IO_seekoff_t, __seekoff);
+    JUMP_FIELD(_IO_seekpos_t, __seekpos);
+    JUMP_FIELD(_IO_setbuf_t, __setbuf);
+    JUMP_FIELD(_IO_sync_t, __sync);
+    JUMP_FIELD(_IO_doallocate_t, __doallocate);
+    JUMP_FIELD(_IO_read_t, __read);
+    JUMP_FIELD(_IO_write_t, __write);
+    JUMP_FIELD(_IO_seek_t, __seek);
+    JUMP_FIELD(_IO_close_t, __close);
+    JUMP_FIELD(_IO_stat_t, __stat);
+    JUMP_FIELD(_IO_showmanyc_t, __showmanyc);
+    JUMP_FIELD(_IO_imbue_t, __imbue);
+#if 0
+    get_column;
+    set_column;
+#endif
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;_IO_2_1_stdout_&lt;/code&gt; 中 vtable 的 setbuf 在程序退出时会执行，可修改为 one_gadget 进行利用。&lt;/p&gt;
+&lt;h1 id=&#34;输出输入函数调用栈&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#输出输入函数调用栈&#34;&gt;#&lt;/a&gt; 输出输入函数调用栈&lt;/h1&gt;
+&lt;h2 id=&#34;fread&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#fread&#34;&gt;#&lt;/a&gt; fread&lt;/h2&gt;
+&lt;p&gt;函数位于 &lt;code&gt;/libio/iofread.c&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;size_t fread (void *buffer, size_t size, size_t count, FILE *stream);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;buffer 存放读取数据的缓冲区。&lt;/li&gt;
+&lt;li&gt;size：指定每个记录的长度。&lt;/li&gt;
+&lt;li&gt;count： 指定记录的个数。&lt;/li&gt;
+&lt;li&gt;stream：目标文件流。&lt;/li&gt;
+&lt;li&gt;返回值：返回读取到数据缓冲区中的记录个数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其调用函数栈为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_IO_fread(buf, size, count, fp)	// fread本体
+_IO_sgetn(fp, (char*)buf, bytes_requested)	//(fp,data,n)
+_IO_XSGETN (fp, data, n)	// 为vtable中的函数指针
+_IO_file_xsgetn(fp, data, n)	// 默认情况下_IO_XSGETN所指向
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fwrite&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#fwrite&#34;&gt;#&lt;/a&gt; fwrite&lt;/h2&gt;
+&lt;p&gt;函数位于 &lt;code&gt; /libio/iofwrite.c&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;size_t fwrite(const void* buffer, size_t size, size_t count, FILE* stream);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;buffer: 是一个指针，对 fwrite 来说，是要写入数据的地址；&lt;/li&gt;
+&lt;li&gt;size: 要写入内容的单字节数；&lt;/li&gt;
+&lt;li&gt;count: 要进行写入 size 字节的数据项的个数；&lt;/li&gt;
+&lt;li&gt;stream: 目标文件指针；&lt;/li&gt;
+&lt;li&gt;返回值：实际写入的数据项个数 count。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;_IO_fwrite
+_IO_XSPUTN	// vtable 函数指针
+||
+_IO_new_file_xsputn	
+_IO_OVERFLOW	// vtable 函数指针
+||
+_IO_new_file_overflow
+write
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;printf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#printf&#34;&gt;#&lt;/a&gt; printf&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;vfprintf+11
+_IO_file_xsputn
+_IO_file_overflow
+funlockfile
+_IO_file_write
+write
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;file结构创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#file结构创建&#34;&gt;#&lt;/a&gt; file 结构创建&lt;/h1&gt;
+&lt;h2 id=&#34;fopen&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#fopen&#34;&gt;#&lt;/a&gt; fopen&lt;/h2&gt;
+&lt;p&gt;fopen 在标准 IO 库中用于打开文件，函数原型如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FILE *fopen(char *filename, *type);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;filename: 目标文件的路径&lt;/li&gt;
+&lt;li&gt;type: 打开方式的类型&lt;/li&gt;
+&lt;li&gt;返回值：返回一个文件指针&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 fopen 内部会创建 FILE 结构并进行一些初始化操作，下面来看一下这个过程&lt;/p&gt;
+&lt;p&gt;首先在 fopen 对应的函数 &lt;code&gt;__fopen_internal&lt;/code&gt;  内部会调用 malloc 函数，分配 FILE 结构的空间。因此我们可以获知 FILE 结构是存储在&lt;strong&gt;堆上&lt;/strong&gt;的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*new_f = (struct locked_FILE *) malloc (sizeof (struct locked_FILE));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之后会为创建的 FILE 初始化 vtable，并调用_IO_file_init 进一步初始化操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_IO_JUMPS (&amp;amp;new_f-&amp;gt;fp) = &amp;amp;_IO_file_jumps;
+_IO_file_init (&amp;amp;new_f-&amp;gt;fp);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在 &lt;code&gt;_IO_file_init&lt;/code&gt;  函数的初始化操作中，会调用 &lt;code&gt;_IO_link_in&lt;/code&gt;  把新分配的 FILE 链入 &lt;code&gt;_IO_list_all&lt;/code&gt;  为起始的 FILE 链表中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void
+_IO_link_in (fp)
+     struct _IO_FILE_plus *fp;
+&amp;#123;
+    if ((fp-&amp;gt;file._flags &amp;amp; _IO_LINKED) == 0)
+    &amp;#123;
+      fp-&amp;gt;file._flags |= _IO_LINKED;
+      fp-&amp;gt;file._chain = (_IO_FILE *) _IO_list_all;
+      _IO_list_all = fp;
+      ++_IO_list_all_stamp;
+    &amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之后__fopen_internal 函数会调用_IO_file_fopen 函数打开目标文件，_IO_file_fopen 会根据用户传入的打开模式进行打开操作，总之最后会调用到系统接口 open 函数，这里不再深入。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (_IO_file_fopen ((_IO_FILE *) new_f, filename, mode, is32) != NULL)
+    return __fopen_maybe_mmap (&amp;amp;new_f-&amp;gt;fp.file);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;总结一下 fopen 的操作是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 malloc 分配 FILE 结构&lt;/li&gt;
+&lt;li&gt;设置 FILE 结构的 vtable&lt;/li&gt;
+&lt;li&gt;初始化分配的 FILE 结构&lt;/li&gt;
+&lt;li&gt;将初始化的 FILE 结构链入 FILE 结构链表中&lt;/li&gt;
+&lt;li&gt;调用系统调用打开文件&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="IO_FILE" />
+        <updated>2023-11-20T11:15:54.000Z</updated>
+    </entry>
     <entry>
         <id>http://waltcsz.github.io/2023/11/shellcode/</id>
         <title>shellcode</title>
@@ -1102,6 +1344,17 @@ Test::Test()
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;::s;	// 全局变量
 s;		// 局部变量
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数&#34;&gt;#&lt;/a&gt; 函数&lt;/h1&gt;
+&lt;h2 id=&#34;字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串&#34;&gt;#&lt;/a&gt; 字符串&lt;/h2&gt;
+&lt;h3 id=&#34;isprint&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isprint&#34;&gt;#&lt;/a&gt; isprint()&lt;/h3&gt;
+&lt;p&gt;检查字符是否为可打印字符。是则返回 true，否则返回 false。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int isprint(int c);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;strdup&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#strdup&#34;&gt;#&lt;/a&gt; strdup()&lt;/h3&gt;
+&lt;p&gt;分配块，然后复制字符串到块中，返回块地址。&lt;/p&gt;
+&lt;p&gt;可用 free () 释放内存。&lt;/p&gt;
+&lt;h3 id=&#34;strtok&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#strtok&#34;&gt;#&lt;/a&gt; strtok()&lt;/h3&gt;
+&lt;p&gt;拆分字符串，&lt;/p&gt;
 </content>
         <updated>2023-11-15T03:02:38.000Z</updated>
     </entry>
@@ -1490,6 +1743,11 @@ jmp __printf
 &lt;td&gt;dup 实现受阻&lt;br /&gt;free 时循环扫描当前 bin，寻找是否有相同地址&lt;br /&gt;这种情况下常常填充完 tcache bin 后利用 fastbin 的 double free&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;libc6_2.29&lt;/td&gt;
+&lt;td&gt;对合并的块检验 prev_size==chunksize (p)，加大了 extend 的难度&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;libc6_2.35&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;tcache 的 fd 与 heap 基地址 &amp;gt;&amp;gt;3 异或&lt;br /&gt;同时 fd 后面紧接一串 key&lt;br /&gt;对 tcache 的利用变得尤其困难&lt;/td&gt;
@@ -1498,6 +1756,7 @@ jmp __printf
 &lt;/table&gt;
 &lt;h1 id=&#34;小知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#小知识&#34;&gt;#&lt;/a&gt; 小知识&lt;/h1&gt;
 &lt;p&gt;calloc 会清空内存，而 malloc 不会&lt;/p&gt;
+&lt;p&gt;** &lt;code&gt;calloc&lt;/code&gt; ** 不会从 tcache bin 中获取 chunk，会从 fastbin 中直接获取。同时会将 fastbin 中剩余的 chunk 添加到 tcache bin 的头部填充满。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;calloc(0x20);
 //等同于
 ptr=malloc(0x20);
@@ -1590,8 +1849,22 @@ memset(ptr,0,0x20);
 &lt;h2 id=&#34;汇编&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#汇编&#34;&gt;#&lt;/a&gt; 汇编&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;lea eax, [addr]	//将addr的
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;c语言函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#c语言函数&#34;&gt;#&lt;/a&gt; c 语言函数&lt;/h1&gt;
-&lt;h2 id=&#34;mmap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mmap&#34;&gt;#&lt;/a&gt; mmap&lt;/h2&gt;
+&lt;h1 id=&#34;全局变量位置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#全局变量位置&#34;&gt;#&lt;/a&gt; 全局变量位置&lt;/h1&gt;
+&lt;h2 id=&#34;libcso&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#libcso&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2xpYmMuc28=&#34;&gt;libc.so&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;main_arena&lt;/code&gt; : 存放各种 bin 的头&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_IO_list_all&lt;/code&gt; :&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;程序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#程序&#34;&gt;#&lt;/a&gt; 程序&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fini_array&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;堆&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆&#34;&gt;#&lt;/a&gt; 堆&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;tcache 存放 tcache bin&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_IO_FILE_plus&lt;/code&gt; : fopen 打开的文件&lt;/li&gt;
+&lt;/ul&gt;
 </content>
         <updated>2023-07-20T09:00:23.000Z</updated>
     </entry>

@@ -39,6 +39,9 @@
         <category>free_hook</category>
         <category>integer overflow</category>
         <category>canary</category>
+        <category>IO_FILE</category>
+        <category>calloc</category>
+        <category>fini_array</category>
         <item>
             <guid isPermalink="true">http://waltcsz.github.io/2023/11/c-%E4%B8%AD%E7%9F%A5%E8%AF%86%E6%94%B6%E8%97%8F/</guid>
             <title>C++中知识收藏</title>
@@ -100,6 +103,17 @@ Test::Test()
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;::s;	// 全局变量
 s;		// 局部变量
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数&#34;&gt;#&lt;/a&gt; 函数&lt;/h1&gt;
+&lt;h2 id=&#34;字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串&#34;&gt;#&lt;/a&gt; 字符串&lt;/h2&gt;
+&lt;h3 id=&#34;isprint&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#isprint&#34;&gt;#&lt;/a&gt; isprint()&lt;/h3&gt;
+&lt;p&gt;检查字符是否为可打印字符。是则返回 true，否则返回 false。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int isprint(int c);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;strdup&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#strdup&#34;&gt;#&lt;/a&gt; strdup()&lt;/h3&gt;
+&lt;p&gt;分配块，然后复制字符串到块中，返回块地址。&lt;/p&gt;
+&lt;p&gt;可用 free () 释放内存。&lt;/p&gt;
+&lt;h3 id=&#34;strtok&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#strtok&#34;&gt;#&lt;/a&gt; strtok()&lt;/h3&gt;
+&lt;p&gt;拆分字符串，&lt;/p&gt;
  ]]></description>
         </item>
         <item>

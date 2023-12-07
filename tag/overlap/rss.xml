@@ -39,6 +39,9 @@
         <category>free_hook</category>
         <category>integer overflow</category>
         <category>canary</category>
+        <category>IO_FILE</category>
+        <category>calloc</category>
+        <category>fini_array</category>
         <item>
             <guid isPermalink="true">http://waltcsz.github.io/2023/11/buu-1106/</guid>
             <title>buu 1106</title>

@@ -36,6 +36,9 @@
     <category term="free_hook" />
     <category term="integer overflow" />
     <category term="canary" />
+    <category term="IO_FILE" />
+    <category term="calloc" />
+    <category term="fini_array" />
     <entry>
         <id>http://waltcsz.github.io/2023/07/pwn%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</id>
         <title>pwn常用工具及环境配置</title>

@@ -36,6 +36,9 @@
     <category term="free_hook" />
     <category term="integer overflow" />
     <category term="canary" />
+    <category term="IO_FILE" />
+    <category term="calloc" />
+    <category term="fini_array" />
     <entry>
         <id>http://waltcsz.github.io/2023/11/awdtools/</id>
         <title>awdTools</title>

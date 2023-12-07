@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Walt&#39;s Blog • Posts by &#34;算法&#34; category</title>
+        <link>http://waltcsz.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 24 Nov 2023 19:35:22 +0800</pubDate>
+        <lastBuildDate>Fri, 24 Nov 2023 19:35:22 +0800</lastBuildDate>
+        <category>docker</category>
+        <category>汇编</category>
+        <category>寄存器</category>
+        <category>heap</category>
+        <category>异架构</category>
+        <category>工具</category>
+        <category>stack migration</category>
+        <category>新生题</category>
+        <category>short shellcode</category>
+        <category>random</category>
+        <category>shellcode</category>
+        <category>format string</category>
+        <category>overlap</category>
+        <category>unlink</category>
+        <category>cdll</category>
+        <category>侧信道攻击</category>
+        <category>时间差</category>
+        <category>full RELRO</category>
+        <category>brop</category>
+        <category>tcache</category>
+        <category>dup</category>
+        <category>srop</category>
+        <category>orw</category>
+        <category>dlresolve</category>
+        <category>double free</category>
+        <category>fastbin attack</category>
+        <category>chunk_extend_and_overlapping</category>
+        <category>one_gadget</category>
+        <category>malloc_hook</category>
+        <category>free_hook</category>
+        <category>integer overflow</category>
+        <category>canary</category>
+        <category>IO_FILE</category>
+        <category>calloc</category>
+        <category>fini_array</category>
+        <item>
+            <guid isPermalink="true">http://waltcsz.github.io/2023/11/dp/</guid>
+            <title>dp</title>
+            <link>http://waltcsz.github.io/2023/11/dp/</link>
+            <pubDate>Fri, 24 Nov 2023 19:35:22 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h1&gt;
+&lt;h2 id=&#34;优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#优化&#34;&gt;#&lt;/a&gt; 优化&lt;/h2&gt;
+&lt;h3 id=&#34;滚动数组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#滚动数组&#34;&gt;#&lt;/a&gt; 滚动数组&lt;/h3&gt;
+&lt;p&gt;由于 dp 二维表最终只要最后一行最后一列的数据，因此可以用滚动数组，只保留一行数据进行遍历。好像要从大到小。&lt;/p&gt;
+&lt;h1 id=&#34;字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串&#34;&gt;#&lt;/a&gt; 字符串&lt;/h1&gt;
+&lt;h2 id=&#34;最长公共子序列&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#最长公共子序列&#34;&gt;#&lt;/a&gt; 最长公共子序列&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;str1 的长度为 m，str2 的长度为 2&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dp[i][j]&lt;/code&gt;  表示长度为 &lt;code&gt;i&lt;/code&gt;  的 str1 子串和长度为 &lt;code&gt;j&lt;/code&gt;  的 str2 子串的最长公共子序列的长度。子串取 &lt;code&gt;[0:i)&lt;/code&gt;  或 &lt;code&gt;[0:j)&lt;/code&gt;  范围的字符串。&lt;/li&gt;
+&lt;li&gt;i 和 j 均从 0 开始增长。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;if (str1[i]==str[j])
+	dp[i][j] = dp[i-1][j-1] + 1;
+else
+	dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;子串和子序列不同！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&#34;katex-display&#34;&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34; display=&#34;block&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;munderover&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;∞&lt;/mi&gt;&lt;/munderover&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;msup&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;msup&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\sum^\infin_{n=1} \frac{(z-1)^n}{5^n}
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:2.9185em;vertical-align:-1.2671em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mop op-limits&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.6514em;&#34;&gt;&lt;span style=&#34;top:-1.8829em;margin-left:0em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;&lt;span class=&#34;mord mathnormal mtight&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mrel mtight&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mord mtight&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span&gt;&lt;span class=&#34;mop op-symbol large-op&#34;&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-4.3em;margin-left:0em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;∞&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.2671em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.1667em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mopen nulldelimiter&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mfrac&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.427em;&#34;&gt;&lt;span style=&#34;top:-2.314em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.5904em;&#34;&gt;&lt;span style=&#34;top:-2.989em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathnormal mtight&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.23em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;frac-line&#34; style=&#34;border-bottom-width:0.04em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.677em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.04398em;&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.6644em;&#34;&gt;&lt;span style=&#34;top:-3.063em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathnormal mtight&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.686em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mclose nulldelimiter&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;背包&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#背包&#34;&gt;#&lt;/a&gt; 背包&lt;/h1&gt;
+&lt;p&gt;0-1 背包&lt;/p&gt;
+&lt;p&gt;dp 遍历。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dp[i][j]&lt;/code&gt;  i 物品编号， j 背包大小。表示当背包&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
